@@ -1,0 +1,7 @@
+com\example\factorisation\repository\CityRepository.class
+com\example\factorisation\service\CityService.class
+com\example\factorisation\service\impl\JpaCityService.class
+com\example\factorisation\FactorisationApplication.class
+com\example\factorisation\model\City.class
+com\example\factorisation\TestData.class
+com\example\factorisation\controller\CityController.class
