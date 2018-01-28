@@ -6,13 +6,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.example.factorisation.model.City;
+import com.example.factorisation.model.BusinessYear;
 import com.example.factorisation.service.CityService;
+import com.example.factorisation.service.BusinessYearService;
 
 @Component
 public class TestData {
 	
 	@Autowired
 	private CityService	cityService;
+	
+	@Autowired
+	private BusinessYearService	businessYearService;
+	
 	
 	@PostConstruct
 	private void init(){
@@ -31,6 +37,15 @@ public class TestData {
 		
 		City city5 = new City("Požarevac", "12000");
 		cityService.save(city5);
+		
+		BusinessYear businessYear1 = new BusinessYear(2014, true);
+		businessYearService.save(businessYear1);
+		
+		BusinessYear businessYear2 = new BusinessYear(2015, true);
+		businessYearService.save(businessYear2);
+		
+		BusinessYear businessYear3 = new BusinessYear(2012, false);
+		businessYearService.save(businessYear3);
 		
 		
 	}
