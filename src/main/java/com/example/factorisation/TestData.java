@@ -9,6 +9,9 @@ import com.example.factorisation.model.City;
 import com.example.factorisation.model.BusinessYear;
 import com.example.factorisation.service.CityService;
 import com.example.factorisation.service.BusinessYearService;
+import com.example.factorisation.model.GroupOfGoods;
+import com.example.factorisation.service.GroupOfGoodsService;
+
 
 @Component
 public class TestData {
@@ -18,6 +21,9 @@ public class TestData {
 	
 	@Autowired
 	private BusinessYearService	businessYearService;
+	
+	@Autowired
+	private GroupOfGoodsService	groupOfGoodsService;
 	
 	
 	@PostConstruct
@@ -46,6 +52,9 @@ public class TestData {
 		
 		BusinessYear businessYear3 = new BusinessYear(2012, false);
 		businessYearService.save(businessYear3);
+		
+		GroupOfGoods groupOfGoods1 = new GroupOfGoods("Tehnologija", 20);
+		groupOfGoodsService.save(groupOfGoods1);
 		
 		
 	}
