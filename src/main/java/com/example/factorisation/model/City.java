@@ -1,10 +1,17 @@
 package com.example.factorisation.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
 
 @Entity
 public class City {
@@ -18,6 +25,9 @@ public class City {
 	
 	@Column(name="D_CODE", columnDefinition="CHAR(5)")
 	private String postalCode;
+	
+	@OneToMany(mappedBy="city", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+	private List<Company> companies = new ArrayList<Company>();
 	
 	public City() {
 	}
@@ -49,6 +59,27 @@ public class City {
 
 	public void setPostalCode(String postalCode) {
 		this.postalCode = postalCode;
+	}
+	
+	public List<Company> getCompanies() {
+		return companies;
+	}
+
+	public void setCompanies(List<Company> companies) {
+		this.companies = companies;
+	}
+	
+	public void addCompany(Company company){
+		this.companies.add(company);
+		
+		if(company.getCity()!=this){
+			company.setCity(this);
+		}
+	}
+	
+	public void removeCompany(Company company){
+		company.setCity(null);
+		companies.remove(company);
 	}
 
 }
