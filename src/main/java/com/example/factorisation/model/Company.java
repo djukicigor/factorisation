@@ -6,7 +6,9 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 
 @Entity
@@ -36,6 +38,10 @@ public class Company {
 	
 	@ManyToOne(fetch=FetchType.EAGER)
 	private City city;
+	
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "pricelist_id", nullable = false)
+    private Pricelist pricelist;
 	
 	public Company() {
 	}
@@ -114,5 +120,13 @@ public class Company {
 		if(city!=null && !city.getCompanies().contains(this)){
 			city.getCompanies().add(this);
 		}
+	}
+
+	public Pricelist getPricelist() {
+		return pricelist;
+	}
+
+	public void setPricelist(Pricelist pricelist) {
+		this.pricelist = pricelist;
 	}
 }
