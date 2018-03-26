@@ -31,7 +31,7 @@ public class CityController {
 
 		@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 		public ResponseEntity<City> getCity(@PathVariable Long id) {
-			City city = cityService.findOne(id);
+			City city = CityService.findOne(id);
 			if (city == null) {
 				return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 			}

@@ -7,7 +7,10 @@ import com.example.factorisation.model.*;
 public interface CityService {
 
 	
-	City findOne(Long id);
+	static City findOne(Long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 
 	List<City> findAll();
