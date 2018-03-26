@@ -1,10 +1,16 @@
 package com.example.factorisation.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class GroupOfGoods {
@@ -18,6 +24,9 @@ public class GroupOfGoods {
 	
 	@Column(name="Percentage", columnDefinition="DECIMAL(3,2)")
 	private float percentage;
+	
+	@OneToMany(mappedBy="groupOfGoods", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+	private List<GoodsOrServices> goodsOrServices = new ArrayList<GoodsOrServices>();
 	
 	public GroupOfGoods() {
 	}
@@ -50,6 +59,16 @@ public class GroupOfGoods {
 	public void setPercentage(float percentage) {
 		this.percentage = percentage;
 	}
+
+	public List<GoodsOrServices> getGoodsOrServices() {
+		return goodsOrServices;
+	}
+
+	public void setGoodsOrServices(List<GoodsOrServices> goodsOrServices) {
+		this.goodsOrServices = goodsOrServices;
+	}
+
+	
 
 
 
