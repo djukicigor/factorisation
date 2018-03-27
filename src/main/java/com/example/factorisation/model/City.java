@@ -29,6 +29,9 @@ public class City {
 	@OneToMany(mappedBy="city", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
 	private List<Company> companies = new ArrayList<Company>();
 	
+	@OneToMany(mappedBy="city", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+	private List<BusinessPartner> businessPartners = new ArrayList<BusinessPartner>();
+	
 	public City() {
 	}
 
@@ -80,6 +83,14 @@ public class City {
 	public void removeCompany(Company company){
 		company.setCity(null);
 		companies.remove(company);
+	}
+
+	public List<BusinessPartner> getBusinessPartners() {
+		return businessPartners;
+	}
+
+	public void setBusinessPartners(List<BusinessPartner> businessPartners) {
+		this.businessPartners = businessPartners;
 	}
 
 }

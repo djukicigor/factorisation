@@ -1,6 +1,7 @@
 package com.example.factorisation.model;
 
-import java.sql.Date;
+
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,33 +12,34 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 
 @Entity
-public class Pricelist {
+public class GoodsOrServices {
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 	
-	@Column(name="Date_of_validity", columnDefinition="DATETIME")
-	private Date date_of_validity;
+	@Column(name="Name", columnDefinition="VARCHAR(50)")
+	private String name;
 	
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "company_id", nullable = false)
-    private Company company;
-    
-	@OneToMany(mappedBy="pricelist", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+	@Column(name="Unit", columnDefinition="VARCHAR(15)")
+	private String unit;
+	
+	@ManyToOne(fetch=FetchType.EAGER)
+	private GroupOfGoods groupOfGoods;
+	
+	@OneToMany(mappedBy="goodsOrServices", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
 	private List<PricelistItems> pricelistItems = new ArrayList<PricelistItems>();
 	
-	public Pricelist() {
+	public GoodsOrServices() {
 	}
 
-	public Pricelist(Date date_of_validity) {
-		this.date_of_validity = date_of_validity;
-
+	public GoodsOrServices(String name, String unit) {
+		this.name = name;
+		this.unit = unit;
 	}
 
 	public Long getId() {
@@ -48,20 +50,28 @@ public class Pricelist {
 		this.id = id;
 	}
 
-	public Date getDate_of_validity() {
-		return date_of_validity;
+	public String getName() {
+		return name;
 	}
 
-	public void setDate_of_validity(Date date_of_validity) {
-		this.date_of_validity = date_of_validity;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public Company getCompany() {
-		return company;
+	public String getUnit() {
+		return unit;
 	}
 
-	public void setCompany(Company company) {
-		this.company = company;
+	public void setUnit(String unit) {
+		this.unit = unit;
+	}
+
+	public GroupOfGoods getGroupOfGoods() {
+		return groupOfGoods;
+	}
+
+	public void setGroupOfGoods(GroupOfGoods groupOfGoods) {
+		this.groupOfGoods = groupOfGoods;
 	}
 
 	public List<PricelistItems> getPricelistItems() {
@@ -71,5 +81,8 @@ public class Pricelist {
 	public void setPricelistItems(List<PricelistItems> pricelistItems) {
 		this.pricelistItems = pricelistItems;
 	}
+
+
+
 
 }
