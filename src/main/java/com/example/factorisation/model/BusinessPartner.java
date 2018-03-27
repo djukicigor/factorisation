@@ -1,5 +1,9 @@
 package com.example.factorisation.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -7,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 
 
@@ -31,6 +36,9 @@ public class BusinessPartner {
 	
 	@ManyToOne(fetch=FetchType.EAGER)
 	private City city;
+	
+	@OneToMany(mappedBy="businessPartner", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+	private List<Invoice> invoice = new ArrayList<Invoice>();
 	
 	public BusinessPartner() {
 	}
@@ -88,6 +96,14 @@ public class BusinessPartner {
 
 	public void setCity(City city) {
 		this.city = city;
+	}
+
+	public List<Invoice> getInvoice() {
+		return invoice;
+	}
+
+	public void setInvoice(List<Invoice> invoice) {
+		this.invoice = invoice;
 	}
 
 	
