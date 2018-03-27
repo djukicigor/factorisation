@@ -1,16 +1,24 @@
 package com.example.factorisation;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.example.factorisation.model.City;
+import com.example.factorisation.model.Company;
 import com.example.factorisation.model.BusinessYear;
 import com.example.factorisation.service.CityService;
+import com.example.factorisation.service.CompanyService;
 import com.example.factorisation.service.BusinessYearService;
 import com.example.factorisation.model.GroupOfGoods;
+import com.example.factorisation.model.Pricelist;
 import com.example.factorisation.service.GroupOfGoodsService;
+import com.example.factorisation.service.PricelistService;
 
 
 @Component
@@ -25,9 +33,15 @@ public class TestData {
 	@Autowired
 	private GroupOfGoodsService	groupOfGoodsService;
 	
+	@Autowired
+	private CompanyService	companyService;
+	
+	@Autowired
+	private PricelistService	pricelistService;
+	
 	
 	@PostConstruct
-	private void init(){
+	private void init() throws ParseException{
 		
 		City city1 = new City("Novi Sad", "21000");
 		cityService.save(city1);
@@ -56,6 +70,12 @@ public class TestData {
 		GroupOfGoods groupOfGoods1 = new GroupOfGoods("Tehnologija", 20);
 		groupOfGoodsService.save(groupOfGoods1);
 		
+		/*Company company1 = new Company("Telsat", "Servo Mihalja 10", "123456789", "021468630", "telsat.doo@gmail.com", "logo");
+		companyService.save(company1);
+		*/
 		
+		/*Pricelist pricelist1 = new Pricelist();
+		pricelistService.save(pricelist1);
+		*/
 	}
 }

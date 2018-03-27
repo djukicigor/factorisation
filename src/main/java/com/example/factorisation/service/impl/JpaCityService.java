@@ -17,7 +17,6 @@ public class JpaCityService implements CityService {
 	@Autowired
 	private CityRepository cityRepository;
 
-	@Override
 	public City findOne(Long id) {
 		return cityRepository.findOne(id);
 	}
@@ -42,7 +41,7 @@ public class JpaCityService implements CityService {
 		City city = cityRepository.findOne(id);
 		if(city == null){
 			throw new IllegalArgumentException("Tried to delete"
-					+ "non-existant country");
+					+ "non-existant city");
 		}
 		cityRepository.delete(city);
 		return city;
