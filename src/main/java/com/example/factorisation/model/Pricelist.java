@@ -15,6 +15,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
 public class Pricelist {
 	
@@ -23,6 +25,7 @@ public class Pricelist {
     private Long id;
 	
 	@Column(name="Date_of_validity", columnDefinition="DATETIME")
+	@DateTimeFormat(pattern="yyyy-MM-dd'T'HH:mm:ss")
 	private Date date_of_validity;
 	
     @OneToOne(fetch = FetchType.LAZY)
