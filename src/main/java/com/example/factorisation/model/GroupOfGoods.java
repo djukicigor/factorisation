@@ -26,7 +26,7 @@ public class GroupOfGoods {
 	private float percentage;
 	
 	@OneToMany(mappedBy="groupOfGoods", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
-	private List<GoodsOrServices> goodsOrServices = new ArrayList<GoodsOrServices>();
+	private List<GoodsOrServices> goods_Or_Services = new ArrayList<GoodsOrServices>();
 	
 	public GroupOfGoods() {
 	}
@@ -60,13 +60,15 @@ public class GroupOfGoods {
 		this.percentage = percentage;
 	}
 
-	public List<GoodsOrServices> getGoodsOrServices() {
-		return goodsOrServices;
+	public List<GoodsOrServices> getGoods_Or_Services() {
+		return goods_Or_Services;
 	}
 
-	public void setGoodsOrServices(List<GoodsOrServices> goodsOrServices) {
-		this.goodsOrServices = goodsOrServices;
+	public void setGoods_Or_Services(List<GoodsOrServices> goods_Or_Services) {
+		this.goods_Or_Services = goods_Or_Services;
 	}
+
+
 
 	
 

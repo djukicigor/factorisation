@@ -26,7 +26,7 @@ public class BusinessYear {
 	private boolean closed;
 	
 	@OneToMany(mappedBy="businessYear", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
-	private List<Invoice> invoice = new ArrayList<Invoice>();
+	private List<Invoice> invoices = new ArrayList<Invoice>();
 	
 	public BusinessYear() {
 	}
@@ -60,13 +60,15 @@ public class BusinessYear {
 		this.closed = closed;
 	}
 
-	public List<Invoice> getInvoice() {
-		return invoice;
+	public List<Invoice> getInvoices() {
+		return invoices;
 	}
 
-	public void setInvoice(List<Invoice> invoice) {
-		this.invoice = invoice;
+	public void setInvoices(List<Invoice> invoices) {
+		this.invoices = invoices;
 	}
+
+
 
 
 }
