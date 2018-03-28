@@ -1,10 +1,16 @@
 package com.example.factorisation.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class BusinessYear {
@@ -18,6 +24,9 @@ public class BusinessYear {
 	
 	@Column(name="closed", columnDefinition="boolean")
 	private boolean closed;
+	
+	@OneToMany(mappedBy="businessYear", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+	private List<Invoice> invoice = new ArrayList<Invoice>();
 	
 	public BusinessYear() {
 	}
@@ -49,6 +58,14 @@ public class BusinessYear {
 
 	public void setClosed(boolean closed) {
 		this.closed = closed;
+	}
+
+	public List<Invoice> getInvoice() {
+		return invoice;
+	}
+
+	public void setInvoice(List<Invoice> invoice) {
+		this.invoice = invoice;
 	}
 
 

@@ -34,6 +34,9 @@ public class GoodsOrServices {
 	@OneToMany(mappedBy="goodsOrServices", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
 	private List<PricelistItems> pricelistItems = new ArrayList<PricelistItems>();
 	
+	@OneToMany(mappedBy="goodsOrServices", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+	private List<InvoiceItems> invoiceItems = new ArrayList<InvoiceItems>();
+	
 	public GoodsOrServices() {
 	}
 
@@ -80,6 +83,14 @@ public class GoodsOrServices {
 
 	public void setPricelistItems(List<PricelistItems> pricelistItems) {
 		this.pricelistItems = pricelistItems;
+	}
+
+	public List<InvoiceItems> getInvoiceItems() {
+		return invoiceItems;
+	}
+
+	public void setInvoiceItems(List<InvoiceItems> invoiceItems) {
+		this.invoiceItems = invoiceItems;
 	}
 
 
