@@ -31,7 +31,7 @@ public class BusinessYearController {
 
 		@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 		public ResponseEntity<BusinessYear> getBusinessYear(@PathVariable Long id) {
-			BusinessYear businessYear = businessYearService.findOne(id);
+			BusinessYear businessYear = BusinessYearService.findOne(id);
 			if (businessYear == null) {
 				return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 			}

@@ -7,8 +7,8 @@ import org.springframework.core.convert.converter.Converter;
 
 import com.example.factorisation.model.City;
 import com.example.factorisation.model.Company;
+import com.example.factorisation.model.Pricelist;
 
-import dto.CityDTO;
 import dto.CompanyDTO;
 
 public class CompanyToCompanyDTO implements Converter<Company, CompanyDTO>{
@@ -26,14 +26,18 @@ public class CompanyToCompanyDTO implements Converter<Company, CompanyDTO>{
 			c.setEmail(arg0.getEmail());
 			c.setLogo(arg0.getLogo());
 			
-			/*if(arg0.getCity() != null) {
-				c.setCityId(((Company) arg0.getCity()).getId());
+			if(arg0.getCity() != null) {
+				c.setCityId(((City) arg0.getCity()).getId());
 			}
 			
 			if(arg0.getPricelist() != null) {
-				c.setPricelistId(((Company) arg0.getPricelist()).getId());
+				c.setPricelistId(((Pricelist) arg0.getPricelist()).getId());
 			} 
-			*/
+			
+			if(arg0.getBusinessPartners() != null) {
+				c.setBusinessPartnersId(((Company) arg0.getBusinessPartners()).getId());
+			} 
+			
 			
 			return c;
 				

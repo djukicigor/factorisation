@@ -20,11 +20,13 @@ public class CompanyDTO {
 	
 	private Long pricelistId;
 	
+	private Long businessPartnersId;
+	
 	public CompanyDTO() {
 		
 	}
 	
-	public CompanyDTO(Long id, String name, String address, String pib, String number, String email, String logo, Long cityId, Long pricelistId) {
+	public CompanyDTO(Long id, String name, String address, String pib, String number, String email, String logo, Long cityId, Long pricelistId, Long businessPartnersId) {
 		Id = id;
 		this.name = name;
 		this.address = address;
@@ -34,6 +36,7 @@ public class CompanyDTO {
 		this.logo = logo;
 		this.cityId = cityId;
 		this.pricelistId = pricelistId;
+		this.businessPartnersId = businessPartnersId;
 	}
 
 	public Long getId() {
@@ -107,6 +110,16 @@ public class CompanyDTO {
 	public void setPricelistId(Long pricelistId) {
 		this.pricelistId = pricelistId;
 	}
+
+	public Long getBusinessPartnersId() {
+		return businessPartnersId;
+	}
+
+	public void setBusinessPartnersId(Long businessPartnersId) {
+		this.businessPartnersId = businessPartnersId;
+	}
+	
+	
 	
 	
 

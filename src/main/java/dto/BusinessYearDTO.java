@@ -8,15 +8,18 @@ public class BusinessYearDTO {
 	
 	private boolean closed;
 	
+	private Long invoiceId;
+	
 	public BusinessYearDTO() {
 		
 	}
 	
-	public BusinessYearDTO(Long id, int year, boolean closed) {
+	public BusinessYearDTO(Long id, int year, boolean closed, Long invoiceId) {
 		super();
 		Id = id;
 		this.year = year;
 		this.closed = closed;
+		this.invoiceId = invoiceId;
 	}
 
 	public Long getId() {
@@ -42,6 +45,15 @@ public class BusinessYearDTO {
 	public void setClosed(boolean closed) {
 		this.closed = closed;
 	}
+
+	public Long getInvoiceId() {
+		return invoiceId;
+	}
+
+	public void setInvoiceId(Long invoiceId) {
+		this.invoiceId = invoiceId;
+	}
+	
 	
 	
 

@@ -21,6 +21,10 @@ public class CityToCityDTO implements Converter<City, CityDTO>{
 			c.setCompanyId(((City) arg0.getCompanies()).getId());
 		}
 		
+		if(arg0.getBusinessPartners() != null) {
+			c.setBusinessPartnerId(((City) arg0.getBusinessPartners()).getId());
+		}
+		
 		return c;
 		
 	}

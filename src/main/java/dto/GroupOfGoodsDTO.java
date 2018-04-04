@@ -8,15 +8,18 @@ public class GroupOfGoodsDTO {
 	
 	private Float percentage;
 	
+	private Long goodsOrServicesId;
+	
 	public GroupOfGoodsDTO() {
 		
 	}
 	
-	public GroupOfGoodsDTO(Long id, String name, Float percentage) {
+	public GroupOfGoodsDTO(Long id, String name, Float percentage, Long goodsOrServicesId) {
 		super();
 		Id = id;
 		this.name = name;
 		this.percentage = percentage;
+		this.goodsOrServicesId = goodsOrServicesId;
 	}
 
 	public Long getId() {
@@ -41,6 +44,14 @@ public class GroupOfGoodsDTO {
 
 	public void setPercentage(Float percentage) {
 		this.percentage = percentage;
+	}
+
+	public Long getGoodsOrServicesId() {
+		return goodsOrServicesId;
+	}
+
+	public void setGoodsOrServicesId(Long goodsOrServicesId) {
+		this.goodsOrServicesId = goodsOrServicesId;
 	}
 
 	

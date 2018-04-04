@@ -2,9 +2,11 @@ package converter;
 
 import org.springframework.core.convert.converter.Converter;
 
+import com.example.factorisation.model.BusinessPartner;
 import com.example.factorisation.model.City;
 import com.example.factorisation.model.Company;
 import com.example.factorisation.model.Pricelist;
+import com.example.factorisation.service.BusinessPartnerService;
 import com.example.factorisation.service.CityService;
 import com.example.factorisation.service.PricelistService;
 
@@ -35,6 +37,11 @@ public class CompanyDTOtoCompany implements Converter<CompanyDTO, Company>{
 			c.setPricelist(pricelist);
 		}
 		
+		/*BusinessPartner businessPartner = BusinessPartnerService.findOne(arg0.getBusinessPartnersId());
+		if(businessPartner!=null) {
+			c.setBusinessPartners(businessPartner);
+		}
+		*/
 		
 		return c;
 	}

@@ -11,9 +11,11 @@ import org.springframework.stereotype.Component;
 
 import com.example.factorisation.model.City;
 import com.example.factorisation.model.Company;
+import com.example.factorisation.model.BusinessPartner;
 import com.example.factorisation.model.BusinessYear;
 import com.example.factorisation.service.CityService;
 import com.example.factorisation.service.CompanyService;
+import com.example.factorisation.service.BusinessPartnerService;
 import com.example.factorisation.service.BusinessYearService;
 import com.example.factorisation.model.GroupOfGoods;
 import com.example.factorisation.model.Pricelist;
@@ -39,6 +41,8 @@ public class TestData {
 	@Autowired
 	private PricelistService	pricelistService;
 	
+	@Autowired
+	private BusinessPartnerService businessPartnerService;
 	
 	@PostConstruct
 	private void init() throws ParseException{
@@ -76,6 +80,10 @@ public class TestData {
 		
 		/*Pricelist pricelist1 = new Pricelist();
 		pricelistService.save(pricelist1);
+		*/
+		
+		/*BusinessPartner businessPartner1 = new BusinessPartner("Ime", "adresa", "tip");
+		businessPartnerService.save(businessPartner1);
 		*/
 	}
 }

@@ -21,6 +21,10 @@ public class PricelistToPricelistDTO implements Converter<Pricelist, PricelistDT
 			p.setCompanyId(((Pricelist) arg0.getCompany()).getId());
 		}*/
 		
+		if(arg0.getPricelistItems() != null) {
+			p.setPricelistItemsId(((Pricelist) arg0.getPricelistItems()).getId());
+		}
+		
 		return p;
 	}
 	

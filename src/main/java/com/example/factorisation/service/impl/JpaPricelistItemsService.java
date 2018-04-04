@@ -6,9 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.example.factorisation.model.City;
 import com.example.factorisation.model.PricelistItems;
-import com.example.factorisation.repository.CityRepository;
 import com.example.factorisation.repository.PricelistItemsRepository;
 import com.example.factorisation.service.PricelistItemsService;
 

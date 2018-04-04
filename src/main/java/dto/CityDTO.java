@@ -10,14 +10,17 @@ public class CityDTO {
 	
 	private Long companyId;
 	
+	private Long businessPartnerId;
+	
 	public CityDTO() {}
 	
-	public CityDTO(Long id, String name, String postalCode, Long companyId) {
+	public CityDTO(Long id, String name, String postalCode, Long companyId, Long businessPartnerId) {
 		super();
 		Id = id;
 		this.name = name;
 		this.postalCode = postalCode;
 		this.companyId = companyId;
+		this.businessPartnerId = businessPartnerId;
 	}
 
 	public Long getId() {
@@ -50,6 +53,14 @@ public class CityDTO {
 
 	public void setCompanyId(Long companyId) {
 		this.companyId = companyId;
+	}
+
+	public Long getBusinessPartnerId() {
+		return businessPartnerId;
+	}
+
+	public void setBusinessPartnerId(Long businessPartnerId) {
+		this.businessPartnerId = businessPartnerId;
 	}
 	
 	

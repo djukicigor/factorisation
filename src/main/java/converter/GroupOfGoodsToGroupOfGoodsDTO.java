@@ -3,6 +3,7 @@ package converter;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.core.convert.converter.Converter;
+
 import com.example.factorisation.model.GroupOfGoods;
 import dto.GroupOfGoodsDTO;
 
@@ -17,6 +18,9 @@ public class GroupOfGoodsToGroupOfGoodsDTO implements Converter<GroupOfGoods, Gr
 		g.setName(arg0.getName());
 		g.setPercentage(arg0.getPercentage());
 		
+		if(arg0.getGoodsOrServices() != null) {
+			g.setGoodsOrServicesId(((GroupOfGoods) arg0.getGoodsOrServices()).getId());
+		}
 		return g;
 		
 	}

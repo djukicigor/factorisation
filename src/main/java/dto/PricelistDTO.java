@@ -10,15 +10,18 @@ public class PricelistDTO {
 	
 	private Long companyId;
 	
+	private Long pricelistItemsId;
+	
 	public PricelistDTO() {
 		
 	}
 	
-	public PricelistDTO(Long id, Date date_of_validity, Long companyId) {
+	public PricelistDTO(Long id, Date date_of_validity, Long companyId, Long pricelistItemsId) {
 		super();
 		Id = id;
 		this.date_of_validity = date_of_validity;
 		this.companyId = companyId;
+		this.pricelistItemsId = pricelistItemsId;
 	}
 
 	public Long getId() {
@@ -43,6 +46,14 @@ public class PricelistDTO {
 
 	public void setCompanyId(Long companyId) {
 		this.companyId = companyId;
+	}
+
+	public Long getPricelistItemsId() {
+		return pricelistItemsId;
+	}
+
+	public void setPricelistItemsId(Long pricelistItemsId) {
+		this.pricelistItemsId = pricelistItemsId;
 	}
 	
 	

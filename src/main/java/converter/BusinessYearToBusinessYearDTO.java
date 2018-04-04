@@ -3,6 +3,7 @@ package converter;
 import java.util.ArrayList;
 import org.springframework.core.convert.converter.Converter;
 import com.example.factorisation.model.BusinessYear;
+
 import java.util.List;
 import dto.BusinessYearDTO;
 
@@ -16,6 +17,10 @@ public class BusinessYearToBusinessYearDTO implements Converter<BusinessYear, Bu
 		b.setId(arg0.getId());
 		b.setYear(arg0.getYear());
 		b.setClosed(arg0.isClosed());
+		
+		if(arg0.getInvoice() != null) {
+			b.setInvoiceId(((BusinessYear) arg0.getInvoice()).getId());
+		}
 		
 		return b;
 	}

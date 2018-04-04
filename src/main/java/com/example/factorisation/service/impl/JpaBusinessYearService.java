@@ -17,7 +17,6 @@ public class JpaBusinessYearService implements BusinessYearService {
 	@Autowired
 	private BusinessYearRepository businessYearRepository;
 
-	@Override
 	public BusinessYear findOne(Long id) {
 		return businessYearRepository.findOne(id);
 	}

@@ -17,7 +17,6 @@ public class JpaGroupOfGoodsService implements GroupOfGoodsService {
 	@Autowired
 	private GroupOfGoodsRepository groupOfGoodsRepository;
 
-	@Override
 	public GroupOfGoods findOne(Long id) {
 		return groupOfGoodsRepository.findOne(id);
 	}

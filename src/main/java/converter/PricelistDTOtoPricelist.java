@@ -5,7 +5,9 @@ import org.springframework.core.convert.converter.Converter;
 
 import com.example.factorisation.model.Company;
 import com.example.factorisation.model.Pricelist;
+import com.example.factorisation.model.PricelistItems;
 import com.example.factorisation.service.CompanyService;
+import com.example.factorisation.service.PricelistItemsService;
 
 import dto.PricelistDTO;
 
@@ -26,6 +28,11 @@ public class PricelistDTOtoPricelist implements Converter<PricelistDTO, Pricelis
 			p.setCompany(company);
 		} 
 		
+		/*PricelistItems pricelistItems = PricelistItemsService.findOne(arg0.getPricelistItemsId());
+		if(pricelistItems!=null) {
+			p.setPricelistItems(pricelistItems);
+		} 
+		*/
 		return p;
 	}
 }
