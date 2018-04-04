@@ -33,7 +33,7 @@ public class Pricelist {
     private Company company;
     
 	@OneToMany(mappedBy="pricelist", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
-	private List<PricelistItems> pricelistItems = new ArrayList<PricelistItems>();
+	private List<PricelistItems> pricelist_Items = new ArrayList<PricelistItems>();
 	
 	public Pricelist() {
 	}
@@ -67,12 +67,14 @@ public class Pricelist {
 		this.company = company;
 	}
 
-	public List<PricelistItems> getPricelistItems() {
-		return pricelistItems;
+	public List<PricelistItems> getPricelist_Items() {
+		return pricelist_Items;
 	}
 
-	public void setPricelistItems(List<PricelistItems> pricelistItems) {
-		this.pricelistItems = pricelistItems;
+	public void setPricelist_Items(List<PricelistItems> pricelist_Items) {
+		this.pricelist_Items = pricelist_Items;
 	}
+
+
 
 }

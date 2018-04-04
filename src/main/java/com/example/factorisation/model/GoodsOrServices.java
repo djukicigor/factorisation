@@ -32,10 +32,10 @@ public class GoodsOrServices {
 	private GroupOfGoods groupOfGoods;
 	
 	@OneToMany(mappedBy="goodsOrServices", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
-	private List<PricelistItems> pricelistItems = new ArrayList<PricelistItems>();
+	private List<PricelistItems> pricelist_Items = new ArrayList<PricelistItems>();
 	
 	@OneToMany(mappedBy="goodsOrServices", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
-	private List<InvoiceItems> invoiceItems = new ArrayList<InvoiceItems>();
+	private List<InvoiceItems> invoice_Items = new ArrayList<InvoiceItems>();
 	
 	public GoodsOrServices() {
 	}
@@ -77,23 +77,21 @@ public class GoodsOrServices {
 		this.groupOfGoods = groupOfGoods;
 	}
 
-	public List<PricelistItems> getPricelistItems() {
-		return pricelistItems;
+	public List<PricelistItems> getPricelist_Items() {
+		return pricelist_Items;
 	}
 
-	public void setPricelistItems(List<PricelistItems> pricelistItems) {
-		this.pricelistItems = pricelistItems;
+	public void setPricelist_Items(List<PricelistItems> pricelist_Items) {
+		this.pricelist_Items = pricelist_Items;
 	}
 
-	public List<InvoiceItems> getInvoiceItems() {
-		return invoiceItems;
+	public List<InvoiceItems> getInvoice_Items() {
+		return invoice_Items;
 	}
 
-	public void setInvoiceItems(List<InvoiceItems> invoiceItems) {
-		this.invoiceItems = invoiceItems;
+	public void setInvoice_Items(List<InvoiceItems> invoice_Items) {
+		this.invoice_Items = invoice_Items;
 	}
-
-
 
 
 }

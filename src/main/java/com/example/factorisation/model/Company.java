@@ -47,10 +47,10 @@ public class Company {
 	private List<BusinessPartner> businessPartners = new ArrayList<BusinessPartner>();
 	
 	@OneToMany(mappedBy="company", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
-	private List<Invoice> invoice = new ArrayList<Invoice>();
+	private List<Invoice> invoices = new ArrayList<Invoice>();
     
     @OneToOne(mappedBy = "company", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Pricelist pricelist;
+    private List<Pricelist> pricelists = new ArrayList<Pricelist>();
 	
 	public Company() {
 	}
@@ -131,13 +131,6 @@ public class Company {
 		}
 	}
 
-	public Pricelist getPricelist() {
-		return pricelist;
-	}
-
-	public void setPricelist(Pricelist pricelist) {
-		this.pricelist = pricelist;
-	}
 
 	public List<BusinessPartner> getBusinessPartners() {
 		return businessPartners;
@@ -147,11 +140,21 @@ public class Company {
 		this.businessPartners = businessPartners;
 	}
 
-	public List<Invoice> getInvoice() {
-		return invoice;
+
+
+	public List<Pricelist> getPricelists() {
+		return pricelists;
 	}
 
-	public void setInvoice(List<Invoice> invoice) {
-		this.invoice = invoice;
+	public void setPricelists(List<Pricelist> pricelists) {
+		this.pricelists = pricelists;
+	}
+
+	public List<Invoice> getInvoices() {
+		return invoices;
+	}
+
+	public void setInvoices(List<Invoice> invoices) {
+		this.invoices = invoices;
 	}
 }
