@@ -30,8 +30,8 @@ public class CompanyToCompanyDTO implements Converter<Company, CompanyDTO>{
 				c.setCityId(((City) arg0.getCity()).getId());
 			}
 			
-			if(arg0.getPricelist() != null) {
-				c.setPricelistId(((Pricelist) arg0.getPricelist()).getId());
+			if(arg0.getPricelists() != null) {
+				c.setPricelistId(((Pricelist) arg0.getPricelists()).getId());
 			} 
 			
 			if(arg0.getBusinessPartners() != null) {

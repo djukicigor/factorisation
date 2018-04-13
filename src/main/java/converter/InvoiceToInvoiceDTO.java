@@ -39,8 +39,8 @@ public class InvoiceToInvoiceDTO implements Converter<Invoice, InvoiceDTO>{
 			i.setBusinessPartnerId(((BusinessPartner) arg0.getBusinessPartner()).getId());
 		}
 		
-		if(arg0.getInvoiceItems() != null) {
-			i.setInvoiceItemsId(((InvoiceItems) arg0.getInvoiceItems()).getId());
+		if(arg0.getInvoice_Items() != null) {
+			i.setInvoiceItemsId(((InvoiceItems) arg0.getInvoice_Items()).getId());
 		}
 		
 		return i;

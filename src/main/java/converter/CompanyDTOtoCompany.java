@@ -32,12 +32,12 @@ public class CompanyDTOtoCompany implements Converter<CompanyDTO, Company>{
 			c.setCity(city);
 		}
 		
-		Pricelist pricelist = PricelistService.findOne(arg0.getPricelistId());
+		/*Pricelist pricelist = PricelistService.findOne(arg0.getPricelistId());
 		if(pricelist!=null) {
-			c.setPricelist(pricelist);
+			c.setPricelists(pricelist);
 		}
 		
-		/*BusinessPartner businessPartner = BusinessPartnerService.findOne(arg0.getBusinessPartnersId());
+		BusinessPartner businessPartner = BusinessPartnerService.findOne(arg0.getBusinessPartnersId());
 		if(businessPartner!=null) {
 			c.setBusinessPartners(businessPartner);
 		}

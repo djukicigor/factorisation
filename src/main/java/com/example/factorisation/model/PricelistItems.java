@@ -55,9 +55,6 @@ public class PricelistItems {
 
 	public void setPricelist(Pricelist pricelist) {
 		this.pricelist = pricelist;
-		if(pricelist!=null && !pricelist.getPricelistItems().contains(this)){
-			pricelist.getPricelistItems().add(this);
-		}
 	}
 
 	public GoodsOrServices getGoodsOrServices() {

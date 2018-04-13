@@ -41,7 +41,7 @@ public class BusinessPartnerDTOtoBusinessPartner implements Converter<BusinessPa
 		
 		/*Invoice invoice = InvoiceService.findOne(arg0.getInvoiceId());
 		if(invoice!=null) {
-			b.setInvoice((List<Invoice>) invoice);
+			b.setInvoices(invoice);
 		}
 		*/
 		

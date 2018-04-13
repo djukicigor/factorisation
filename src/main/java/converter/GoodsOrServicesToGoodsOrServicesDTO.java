@@ -24,12 +24,12 @@ public class GoodsOrServicesToGoodsOrServicesDTO implements Converter<GoodsOrSer
 			g.setGroupOfGoodsId(((GroupOfGoods) arg0.getGroupOfGoods()).getId());
 		}
 		
-		if(arg0.getPricelistItems() != null) {
-			g.setPricelistItemsId(((GoodsOrServices) arg0.getPricelistItems()).getId());
+		if(arg0.getPricelist_Items() != null) {
+			g.setPricelistItemsId(((GoodsOrServices) arg0.getPricelist_Items()).getId());
 		}
 		
-		if(arg0.getInvoiceItems() != null) {
-			g.setInvoiceItemsId(((GoodsOrServices) arg0.getInvoiceItems()).getId());
+		if(arg0.getInvoice_Items() != null) {
+			g.setInvoiceItemsId(((GoodsOrServices) arg0.getInvoice_Items()).getId());
 		}
 		
 		return g;

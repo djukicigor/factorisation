@@ -1,4 +1,4 @@
-package com.example.factorisation.model;
+ package com.example.factorisation.model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,7 +49,7 @@ public class Company {
 	@OneToMany(mappedBy="company", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
 	private List<Invoice> invoices = new ArrayList<Invoice>();
     
-    @OneToOne(mappedBy = "company", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy="company", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
     private List<Pricelist> pricelists = new ArrayList<Pricelist>();
 	
 	public Company() {

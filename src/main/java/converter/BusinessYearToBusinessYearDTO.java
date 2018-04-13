@@ -18,8 +18,8 @@ public class BusinessYearToBusinessYearDTO implements Converter<BusinessYear, Bu
 		b.setYear(arg0.getYear());
 		b.setClosed(arg0.isClosed());
 		
-		if(arg0.getInvoice() != null) {
-			b.setInvoiceId(((BusinessYear) arg0.getInvoice()).getId());
+		if(arg0.getInvoices() != null) {
+			b.setInvoiceId(((BusinessYear) arg0.getInvoices()).getId());
 		}
 		
 		return b;

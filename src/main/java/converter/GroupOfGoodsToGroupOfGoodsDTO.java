@@ -18,8 +18,8 @@ public class GroupOfGoodsToGroupOfGoodsDTO implements Converter<GroupOfGoods, Gr
 		g.setName(arg0.getName());
 		g.setPercentage(arg0.getPercentage());
 		
-		if(arg0.getGoodsOrServices() != null) {
-			g.setGoodsOrServicesId(((GroupOfGoods) arg0.getGoodsOrServices()).getId());
+		if(arg0.getGoods_Or_Services() != null) {
+			g.setGoodsOrServicesId(((GroupOfGoods) arg0.getGoods_Or_Services()).getId());
 		}
 		return g;
 		

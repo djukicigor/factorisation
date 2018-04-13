@@ -29,8 +29,8 @@ public class BusinessPartnerToBusinessPartnerDTO implements Converter<BusinessPa
 			b.setCityId(((City) arg0.getCity()).getId());
 		}
 		
-		if(arg0.getInvoice() != null) {
-			b.setInvoiceId(((BusinessPartner) arg0.getInvoice()).getId());
+		if(arg0.getInvoices() != null) {
+			b.setInvoiceId(((BusinessPartner) arg0.getInvoices()).getId());
 		}
 		
 		return b;
