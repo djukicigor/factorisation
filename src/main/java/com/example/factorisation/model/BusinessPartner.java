@@ -13,6 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 
 @Entity
@@ -31,6 +33,7 @@ public class BusinessPartner {
 	@Column(name="Type", columnDefinition="CHAR(2)")
 	private String type;
 	
+	@JsonIgnore
 	@ManyToOne(fetch=FetchType.EAGER)
 	private Company company;
 	

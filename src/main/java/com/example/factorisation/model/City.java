@@ -12,6 +12,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity
 public class City {
@@ -26,9 +28,11 @@ public class City {
 	@Column(name="D_CODE", columnDefinition="CHAR(5)")
 	private String postalCode;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="city", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
 	private List<Company> companies = new ArrayList<Company>();
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="city", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
 	private List<BusinessPartner> businessPartners = new ArrayList<BusinessPartner>();
 	

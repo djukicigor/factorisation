@@ -15,13 +15,13 @@ import com.example.factorisation.model.Company;
 import com.example.factorisation.service.CompanyService;
 
 @RestController
-@RequestMapping(value = "/api/companies")
+@RequestMapping(value="/api/companies")
 public class CompanyController {
 
 	@Autowired
 	private CompanyService companyService;
 	
-	@RequestMapping(value="getCompanies", method = RequestMethod.GET)
+	@RequestMapping(method=RequestMethod.GET)
 	public ResponseEntity<List<Company>> getCompanies() {
 
 		List<Company> companies = companyService.findAll();
