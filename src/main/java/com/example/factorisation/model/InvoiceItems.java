@@ -47,7 +47,7 @@ public class InvoiceItems {
 	public InvoiceItems() {
 	}
 
-	public InvoiceItems(float amount, float unitPrice, float rebate, float basePDV, float percentagePDV, float amountPDV, float amountItems) {
+	public InvoiceItems(float amount, float unitPrice, float rebate, float basePDV, float percentagePDV, float amountPDV, float amountItems, Invoice invoice, GoodsOrServices goodsOrServices) {
 		this.amount = amount;
 		this.unitPrice = unitPrice;
 		this.rebate = rebate;
@@ -55,6 +55,8 @@ public class InvoiceItems {
 		this.percentagePDV = percentagePDV;
 		this.amountPDV = amountPDV;
 		this.amountItems = amountItems;
+		this.invoice = invoice;
+		this.goodsOrServices = goodsOrServices;
 
 	}
 

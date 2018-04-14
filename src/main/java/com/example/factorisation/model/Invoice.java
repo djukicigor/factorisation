@@ -62,7 +62,7 @@ public class Invoice {
 	public Invoice() {
 	}
 
-	public Invoice(String invoiceNumber, Date invoiceDate, Date valueDate, float base, float totalPDV, float paymentAmount, String invoiceStatus) {
+	public Invoice(String invoiceNumber, Date invoiceDate, Date valueDate, float base, float totalPDV, float paymentAmount, String invoiceStatus, Company company, BusinessYear businessYear, BusinessPartner businessPartner) {
 		this.invoiceNumber = invoiceNumber;
 		this.invoiceDate = invoiceDate;
 		this.valueDate = valueDate;
@@ -70,6 +70,9 @@ public class Invoice {
 		this.totalPDV = totalPDV;
 		this.paymentAmount = paymentAmount;
 		this.invoiceStatus = invoiceStatus;
+		this.company = company;
+		this. businessYear = businessYear;
+		this.businessPartner = businessPartner;
 
 	}
 

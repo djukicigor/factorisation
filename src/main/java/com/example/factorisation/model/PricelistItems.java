@@ -29,8 +29,10 @@ public class PricelistItems {
 	public PricelistItems() {
 	}
 
-	public PricelistItems(float price) {
+	public PricelistItems(float price, Pricelist pricelist, GoodsOrServices goodsOrServices) {
 		this.price = price;
+		this.pricelist = pricelist;
+		this.goodsOrServices = goodsOrServices;
 	}
 
 	public Long getId() {

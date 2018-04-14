@@ -21,8 +21,10 @@ import com.example.factorisation.service.BusinessPartnerService;
 import com.example.factorisation.service.BusinessYearService;
 import com.example.factorisation.model.GroupOfGoods;
 import com.example.factorisation.model.Pricelist;
+import com.example.factorisation.model.PricelistItems;
 import com.example.factorisation.service.GroupOfGoodsService;
 import com.example.factorisation.service.PricelistService;
+import com.example.factorisation.service.PricelistItemsService;
 
 
 @Component
@@ -42,6 +44,9 @@ public class TestData {
 	
 	@Autowired
 	private PricelistService	pricelistService;
+	
+	@Autowired
+	private PricelistItemsService	pricelistItemsService;
 	
 	@Autowired
 	private BusinessPartnerService businessPartnerService;
@@ -85,12 +90,14 @@ public class TestData {
 		GoodsOrServices goodsOrServices1 = new GoodsOrServices("ime", "jedinica", groupOfGoods1);
 		goodsOrServicesService.save(goodsOrServices1);
 		
-		/*Pricelist pricelist1 = new Pricelist();
-		pricelistService.save(pricelist1);
-		*/
+		//Pricelist pricelist1 = new Pricelist(date(), company1);
+		//pricelistService.save(pricelist1);
+		
 		
 		BusinessPartner businessPartner1 = new BusinessPartner("Ime", "adresa", "t", city5, company1);
 		businessPartnerService.save(businessPartner1);
 		
+		//PricelistItems pricelistItems1 = new PricelistItems(100, pricelist1, goodsOrServices1);
+		//pricelistItemsService.save(pricelistItems1);
 	}
 }

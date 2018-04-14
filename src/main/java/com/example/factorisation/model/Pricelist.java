@@ -12,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
@@ -28,8 +29,8 @@ public class Pricelist {
 	@DateTimeFormat(pattern="yyyy-MM-dd'T'HH:mm:ss")
 	private Date date_of_validity;
 	
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "company_id", nullable = false)
+    
+	@ManyToOne(fetch=FetchType.EAGER)
     private Company company;
     
 	@OneToMany(mappedBy="pricelist", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
@@ -38,8 +39,9 @@ public class Pricelist {
 	public Pricelist() {
 	}
 
-	public Pricelist(Date date_of_validity) {
+	public Pricelist(Date date_of_validity, Company company) {
 		this.date_of_validity = date_of_validity;
+		this.company = company;
 
 	}
 
