@@ -23,9 +23,9 @@ public class CityController {
 
 		@RequestMapping(value="getCities", method = RequestMethod.GET)
 		public ResponseEntity<List<City>> getCities() {
-
+			System.out.print("Dosao");
 			List<City> cities = cityService.findAll();
-
+			
 			return new ResponseEntity<>(cities, HttpStatus.OK);
 		}
 
