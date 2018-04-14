@@ -21,7 +21,7 @@ public class BusinessYearController {
 		@Autowired
 		private BusinessYearService businessYearService;
 
-		@RequestMapping(value="getBusinessYears", method = RequestMethod.GET)
+		@RequestMapping(method = RequestMethod.GET)
 		public ResponseEntity<List<BusinessYear>> getBusinessYears() {
 
 			List<BusinessYear> businessYears = businessYearService.findAll();

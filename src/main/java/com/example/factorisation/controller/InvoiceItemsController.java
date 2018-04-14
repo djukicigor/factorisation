@@ -21,7 +21,7 @@ public class InvoiceItemsController {
 	@Autowired
 	private InvoiceItemsService invoiceItemsService;
 	
-	@RequestMapping(value="getInvoiceItems", method = RequestMethod.GET)
+	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<List<InvoiceItems>> getInvoiceItems() {
 
 		List<InvoiceItems> invoiceitems = invoiceItemsService.findAll();

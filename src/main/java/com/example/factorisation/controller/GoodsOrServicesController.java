@@ -21,7 +21,7 @@ public class GoodsOrServicesController {
 	@Autowired
 	private GoodsOrServicesService goodsOrServicesService;
 	
-	@RequestMapping(value="getGoodsOrServices", method = RequestMethod.GET)
+	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<List<GoodsOrServices>> getGoodsOrServices() {
 
 		List<GoodsOrServices> goodsorservices = goodsOrServicesService.findAll();

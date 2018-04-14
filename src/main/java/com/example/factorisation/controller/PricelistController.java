@@ -21,7 +21,7 @@ public class PricelistController {
 	@Autowired
 	private PricelistService pricelistService;
 	
-	@RequestMapping(value="getPricelists", method = RequestMethod.GET)
+	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<List<Pricelist>> getPricelists() {
 
 		List<Pricelist> pricelists = pricelistService.findAll();
