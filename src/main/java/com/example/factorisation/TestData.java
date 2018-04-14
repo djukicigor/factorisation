@@ -3,6 +3,7 @@ package com.example.factorisation;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.annotation.PostConstruct;
 
@@ -20,9 +21,13 @@ import com.example.factorisation.service.GoodsOrServicesService;
 import com.example.factorisation.service.BusinessPartnerService;
 import com.example.factorisation.service.BusinessYearService;
 import com.example.factorisation.model.GroupOfGoods;
+import com.example.factorisation.model.Invoice;
+import com.example.factorisation.model.InvoiceItems;
 import com.example.factorisation.model.Pricelist;
 import com.example.factorisation.model.PricelistItems;
 import com.example.factorisation.service.GroupOfGoodsService;
+import com.example.factorisation.service.InvoiceItemsService;
+import com.example.factorisation.service.InvoiceService;
 import com.example.factorisation.service.PricelistService;
 import com.example.factorisation.service.PricelistItemsService;
 
@@ -53,6 +58,12 @@ public class TestData {
 	
 	@Autowired
 	private GoodsOrServicesService goodsOrServicesService;
+	
+	@Autowired
+	private InvoiceItemsService invoiceItemsService;
+	
+	@Autowired
+	private InvoiceService invoiceService;
 	
 	@PostConstruct
 	private void init() throws ParseException{
@@ -87,23 +98,29 @@ public class TestData {
 		Company company1 = new Company("Telsat", "Servo Mihalja 10", "123456789", "021468630", "telsat.doo@gmail.com", "logo", city5);
 		companyService.save(company1);
 		
-		Company company2 = new Company("Telsat2", "Servo Mihalja 102", "123456789", "021468630", "telsat.doo@gmail.com", "logo", city5);
-		companyService.save(company2);
-		
 		GoodsOrServices goodsOrServices1 = new GoodsOrServices("ime", "jedinica", groupOfGoods1);
 		goodsOrServicesService.save(goodsOrServices1);
 		
-		//Pricelist pricelist1 = new Pricelist(date(), company1);
-		//pricelistService.save(pricelist1);
-		
+		Pricelist pricelist1 = new Pricelist(date(), company1);
+		pricelistService.save(pricelist1);
 		
 		BusinessPartner businessPartner1 = new BusinessPartner("Ime", "adresa", "t", city5, company1);
 		businessPartnerService.save(businessPartner1);
 		
-		BusinessPartner businessPartner2 = new BusinessPartner("Ime", "adresa", "t", city5, company2);
-		businessPartnerService.save(businessPartner2);
+		PricelistItems pricelistItems1 = new PricelistItems(100, pricelist1, goodsOrServices1);
+		pricelistItemsService.save(pricelistItems1);
 		
-		//PricelistItems pricelistItems1 = new PricelistItems(100, pricelist1, goodsOrServices1);
-		//pricelistItemsService.save(pricelistItems1);
+		Invoice invoice1 = new Invoice("1", date(), date(), 100, 20, 120, "da", company1, businessYear1, businessPartner1);
+		invoiceService.save(invoice1);
+		
+		InvoiceItems invoiceItems1 = new InvoiceItems(100, 100, 3, 80, 20, 20, 1, invoice1, goodsOrServices1);
+		invoiceItemsService.save(invoiceItems1);
+		
+		
+	}
+
+	private Date date() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

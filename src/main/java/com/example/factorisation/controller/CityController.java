@@ -21,7 +21,7 @@ public class CityController {
 		@Autowired
 		private CityService cityService;
 
-		@RequestMapping(value="getCities", method = RequestMethod.GET)
+		@RequestMapping(method = RequestMethod.GET)
 		public ResponseEntity<List<City>> getCities() {
 			System.out.print("Dosao");
 			List<City> cities = cityService.findAll();

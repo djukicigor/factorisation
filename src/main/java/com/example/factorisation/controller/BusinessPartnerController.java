@@ -21,7 +21,7 @@ public class BusinessPartnerController {
 	@Autowired
 	private BusinessPartnerService businessPartnerService;
 	
-	@RequestMapping(value="getBusinessPartners", method = RequestMethod.GET)
+	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<List<BusinessPartner>> getBusinessPartners() {
 
 		List<BusinessPartner> businessPartners = businessPartnerService.findAll();

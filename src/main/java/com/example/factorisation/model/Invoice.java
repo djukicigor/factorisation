@@ -71,7 +71,7 @@ public class Invoice {
 		this.paymentAmount = paymentAmount;
 		this.invoiceStatus = invoiceStatus;
 		this.company = company;
-		this. businessYear = businessYear;
+		this.businessYear = businessYear;
 		this.businessPartner = businessPartner;
 
 	}
