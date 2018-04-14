@@ -34,13 +34,14 @@ public class BusinessPartner {
 	@Column(name="Type", columnDefinition="CHAR(2)")
 	private String type;
 	
-	@JsonIgnore
+	
 	@ManyToOne(fetch=FetchType.EAGER)
 	private Company company;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
 	private City city;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="businessPartner", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
 	private List<Invoice> invoices = new ArrayList<Invoice>();
 	

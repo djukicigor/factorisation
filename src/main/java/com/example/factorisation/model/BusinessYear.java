@@ -12,6 +12,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class BusinessYear {
 	
@@ -25,6 +27,7 @@ public class BusinessYear {
 	@Column(name="closed", columnDefinition="boolean")
 	private boolean closed;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="businessYear", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
 	private List<Invoice> invoices = new ArrayList<Invoice>();
 	

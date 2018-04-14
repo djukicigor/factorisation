@@ -15,6 +15,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class GoodsOrServices {
 	
@@ -31,9 +33,11 @@ public class GoodsOrServices {
 	@ManyToOne(fetch=FetchType.EAGER)
 	private GroupOfGoods groupOfGoods;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="goodsOrServices", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
 	private List<PricelistItems> pricelist_Items = new ArrayList<PricelistItems>();
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="goodsOrServices", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
 	private List<InvoiceItems> invoice_Items = new ArrayList<InvoiceItems>();
 	

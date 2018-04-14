@@ -12,6 +12,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class GroupOfGoods {
 	
@@ -25,6 +27,7 @@ public class GroupOfGoods {
 	@Column(name="Percentage", columnDefinition="DECIMAL(3,2)")
 	private float percentage;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="groupOfGoods", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
 	private List<GoodsOrServices> goods_Or_Services = new ArrayList<GoodsOrServices>();
 	

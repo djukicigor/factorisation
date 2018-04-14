@@ -17,6 +17,8 @@ import javax.persistence.OneToMany;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Invoice {
 	
@@ -56,6 +58,7 @@ public class Invoice {
 	@ManyToOne(fetch=FetchType.EAGER)
 	private BusinessPartner businessPartner;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="invoice", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
 	private List<InvoiceItems> invoice_Items = new ArrayList<InvoiceItems>();
 	

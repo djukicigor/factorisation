@@ -18,6 +18,8 @@ import javax.persistence.OneToOne;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Pricelist {
 	
@@ -32,7 +34,8 @@ public class Pricelist {
     
 	@ManyToOne(fetch=FetchType.EAGER)
     private Company company;
-    
+	
+	@JsonIgnore
 	@OneToMany(mappedBy="pricelist", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
 	private List<PricelistItems> pricelist_Items = new ArrayList<PricelistItems>();
 	
