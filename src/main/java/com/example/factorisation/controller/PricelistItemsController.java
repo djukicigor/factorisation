@@ -31,7 +31,7 @@ public class PricelistItemsController {
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<PricelistItems> getPricelistItems(@PathVariable Long id) {
-		PricelistItems pricelistItems = PricelistItemsService.findOne(id);
+		PricelistItems pricelistItems = pricelistItemsService.findOne(id);
 		if (pricelistItems == null) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}

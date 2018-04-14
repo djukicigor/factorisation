@@ -1,5 +1,6 @@
 package converter;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.converter.Converter;
 
 import com.example.factorisation.model.BusinessPartner;
@@ -8,11 +9,15 @@ import com.example.factorisation.model.Company;
 import com.example.factorisation.model.Pricelist;
 import com.example.factorisation.service.BusinessPartnerService;
 import com.example.factorisation.service.CityService;
+import com.example.factorisation.service.CompanyService;
 import com.example.factorisation.service.PricelistService;
 
 import dto.CompanyDTO;
 
 public class CompanyDTOtoCompany implements Converter<CompanyDTO, Company>{
+	
+	@Autowired
+	private CityService cityService;
 	
 	@Override
 	public Company convert(CompanyDTO arg0) {
@@ -27,7 +32,7 @@ public class CompanyDTOtoCompany implements Converter<CompanyDTO, Company>{
 		c.setEmail(arg0.getEmail());
 		c.setLogo(arg0.getLogo());
 		
-		City city = CityService.findOne(arg0.getCityId());
+		City city = cityService.findOne(arg0.getCityId());
 		if(city!=null) {
 			c.setCity(city);
 		}

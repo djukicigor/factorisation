@@ -12,6 +12,7 @@ import dto.PricelistItemsDTO;
 public class PricelistItemsDTOtoPricelistItems implements Converter<PricelistItemsDTO, PricelistItems> {
 
 	@Autowired
+	private PricelistService pricelistService;
 	
 	@Override
 	public PricelistItems convert(PricelistItemsDTO arg0) {
@@ -21,7 +22,7 @@ public class PricelistItemsDTOtoPricelistItems implements Converter<PricelistIte
 		p.setId(arg0.getId());
 		p.setPrice(arg0.getPrice());
 	
-		Pricelist pricelist = PricelistService.findOne(arg0.getPricelistId());
+		Pricelist pricelist = pricelistService.findOne(arg0.getPricelistId());
 		if(pricelist!=null) {
 			p.setPricelist(pricelist);
 		}

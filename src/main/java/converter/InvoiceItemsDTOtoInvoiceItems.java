@@ -6,6 +6,7 @@ import org.springframework.core.convert.converter.Converter;
 import com.example.factorisation.model.GoodsOrServices;
 import com.example.factorisation.model.Invoice;
 import com.example.factorisation.model.InvoiceItems;
+import com.example.factorisation.service.CityService;
 import com.example.factorisation.service.GoodsOrServicesService;
 import com.example.factorisation.service.InvoiceService;
 
@@ -14,7 +15,10 @@ import dto.InvoiceItemsDTO;
 public class InvoiceItemsDTOtoInvoiceItems implements Converter<InvoiceItemsDTO, InvoiceItems>{
 
 	@Autowired
-	//private CompanyService companyService;
+	private GoodsOrServicesService goodsOrServicesService;
+	
+	@Autowired
+	private InvoiceService invoiceService;
 	
 	@Override
 	public InvoiceItems convert(InvoiceItemsDTO arg0) {
@@ -30,12 +34,12 @@ public class InvoiceItemsDTOtoInvoiceItems implements Converter<InvoiceItemsDTO,
 		i.setAmountPDV(arg0.getAmountPDV());
 		i.setAmountItems(arg0.getAmountItems());
 		
-		Invoice invoice = InvoiceService.findOne(arg0.getInvoiceId());
+		Invoice invoice = invoiceService.findOne(arg0.getInvoiceId());
 		if(invoice!=null) {
 			i.setInvoice(invoice);
 		}
 		
-		GoodsOrServices goodsOrServices = GoodsOrServicesService.findOne(arg0.getGoodsOrservicesId());
+		GoodsOrServices goodsOrServices = goodsOrServicesService.findOne(arg0.getGoodsOrservicesId());
 		if(goodsOrServices!=null) {
 			i.setGoodsOrServices(goodsOrServices);
 		}

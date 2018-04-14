@@ -6,11 +6,7 @@ import com.example.factorisation.model.*;
 
 public interface CityService {
 
-	
-	static City findOne(Long id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	City findOne(Long id);
 	
 
 	List<City> findAll();

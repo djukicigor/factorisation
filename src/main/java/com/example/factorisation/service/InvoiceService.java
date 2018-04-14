@@ -5,10 +5,7 @@ import com.example.factorisation.model.Invoice;
 
 public interface InvoiceService {
 
-	static Invoice findOne(Long id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	Invoice findOne(Long id);
 	
 
 	List<Invoice> findAll();

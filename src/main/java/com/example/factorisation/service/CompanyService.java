@@ -4,8 +4,6 @@ import java.util.List;
 
 import com.example.factorisation.model.Company;
 
-
-
 public interface CompanyService {
 	
 	Company findOne(Long id);
