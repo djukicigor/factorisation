@@ -16,16 +16,18 @@ export class Cities extends Component {
             }
         })
         .then(results => {
-            // console.log(results.json())
             return results.json();
         })
         .then(data => {
-            var posts = data.results.map((post) => {
+            console.log(data);
+            var posts = data.map((post) => {
                 return(
-                    <div key={post.results}>
+                    <div key={post.id}>
+                        <p> {post.year} </p>
                     </div>
                 )
             })
+            
             this.setState({posts: posts});
             console.log("state", this.state.posts); 
         })
