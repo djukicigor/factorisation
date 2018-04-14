@@ -6,11 +6,7 @@ import com.example.factorisation.model.*;
 
 public interface GroupOfGoodsService {
 
-	
-	static GroupOfGoods findOne(Long id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	GroupOfGoods findOne(Long id);
 	
 
 	List<GroupOfGoods> findAll();

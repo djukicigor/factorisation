@@ -31,7 +31,7 @@ public class InvoiceController {
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<Invoice> getInvoice(@PathVariable Long id) {
-		Invoice invoice = InvoiceService.findOne(id);
+		Invoice invoice = invoiceService.findOne(id);
 		if (invoice == null) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}

@@ -6,10 +6,7 @@ import com.example.factorisation.model.PricelistItems;
 
 public interface PricelistItemsService {
 
-	static PricelistItems findOne(Long id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	PricelistItems findOne(Long id);
 	
 
 	List<PricelistItems> findAll();

@@ -6,11 +6,7 @@ import com.example.factorisation.model.*;
 
 public interface BusinessYearService {
 
-	
-	static BusinessYear findOne(Long id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	BusinessYear findOne(Long id);
 	
 
 	List<BusinessYear> findAll();

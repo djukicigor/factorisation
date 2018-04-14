@@ -31,7 +31,7 @@ public class BusinessPartnerController {
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<BusinessPartner> getBusinessPartner(@PathVariable Long id) {
-		BusinessPartner businessPartner = BusinessPartnerService.findOne(id);
+		BusinessPartner businessPartner = businessPartnerService.findOne(id);
 		if (businessPartner == null) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}

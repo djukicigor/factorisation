@@ -31,7 +31,7 @@ public class GoodsOrServicesController {
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<GoodsOrServices> getGoodsOrServices(@PathVariable Long id) {
-		GoodsOrServices goodsOrServices = GoodsOrServicesService.findOne(id);
+		GoodsOrServices goodsOrServices = goodsOrServicesService.findOne(id);
 		if (goodsOrServices == null) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}

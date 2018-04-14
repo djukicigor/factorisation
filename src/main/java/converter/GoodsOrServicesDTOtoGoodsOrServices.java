@@ -7,6 +7,7 @@ import com.example.factorisation.model.GoodsOrServices;
 import com.example.factorisation.model.GroupOfGoods;
 import com.example.factorisation.model.InvoiceItems;
 import com.example.factorisation.model.PricelistItems;
+import com.example.factorisation.service.CompanyService;
 import com.example.factorisation.service.GroupOfGoodsService;
 import com.example.factorisation.service.InvoiceItemsService;
 import com.example.factorisation.service.PricelistItemsService;
@@ -16,7 +17,7 @@ import dto.GoodsOrServicesDTO;
 public class GoodsOrServicesDTOtoGoodsOrServices  implements Converter<GoodsOrServicesDTO, GoodsOrServices>{
 
 	@Autowired
-	//private CompanyService companyService;
+	private GroupOfGoodsService groupOfGoodsService;
 	
 	@Override
 	public GoodsOrServices convert(GoodsOrServicesDTO arg0) {
@@ -27,7 +28,7 @@ public class GoodsOrServicesDTOtoGoodsOrServices  implements Converter<GoodsOrSe
 		g.setName(arg0.getName());
 		g.setUnit(arg0.getUnit());
 		
-		GroupOfGoods groupOfGoods = GroupOfGoodsService.findOne(arg0.getGroupOfGoodsId());
+		GroupOfGoods groupOfGoods = groupOfGoodsService.findOne(arg0.getGroupOfGoodsId());
 		if(groupOfGoods!=null) {
 			g.setGroupOfGoods(groupOfGoods);
 		}

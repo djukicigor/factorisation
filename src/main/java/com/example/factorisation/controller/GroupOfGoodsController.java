@@ -31,7 +31,7 @@ public class GroupOfGoodsController {
 
 		@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 		public ResponseEntity<GroupOfGoods> getGroupOfGoods(@PathVariable Long id) {
-			GroupOfGoods groupOfGoods = GroupOfGoodsService.findOne(id);
+			GroupOfGoods groupOfGoods = groupOfGoodsService.findOne(id);
 			if (groupOfGoods == null) {
 				return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 			}

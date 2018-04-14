@@ -6,10 +6,7 @@ import com.example.factorisation.model.BusinessPartner;
 
 public interface BusinessPartnerService {
 
-	static BusinessPartner findOne(Long id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	BusinessPartner findOne(Long id);
 	
 
 	List<BusinessPartner> findAll();

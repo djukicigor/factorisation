@@ -4,14 +4,9 @@ import java.util.List;
 
 import com.example.factorisation.model.InvoiceItems;
 
-
-
 public interface InvoiceItemsService {
 
-	static InvoiceItems findOne(Long id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	InvoiceItems findOne(Long id);
 	
 
 	List<InvoiceItems> findAll();

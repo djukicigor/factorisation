@@ -19,6 +19,9 @@ public class InvoiceDTOtoInvoice implements Converter<InvoiceDTO, Invoice>{
 	@Autowired
 	private CompanyService companyService;
 	
+	@Autowired
+	private BusinessYearService businessYearService;
+	
 	@Override
 	public Invoice convert(InvoiceDTO arg0) {
 		
@@ -38,7 +41,7 @@ public class InvoiceDTOtoInvoice implements Converter<InvoiceDTO, Invoice>{
 			i.setCompany(company);
 		}
 		
-		BusinessYear businessYear = BusinessYearService.findOne(arg0.getBusinessYearId());
+		BusinessYear businessYear = businessYearService.findOne(arg0.getBusinessYearId());
 		if(businessYear!=null) {
 			i.setBusinessYear(businessYear);
 		}
