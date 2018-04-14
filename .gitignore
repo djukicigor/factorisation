@@ -15,6 +15,7 @@
 nbproject/private/
 build/
 nbbuild/
+client/node_modules/
 dist/
 nbdist/
 .nb-gradle/
