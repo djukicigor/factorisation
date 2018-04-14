@@ -55,13 +55,14 @@ public class Company {
 	public Company() {
 	}
 
-	public Company(String name, String address, String pib, String number, String email, String logo) {
+	public Company(String name, String address, String pib, String number, String email, String logo, City city) {
 		this.name = name;
 		this.address = address;
 		this.pib = pib;
 		this.number = number;
 		this.email = email;
 		this.logo = logo;
+		this.city = city;
 	}
 
 	public Long getId() {

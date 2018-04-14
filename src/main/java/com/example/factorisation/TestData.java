@@ -74,9 +74,8 @@ public class TestData {
 		GroupOfGoods groupOfGoods1 = new GroupOfGoods("Tehnologija", 20);
 		groupOfGoodsService.save(groupOfGoods1);
 		
-		/*Company company1 = new Company("Telsat", "Servo Mihalja 10", "123456789", "021468630", "telsat.doo@gmail.com", "logo");
+		Company company1 = new Company("Telsat", "Servo Mihalja 10", "123456789", "021468630", "telsat.doo@gmail.com", "logo", city5);
 		companyService.save(company1);
-		*/
 		
 		/*Pricelist pricelist1 = new Pricelist();
 		pricelistService.save(pricelist1);
