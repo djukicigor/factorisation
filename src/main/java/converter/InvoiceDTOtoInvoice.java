@@ -17,7 +17,7 @@ import dto.InvoiceDTO;
 public class InvoiceDTOtoInvoice implements Converter<InvoiceDTO, Invoice>{
 
 	@Autowired
-	//private CompanyService companyService;
+	private CompanyService companyService;
 	
 	@Override
 	public Invoice convert(InvoiceDTO arg0) {
@@ -33,7 +33,7 @@ public class InvoiceDTOtoInvoice implements Converter<InvoiceDTO, Invoice>{
 		i.setPaymentAmount(arg0.getPaymentAmount());
 		i.setInvoiceStatus(arg0.getInvoiceStatus());
 		
-		Company company = CompanyService.findOne(arg0.getCompanyId());
+		Company company = companyService.findOne(arg0.getCompanyId());
 		if(company!=null) {
 			i.setCompany(company);
 		}

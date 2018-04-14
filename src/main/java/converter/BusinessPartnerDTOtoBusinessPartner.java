@@ -17,7 +17,7 @@ import dto.BusinessPartnerDTO;
 public class BusinessPartnerDTOtoBusinessPartner implements Converter<BusinessPartnerDTO,BusinessPartner>{
 
 	@Autowired
-	//private CompanyService companyService;
+	private CompanyService companyService;
 	
 	@Override
 	public BusinessPartner convert(BusinessPartnerDTO arg0) {
@@ -29,7 +29,7 @@ public class BusinessPartnerDTOtoBusinessPartner implements Converter<BusinessPa
 		b.setAddress(arg0.getAddress());
 		b.setType(arg0.getType());
 		
-		Company company = CompanyService.findOne(arg0.getCompanyId());
+		Company company = companyService.findOne(arg0.getCompanyId());
 		if(company!=null) {
 			b.setCompany(company);
 		}

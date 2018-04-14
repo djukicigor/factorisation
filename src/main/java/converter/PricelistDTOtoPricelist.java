@@ -14,6 +14,7 @@ import dto.PricelistDTO;
 public class PricelistDTOtoPricelist implements Converter<PricelistDTO, Pricelist>{
 
 	@Autowired
+	private CompanyService companyService;
 	
 	@Override
 	public Pricelist convert(PricelistDTO arg0) {
@@ -23,7 +24,7 @@ public class PricelistDTOtoPricelist implements Converter<PricelistDTO, Pricelis
 		p.setId(arg0.getId());
 		p.setDate_of_validity(arg0.getDate_of_validity());
 		
-		Company company = CompanyService.findOne(arg0.getCompanyId());
+		Company company = companyService.findOne(arg0.getCompanyId());
 		if(company!=null) {
 			p.setCompany(company);
 		} 

@@ -8,10 +8,7 @@ import com.example.factorisation.model.Company;
 
 public interface CompanyService {
 	
-	static Company findOne(Long id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	Company findOne(Long id);
 	
 
 	List<Company> findAll();

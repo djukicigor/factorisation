@@ -29,9 +29,9 @@ public class CompanyController {
 		return new ResponseEntity<>(companies, HttpStatus.OK);
 	}
 	
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	@RequestMapping(value="/{id}", method=RequestMethod.GET)
 	public ResponseEntity<Company> getCompany(@PathVariable Long id) {
-		Company company = CompanyService.findOne(id);
+		Company company = companyService.findOne(id);
 		if (company == null) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
