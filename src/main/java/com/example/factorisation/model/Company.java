@@ -47,12 +47,15 @@ public class Company {
 	@JoinColumn(name="city_id")
 	private City city;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="company", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
 	private List<BusinessPartner> businessPartners = new ArrayList<BusinessPartner>();
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="company", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
 	private List<Invoice> invoices = new ArrayList<Invoice>();
     
+	@JsonIgnore
     @OneToMany(mappedBy="company", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
     private List<Pricelist> pricelists = new ArrayList<Pricelist>();
 	
