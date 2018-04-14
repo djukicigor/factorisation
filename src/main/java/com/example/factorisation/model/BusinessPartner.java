@@ -43,10 +43,12 @@ public class BusinessPartner {
 	public BusinessPartner() {
 	}
 
-	public BusinessPartner(String name, String address, String type) {
+	public BusinessPartner(String name, String address, String type, City city, Company company) {
 		this.name = name;
 		this.address = address;
 		this.type = type;
+		this.city = city;
+		this.company = company;
 
 	}
 

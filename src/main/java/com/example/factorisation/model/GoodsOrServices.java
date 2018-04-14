@@ -40,9 +40,10 @@ public class GoodsOrServices {
 	public GoodsOrServices() {
 	}
 
-	public GoodsOrServices(String name, String unit) {
+	public GoodsOrServices(String name, String unit, GroupOfGoods groupOfGoods) {
 		this.name = name;
 		this.unit = unit;
+		this.groupOfGoods = groupOfGoods;
 	}
 
 	public Long getId() {

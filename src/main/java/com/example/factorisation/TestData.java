@@ -11,10 +11,12 @@ import org.springframework.stereotype.Component;
 
 import com.example.factorisation.model.City;
 import com.example.factorisation.model.Company;
+import com.example.factorisation.model.GoodsOrServices;
 import com.example.factorisation.model.BusinessPartner;
 import com.example.factorisation.model.BusinessYear;
 import com.example.factorisation.service.CityService;
 import com.example.factorisation.service.CompanyService;
+import com.example.factorisation.service.GoodsOrServicesService;
 import com.example.factorisation.service.BusinessPartnerService;
 import com.example.factorisation.service.BusinessYearService;
 import com.example.factorisation.model.GroupOfGoods;
@@ -43,6 +45,9 @@ public class TestData {
 	
 	@Autowired
 	private BusinessPartnerService businessPartnerService;
+	
+	@Autowired
+	private GoodsOrServicesService goodsOrServicesService;
 	
 	@PostConstruct
 	private void init() throws ParseException{
@@ -77,12 +82,15 @@ public class TestData {
 		Company company1 = new Company("Telsat", "Servo Mihalja 10", "123456789", "021468630", "telsat.doo@gmail.com", "logo", city5);
 		companyService.save(company1);
 		
+		GoodsOrServices goodsOrServices1 = new GoodsOrServices("ime", "jedinica", groupOfGoods1);
+		goodsOrServicesService.save(goodsOrServices1);
+		
 		/*Pricelist pricelist1 = new Pricelist();
 		pricelistService.save(pricelist1);
 		*/
 		
-		/*BusinessPartner businessPartner1 = new BusinessPartner("Ime", "adresa", "tip");
+		BusinessPartner businessPartner1 = new BusinessPartner("Ime", "adresa", "t", city5, company1);
 		businessPartnerService.save(businessPartner1);
-		*/
+		
 	}
 }
