@@ -21,7 +21,7 @@ public class BusinessYearDTOtoBusinessYear implements Converter<BusinessYearDTO,
 		
 		/*Invoice invoice = InvoiceService.findOne(arg0.getInvoiceId());
 		if(invoice!=null) {
-			b.setInvoice(invoice);
+			b.setInvoices(invoice);
 		}
 		*/
 		
