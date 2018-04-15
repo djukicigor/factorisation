@@ -26,7 +26,7 @@ class Goods extends Component {
     }
 
     componentWillMount() {
-        fetch('/api/businessYears/getBusinessYears', {
+        fetch('/api/businessYears', {
             headers : { 
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'

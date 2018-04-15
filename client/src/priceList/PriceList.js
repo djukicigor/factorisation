@@ -21,7 +21,7 @@ class PriceList extends Component {
     }
 
     componentDidMount() {
-        fetch('/api/businessYears/getBusinessYears', {
+        fetch('/api/businessYears', {
             headers : { 
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
@@ -35,7 +35,7 @@ class PriceList extends Component {
             data = [{"id":1,"naziv":"stolica","mera":"kom"},{"id":2,"naziv":"brasno","mera":"kg"},{"id":3,"naziv":"sto","mera":"kom"}]
             var posts = data.map((post) => {
                 return(
-                    <tr>
+                    <tr key={post.id}>
                         <td>{post.id}</td>
                         <td>{post.naziv}</td>
                         <td>{post.mera}</td>
