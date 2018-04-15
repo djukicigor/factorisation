@@ -14,7 +14,7 @@ function Good(props) {
                 name={name}
                 type="checkbox"
                 checked={props.checked}
-                onChange={props.changeCallback.bind(name)}
+                onChange={(e) => props.changeCallback(e, name)}
             />
             </td>
         </tr>
