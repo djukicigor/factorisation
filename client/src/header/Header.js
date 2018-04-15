@@ -13,8 +13,28 @@ const Header = () => {
                 </Navbar.Brand>
             </Navbar.Header>
             <Nav>
-                <NavItem/>
-                <li>
+                <NavItem eventKey={1}>
+                    <Link to='/pricelist'>Price List</Link>
+                </NavItem>
+                <NavItem eventKey={2}>
+                    <Link to='/goods'>Goods</Link>
+                </NavItem>
+                <NavItem eventKey={3}>
+                    <Link to='/orders'>Orders</Link>
+                </NavItem>
+                <NavItem eventKey={4}>
+                    <Link to='/cities'>Cities</Link>
+                </NavItem>
+            </Nav>
+            <Link className="current" to='/logout'><Glyphicon glyph="log-out" /> Log Out</Link>
+        </Navbar>
+    </header>
+    )
+};
+
+export default Header;
+
+{/* <li>
                     <Link to='/pricelist'>Price List</Link>
                 </li>
                 <li>
@@ -25,12 +45,4 @@ const Header = () => {
                 </li>
                 <li>
                     <Link to='/cities'>Cities</Link>
-                </li>
-            </Nav>
-            <Link className="current" to='/logout'><Glyphicon glyph="log-out" /> Log Out</Link>
-        </Navbar>
-    </header>
-    )
-};
-
-export default Header;
+                </li> */}

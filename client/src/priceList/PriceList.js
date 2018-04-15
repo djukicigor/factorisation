@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Table, Checkbox, FormControl, Button } from 'react-bootstrap';
+import PriceItem from './PriceItem.js';
 import './priceList.css';
 
 class PriceList extends Component {
@@ -7,17 +8,21 @@ class PriceList extends Component {
         super();
         this.state = {
             posts: [],
-            disabled: true
+            disabled: true,
+            checked: false,
+            checkboxes: {}
         }
 
         this.handleChange = this.handleChange.bind(this);
     };
 
-    handleChange(event) {
-        event.preventDefault()
-        var el = event.target
-        console.log(el)
-        this.setState( {disabled: false} )
+    handleChange(name) {
+        const checkboxes = this.state.checkboxes;
+        checkboxes[name] = !checkboxes[name];
+        this.setState({
+            disabled: false,
+            checkboxes,
+        })
     }
 
     componentDidMount() {
@@ -31,23 +36,30 @@ class PriceList extends Component {
             return results.json();
         })
         .then(data => {
-            console.log(data);
             data = [{"id":1,"naziv":"stolica","mera":"kom"},{"id":2,"naziv":"brasno","mera":"kg"},{"id":3,"naziv":"sto","mera":"kom"}]
-            var posts = data.map((post) => {
-                return(
-                    <tr key={post.id}>
-                        <td>{post.id}</td>
-                        <td>{post.naziv}</td>
-                        <td>{post.mera}</td>
-                        <td className="ammount-td"><FormControl type="text" placeholder="Ammount" disabled/></td>
-                        <td><Checkbox>Buy</Checkbox></td>
-                    </tr>
-                )
-            })
-            
-            this.setState({posts: posts});
-            console.log("state", this.state.posts); 
+            const posts = data;
+            this.setState({
+                posts,
+            }); 
         })
+    }
+
+    renderPriceList(posts) {
+        const checkboxes = this.state.checkboxes;
+        const po = posts.map((post) => {
+            if (!checkboxes[`check-${post.id}`]) {
+                checkboxes[`check-${post.id}`] = false;
+            }
+            return( 
+                <PriceItem
+                    key={post.id}
+                    post={post}
+                    changeCallback={this.handleChange}
+                    checked={checkboxes[`check-${post.id}`]}
+                />
+            );
+        })
+        return po;
     }
 
     render() {
@@ -64,7 +76,7 @@ class PriceList extends Component {
                         </tr>
                     </thead>
                     <tbody> 
-                        {this.state.posts}
+                        {this.renderPriceList(this.state.posts)}
                         <tr>
                             <td colSpan="4">
                                 <p></p>
