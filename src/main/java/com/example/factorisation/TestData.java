@@ -86,7 +86,10 @@ public class TestData {
 		City city5 = new City("Pozarevac", "12000");
 		cityService.save(city5);
 		
-		BusinessYear businessYear1 = new BusinessYear(2012, true);
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		Date date = new Date();
+		SimpleDateFormat df = new SimpleDateFormat("yyyy");
+		BusinessYear businessYear1 = new BusinessYear(Integer.parseInt(df.format(date)), true);
 		businessYearService.save(businessYear1);
 		
 		BusinessYear businessYear2 = new BusinessYear(2015, true);
