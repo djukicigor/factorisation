@@ -11,9 +11,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -48,8 +49,10 @@ public class Company {
 	private City city;
 	
 	@JsonIgnore
-	@OneToMany(mappedBy="company", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
-	private List<BusinessPartner> businessPartners = new ArrayList<BusinessPartner>();
+	@ManyToMany(mappedBy="companies", fetch=FetchType.LAZY)
+	List<BusinessPartner> businessPartners = new ArrayList<BusinessPartner>();
+	//@OneToMany(mappedBy="company", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+	//private List<BusinessPartner> businessPartners = new ArrayList<BusinessPartner>();
 	
 	@JsonIgnore
 	@OneToMany(mappedBy="company", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
