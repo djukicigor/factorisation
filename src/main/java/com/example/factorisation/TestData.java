@@ -101,36 +101,80 @@ public class TestData {
 		GroupOfGoods groupOfGoods1 = new GroupOfGoods("Tehnologija", 20);
 		groupOfGoodsService.save(groupOfGoods1);
 		
-		BusinessPartner businessPartner1 = new BusinessPartner("Ime", "adresa", "123456789", "t", "user", "12345", city5);
-		Company company1 = new Company("Telsat", "Servo Mihalja 10", "123456789", "021468630", "telsat.doo@gmail.com", "logo", "admin", "12345", city5);
+		GroupOfGoods groupOfGoods2 = new GroupOfGoods("Hrana", 30);
+		groupOfGoodsService.save(groupOfGoods2);
+		
+		GroupOfGoods groupOfGoods3 = new GroupOfGoods("Pice", 15);
+		groupOfGoodsService.save(groupOfGoods3);
+		
+		BusinessPartner businessPartner1 = new BusinessPartner("Zoran", "Veljka Petrovica 8", "123456789", "tip1", "user1", "12345", city5);
+		Company company1 = new Company("Telsat", "Servo Mihalja 10", "123456789", "021468630", "telsat.doo@gmail.com", "logo1", "admin1", "12345", city5);
 		
 		businessPartner1.addCompany(company1);
 		businessPartnerService.save(businessPartner1);
 		companyService.save(company1);
 		cityService.save(city5);
 		
-		GoodsOrServices goodsOrServices1 = new GoodsOrServices("ime", "jedinica", groupOfGoods1);
+		BusinessPartner businessPartner2 = new BusinessPartner("Goran", "Turgenjeva 4", "987654321", "tip2", "user2", "12345", city4);
+		Company company2 = new Company("Vega", "Dragise Brasovana 2", "987654321", "021456987", "vega.doo@gmail.com", "logo2", "admin2", "12345", city4);
+		
+		businessPartner2.addCompany(company2);
+		businessPartnerService.save(businessPartner2);
+		companyService.save(company2);
+		cityService.save(city4);
+		
+		BusinessPartner businessPartner3 = new BusinessPartner("Bojan", "Puskinova 55", "564879213", "tip3", "user3", "12345", city3);
+		Company company3 = new Company("Bambi", "Kralja Aleksandra 9", "546879213", "021478521", "bambi.doo@gmail.com", "logo3", "admin3", "12345", city3);
+		
+		businessPartner3.addCompany(company3);
+		businessPartnerService.save(businessPartner3);
+		companyService.save(company3);
+		cityService.save(city3);
+		
+		GoodsOrServices goodsOrServices1 = new GoodsOrServices("Pavle", "kg", groupOfGoods1);
 		goodsOrServicesService.save(goodsOrServices1);
 		
-		GoodsOrServices goodsOrServices2 = new GoodsOrServices("ime2", "jedinica2", groupOfGoods1);
+		GoodsOrServices goodsOrServices2 = new GoodsOrServices("Ktistina", "kom", groupOfGoods2);
 		goodsOrServicesService.save(goodsOrServices2);
+		
+		GoodsOrServices goodsOrServices3 = new GoodsOrServices("Teodora", "kg", groupOfGoods3);
+		goodsOrServicesService.save(goodsOrServices3);
 		
 		Pricelist pricelist1 = new Pricelist(date(), company1);
 		pricelistService.save(pricelist1);
 		
+		Pricelist pricelist2 = new Pricelist(date(), company1);
+		pricelistService.save(pricelist2);
+		
+		Pricelist pricelist3 = new Pricelist(date(), company1);
+		pricelistService.save(pricelist3);
 		
 		PricelistItems pricelistItems1 = new PricelistItems(100, pricelist1, goodsOrServices1);
 		pricelistItemsService.save(pricelistItems1);
 		
+		PricelistItems pricelistItems2 = new PricelistItems(100, pricelist2, goodsOrServices2);
+		pricelistItemsService.save(pricelistItems2);
+		
+		PricelistItems pricelistItems3 = new PricelistItems(100, pricelist3, goodsOrServices3);
+		pricelistItemsService.save(pricelistItems3);
+		
 		Invoice invoice1 = new Invoice("1", date(), date(), 100, 20, 120, 1, company1, businessYear1, businessPartner1);
 		invoiceService.save(invoice1);
+		
+		Invoice invoice2 = new Invoice("2", date(), date(), 200, 10, 135, 1, company1, businessYear2, businessPartner1);
+		invoiceService.save(invoice2);
+		
+		Invoice invoice3 = new Invoice("3", date(), date(), 300, 30, 150, 1, company1, businessYear3, businessPartner1);
+		invoiceService.save(invoice3);
 		
 		InvoiceItems invoiceItems1 = new InvoiceItems(100, 100, 3, 80, 20, 20, 1, invoice1, goodsOrServices1);
 		invoiceItemsService.save(invoiceItems1);
 		
-		InvoiceItems invoiceItems2 = new InvoiceItems(200, 200, 6, 160, 40, 40, 2, invoice1, goodsOrServices2);
+		InvoiceItems invoiceItems2 = new InvoiceItems(200, 200, 6, 160, 40, 40, 2, invoice2, goodsOrServices2);
 		invoiceItemsService.save(invoiceItems2);
 		
+		InvoiceItems invoiceItems3 = new InvoiceItems(150, 300, 4, 230, 50, 30, 1, invoice3, goodsOrServices3);
+		invoiceItemsService.save(invoiceItems3);
 	}
 
 	private Date date() {
