@@ -18,7 +18,7 @@ public class InvoiceDTO {
 	
 	private float paymentAmount;
 	
-	private String invoiceStatus;
+	private int invoiceStatus;
 	
 	private Long companyId;
 	
@@ -32,7 +32,7 @@ public class InvoiceDTO {
 		
 	}
 	
-	public InvoiceDTO(Long id, String invoiceNumber, Date invoiceDate, Date valueDate, float base, float totalPDV, float paymentAmount, String invoiceStatus, Long companyId, Long businessYearId, Long businessPartnerId, Long invoiceItemsId) {
+	public InvoiceDTO(Long id, String invoiceNumber, Date invoiceDate, Date valueDate, float base, float totalPDV, float paymentAmount, int invoiceStatus, Long companyId, Long businessYearId, Long businessPartnerId, Long invoiceItemsId) {
 		super();
 		Id = id;
 		this.invoiceNumber = invoiceNumber;
@@ -104,11 +104,11 @@ public class InvoiceDTO {
 		this.paymentAmount = paymentAmount;
 	}
 
-	public String getInvoiceStatus() {
+	public int getInvoiceStatus() {
 		return invoiceStatus;
 	}
 
-	public void setInvoiceStatus(String invoiceStatus) {
+	public void setInvoiceStatus(int invoiceStatus) {
 		this.invoiceStatus = invoiceStatus;
 	}
 

@@ -46,8 +46,8 @@ public class Invoice {
 	@Column(name="PaymentAmount",columnDefinition="DECIMAL(6,2)")      
     private float paymentAmount;
 	
-	@Column(name="InvoiceStatus",columnDefinition="CHAR(5)")      
-    private String invoiceStatus;
+	@Column(name="InvoiceStatus",columnDefinition="int(1)")      
+    private int invoiceStatus;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
 	private Company company;
@@ -64,7 +64,7 @@ public class Invoice {
 	public Invoice() {
 	}
 
-	public Invoice(String invoiceNumber, Date invoiceDate, Date valueDate, float base, float totalPDV, float paymentAmount, String invoiceStatus, Company company, BusinessYear businessYear, BusinessPartner businessPartner) {
+	public Invoice(String invoiceNumber, Date invoiceDate, Date valueDate, float base, float totalPDV, float paymentAmount, int invoiceStatus, Company company, BusinessYear businessYear, BusinessPartner businessPartner) {
 		this.invoiceNumber = invoiceNumber;
 		this.invoiceDate = invoiceDate;
 		this.valueDate = valueDate;
@@ -134,11 +134,11 @@ public class Invoice {
 		this.paymentAmount = paymentAmount;
 	}
 
-	public String getInvoiceStatus() {
+	public int getInvoiceStatus() {
 		return invoiceStatus;
 	}
 
-	public void setInvoiceStatus(String invoiceStatus) {
+	public void setInvoiceStatus(int invoiceStatus) {
 		this.invoiceStatus = invoiceStatus;
 	}
 

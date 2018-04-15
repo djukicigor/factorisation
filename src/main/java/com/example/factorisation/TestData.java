@@ -86,19 +86,22 @@ public class TestData {
 		City city5 = new City("Pozarevac", "12000");
 		cityService.save(city5);
 		
-		BusinessYear businessYear1 = new BusinessYear(2014, true);
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		Date date = new Date();
+		SimpleDateFormat df = new SimpleDateFormat("yyyy");
+		BusinessYear businessYear1 = new BusinessYear(Integer.parseInt(df.format(date)), true);
 		businessYearService.save(businessYear1);
 		
 		BusinessYear businessYear2 = new BusinessYear(2015, true);
 		businessYearService.save(businessYear2);
 		
-		BusinessYear businessYear3 = new BusinessYear(2012, false);
+		BusinessYear businessYear3 = new BusinessYear(2016, false);
 		businessYearService.save(businessYear3);
 		
 		GroupOfGoods groupOfGoods1 = new GroupOfGoods("Tehnologija", 20);
 		groupOfGoodsService.save(groupOfGoods1);
 		
-		BusinessPartner businessPartner1 = new BusinessPartner("Ime", "adresa", "t", "user", "12345", city5);
+		BusinessPartner businessPartner1 = new BusinessPartner("Ime", "adresa", "123456789", "t", "user", "12345", city5);
 		Company company1 = new Company("Telsat", "Servo Mihalja 10", "123456789", "021468630", "telsat.doo@gmail.com", "logo", "admin", "12345", city5);
 		
 		businessPartner1.addCompany(company1);
@@ -109,6 +112,9 @@ public class TestData {
 		GoodsOrServices goodsOrServices1 = new GoodsOrServices("ime", "jedinica", groupOfGoods1);
 		goodsOrServicesService.save(goodsOrServices1);
 		
+		GoodsOrServices goodsOrServices2 = new GoodsOrServices("ime2", "jedinica2", groupOfGoods1);
+		goodsOrServicesService.save(goodsOrServices2);
+		
 		Pricelist pricelist1 = new Pricelist(date(), company1);
 		pricelistService.save(pricelist1);
 		
@@ -116,12 +122,14 @@ public class TestData {
 		PricelistItems pricelistItems1 = new PricelistItems(100, pricelist1, goodsOrServices1);
 		pricelistItemsService.save(pricelistItems1);
 		
-		Invoice invoice1 = new Invoice("1", date(), date(), 100, 20, 120, "da", company1, businessYear1, businessPartner1);
+		Invoice invoice1 = new Invoice("1", date(), date(), 100, 20, 120, 1, company1, businessYear1, businessPartner1);
 		invoiceService.save(invoice1);
 		
 		InvoiceItems invoiceItems1 = new InvoiceItems(100, 100, 3, 80, 20, 20, 1, invoice1, goodsOrServices1);
 		invoiceItemsService.save(invoiceItems1);
 		
+		InvoiceItems invoiceItems2 = new InvoiceItems(200, 200, 6, 160, 40, 40, 2, invoice1, goodsOrServices2);
+		invoiceItemsService.save(invoiceItems2);
 		
 	}
 

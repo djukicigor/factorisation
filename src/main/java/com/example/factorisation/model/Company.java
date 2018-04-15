@@ -43,9 +43,11 @@ public class Company {
 	@Column(name="Logo", columnDefinition="VARCHAR(40)")
 	private String logo;
 	
+	@JsonIgnore
 	@Column(name="Username", columnDefinition="VARCHAR(10)")
 	private String username;
 	
+	@JsonIgnore
 	@Column(name="Password", columnDefinition="VARCHAR(10)")
 	private String password;
 	

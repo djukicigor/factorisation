@@ -32,12 +32,17 @@ public class BusinessPartner {
 	@Column(name="Address", columnDefinition="VARCHAR(40)")
 	private String address;
 	
+	@Column(name="PIB", columnDefinition="CHAR(9)")
+	private String pib;
+	
 	@Column(name="Type", columnDefinition="CHAR(2)")
 	private String type;
 	
+	@JsonIgnore
 	@Column(name="Username", columnDefinition="VARCHAR(10)")
 	private String username;
 	
+	@JsonIgnore
 	@Column(name="Password", columnDefinition="VARCHAR(10)")
 	private String password;
 	
@@ -58,9 +63,10 @@ public class BusinessPartner {
 	}
 
 	
-	public BusinessPartner(String name, String address, String type, String username, String password, City city) {
+	public BusinessPartner(String name, String address, String pib, String type, String username, String password, City city) {
 		this.name = name;
 		this.address = address;
+		this.pib = pib;
 		this.type = type;
 		this.username = username;
 		this.password = password;
@@ -153,6 +159,16 @@ public class BusinessPartner {
 			company.getBusinessPartners().remove(this);
 		}
 		companies.remove(company);
+	}
+
+
+	public String getPib() {
+		return pib;
+	}
+
+
+	public void setPib(String pib) {
+		this.pib = pib;
 	}
 
 }
