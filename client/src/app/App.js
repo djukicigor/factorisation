@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
-import {Cities} from './Cities.js';
+import Header from '../header/Header.js';
+import Main from '../main/Main.js';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <Cities />
+        <Header />
+        <Main />
       </div>
     );
   }

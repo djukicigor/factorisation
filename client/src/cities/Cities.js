@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-export class Cities extends Component {
+class Cities extends Component {
     constructor() {
         super();
         this.state = {
@@ -41,3 +41,5 @@ export class Cities extends Component {
         )
     }
 }
+
+export default Cities;

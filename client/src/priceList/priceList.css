@@ -1,0 +1,28 @@
+.price-list .ammount-td {
+    width: 300px;
+}
+
+.price-list .form-control {
+    width: 200px;
+    margin: auto;
+}
+
+.table-bordered>tbody>tr>td, .table-bordered>tbody>tr>th, .table-bordered>tfoot>tr>td, .table-bordered>tfoot>tr>th, .table-bordered>thead>tr>td, .table-bordered>thead>tr>th {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.price-list .submit-td {
+    text-align: right;
+    padding: 15px 0;
+    width: 250px;
+}
+
+.price-list .submit-td button {
+    display: block;
+    margin: auto;
+    padding: 6px 25px;
+    font-size: 16px; 
+}
