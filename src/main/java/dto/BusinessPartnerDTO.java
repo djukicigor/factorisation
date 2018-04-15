@@ -8,6 +8,8 @@ public class BusinessPartnerDTO {
 	
 	private String address;
 	
+	private String pib;
+	
 	private String type;
 	
 	private Long companyId;
@@ -21,11 +23,12 @@ public class BusinessPartnerDTO {
 		
 	}
 	
-	public BusinessPartnerDTO(Long id, String name, String address, String type, Long companyId, Long cityId, Long invoiceId) {
+	public BusinessPartnerDTO(Long id, String name, String address, String pib, String type, Long companyId, Long cityId, Long invoiceId) {
 		super();
 		Id = id;
 		this.name = name;
 		this.address = address;
+		this.pib = pib;
 		this.type = type;
 		this.companyId = companyId;
 		this.cityId = cityId;
@@ -87,6 +90,14 @@ public class BusinessPartnerDTO {
 
 	public void setInvoiceId(Long invoiceId) {
 		this.invoiceId = invoiceId;
+	}
+
+	public String getPib() {
+		return pib;
+	}
+
+	public void setPib(String pib) {
+		this.pib = pib;
 	}
 	
 	
