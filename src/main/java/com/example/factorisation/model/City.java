@@ -11,6 +11,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.Pattern;
+
+import org.hibernate.validator.constraints.NotBlank;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -22,6 +25,8 @@ public class City {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 	
+	@NotBlank(message="Name cannot be empty")
+	@Pattern(regexp="^[A-Za-z]*$", message="Name can contain only letters")
 	@Column(name="Name", columnDefinition="VARCHAR(40)")
 	private String name;
 	
