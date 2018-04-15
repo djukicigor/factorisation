@@ -44,6 +44,12 @@ public class Company {
 	@Column(name="Logo", columnDefinition="VARCHAR(40)")
 	private String logo;
 	
+	@Column(name="Username", columnDefinition="VARCHAR(10)")
+	private String username;
+	
+	@Column(name="Password", columnDefinition="VARCHAR(10)")
+	private String password;
+	
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="city_id")
 	private City city;
@@ -65,13 +71,15 @@ public class Company {
 	public Company() {
 	}
 
-	public Company(String name, String address, String pib, String number, String email, String logo, City city) {
+	public Company(String name, String address, String pib, String number, String email, String logo, String username, String password, City city) {
 		this.name = name;
 		this.address = address;
 		this.pib = pib;
 		this.number = number;
 		this.email = email;
 		this.logo = logo;
+		this.username = username;
+		this.password = password;
 		this.city = city;
 	}
 
@@ -167,5 +175,21 @@ public class Company {
 
 	public void setInvoices(List<Invoice> invoices) {
 		this.invoices = invoices;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 }

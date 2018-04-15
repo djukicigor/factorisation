@@ -35,6 +35,12 @@ public class BusinessPartner {
 	@Column(name="Type", columnDefinition="CHAR(2)")
 	private String type;
 	
+	@Column(name="Username", columnDefinition="VARCHAR(10)")
+	private String username;
+	
+	@Column(name="Password", columnDefinition="VARCHAR(10)")
+	private String password;
+	
 	@ManyToMany(cascade = CascadeType.ALL,fetch=FetchType.LAZY)
     @JoinTable(name = "businessPartner_company", joinColumns = @JoinColumn(name = "businesPartner_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "company_id", referencedColumnName = "id"))
 	List<Company> companies = new ArrayList<Company>();
@@ -51,10 +57,12 @@ public class BusinessPartner {
 	public BusinessPartner() {
 	}
 
-	public BusinessPartner(String name, String address, String type, City city, Company company, List<Company> companies) {
+	public BusinessPartner(String name, String address, String type, String username, String password, City city, List<Company> companies) {
 		this.name = name;
 		this.address = address;
 		this.type = type;
+		this.username = username;
+		this.password = password;
 		this.city = city;
 		this.companies = companies;
 
@@ -115,6 +123,22 @@ public class BusinessPartner {
 
 	public void setCompanies(List<Company> companies) {
 		this.companies = companies;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 
