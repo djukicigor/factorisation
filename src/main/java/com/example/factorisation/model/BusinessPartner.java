@@ -11,11 +11,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
 
 
 @Entity
@@ -34,9 +35,11 @@ public class BusinessPartner {
 	@Column(name="Type", columnDefinition="CHAR(2)")
 	private String type;
 	
-	
-	@ManyToOne(fetch=FetchType.EAGER)
-	private Company company;
+	@ManyToMany(cascade = CascadeType.ALL,fetch=FetchType.LAZY)
+    @JoinTable(name = "businessPartner_company", joinColumns = @JoinColumn(name = "businesPartner_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "company_id", referencedColumnName = "id"))
+	List<Company> companies = new ArrayList<Company>();
+	//@ManyToOne(fetch=FetchType.EAGER)
+	//private Company company;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
 	private City city;
@@ -48,12 +51,12 @@ public class BusinessPartner {
 	public BusinessPartner() {
 	}
 
-	public BusinessPartner(String name, String address, String type, City city, Company company) {
+	public BusinessPartner(String name, String address, String type, City city, Company company, List<Company> companies) {
 		this.name = name;
 		this.address = address;
 		this.type = type;
 		this.city = city;
-		this.company = company;
+		this.companies = companies;
 
 	}
 
@@ -89,13 +92,6 @@ public class BusinessPartner {
 		this.type = type;
 	}
 
-	public Company getCompany() {
-		return company;
-	}
-
-	public void setCompany(Company company) {
-		this.company = company;
-	}
 
 	public City getCity() {
 		return city;
@@ -111,6 +107,14 @@ public class BusinessPartner {
 
 	public void setInvoices(List<Invoice> invoices) {
 		this.invoices = invoices;
+	}
+
+	public List<Company> getCompanies() {
+		return companies;
+	}
+
+	public void setCompanies(List<Company> companies) {
+		this.companies = companies;
 	}
 
 
