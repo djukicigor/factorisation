@@ -53,7 +53,7 @@ public class CityController {
 
 			if(errors.hasErrors()) {
 				return new ResponseEntity<String>(errors.getAllErrors().toString(), HttpStatus.BAD_REQUEST);
-				}
+			}
 			
 			City savedCity = cityService.save(newCity);
 
