@@ -33,3 +33,16 @@ const Header = () => {
 };
 
 export default Header;
+
+{/* <li>
+                    <Link to='/pricelist'>Price List</Link>
+                </li>
+                <li>
+                    <Link to='/goods'>Goods</Link>
+                </li>
+                <li>
+                    <Link to='/orders'>Orders</Link>
+                </li>
+                <li>
+                    <Link to='/cities'>Cities</Link>
+                </li> */}

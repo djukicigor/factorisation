@@ -9,7 +9,7 @@ class Cities extends Component {
     };
 
     componentDidMount() {
-        fetch('/api/businessYears/getBusinessYears', {
+        fetch('/api/businessYears', {
             headers : { 
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
