@@ -16,7 +16,7 @@ class Goods extends Component {
         this.handleChange = this.handleChange.bind(this);
     };
 
-    handleChange(name) {
+    handleChange(event, name) {
         const checkboxes = this.state.checkboxes;
         checkboxes[name] = !checkboxes[name];
         this.setState({
