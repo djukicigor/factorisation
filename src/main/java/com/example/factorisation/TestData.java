@@ -112,6 +112,9 @@ public class TestData {
 		GoodsOrServices goodsOrServices1 = new GoodsOrServices("ime", "jedinica", groupOfGoods1);
 		goodsOrServicesService.save(goodsOrServices1);
 		
+		GoodsOrServices goodsOrServices2 = new GoodsOrServices("ime2", "jedinica2", groupOfGoods1);
+		goodsOrServicesService.save(goodsOrServices2);
+		
 		Pricelist pricelist1 = new Pricelist(date(), company1);
 		pricelistService.save(pricelist1);
 		
@@ -125,6 +128,8 @@ public class TestData {
 		InvoiceItems invoiceItems1 = new InvoiceItems(100, 100, 3, 80, 20, 20, 1, invoice1, goodsOrServices1);
 		invoiceItemsService.save(invoiceItems1);
 		
+		InvoiceItems invoiceItems2 = new InvoiceItems(200, 200, 6, 160, 40, 40, 2, invoice1, goodsOrServices2);
+		invoiceItemsService.save(invoiceItems2);
 		
 	}
 
