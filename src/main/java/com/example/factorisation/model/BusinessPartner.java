@@ -35,9 +35,11 @@ public class BusinessPartner {
 	@Column(name="Type", columnDefinition="CHAR(2)")
 	private String type;
 	
+	@JsonIgnore
 	@Column(name="Username", columnDefinition="VARCHAR(10)")
 	private String username;
 	
+	@JsonIgnore
 	@Column(name="Password", columnDefinition="VARCHAR(10)")
 	private String password;
 	

@@ -86,13 +86,13 @@ public class TestData {
 		City city5 = new City("Pozarevac", "12000");
 		cityService.save(city5);
 		
-		BusinessYear businessYear1 = new BusinessYear(2014, true);
+		BusinessYear businessYear1 = new BusinessYear(2012, true);
 		businessYearService.save(businessYear1);
 		
 		BusinessYear businessYear2 = new BusinessYear(2015, true);
 		businessYearService.save(businessYear2);
 		
-		BusinessYear businessYear3 = new BusinessYear(2012, false);
+		BusinessYear businessYear3 = new BusinessYear(2016, false);
 		businessYearService.save(businessYear3);
 		
 		GroupOfGoods groupOfGoods1 = new GroupOfGoods("Tehnologija", 20);
@@ -116,7 +116,7 @@ public class TestData {
 		PricelistItems pricelistItems1 = new PricelistItems(100, pricelist1, goodsOrServices1);
 		pricelistItemsService.save(pricelistItems1);
 		
-		Invoice invoice1 = new Invoice("1", date(), date(), 100, 20, 120, "da", company1, businessYear1, businessPartner1);
+		Invoice invoice1 = new Invoice("1", date(), date(), 100, 20, 120, 1, company1, businessYear1, businessPartner1);
 		invoiceService.save(invoice1);
 		
 		InvoiceItems invoiceItems1 = new InvoiceItems(100, 100, 3, 80, 20, 20, 1, invoice1, goodsOrServices1);
