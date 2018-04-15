@@ -110,7 +110,7 @@ public class TestData {
 		Pricelist pricelist1 = new Pricelist(date(), company1);
 		pricelistService.save(pricelist1);
 		
-		BusinessPartner businessPartner1 = new BusinessPartner("Ime", "adresa", "t", city5, company1, companies);
+		BusinessPartner businessPartner1 = new BusinessPartner("Ime", "adresa", "t", "user", "12345", city5, companies);
 		businessPartnerService.save(businessPartner1);
 		
 		PricelistItems pricelistItems1 = new PricelistItems(100, pricelist1, goodsOrServices1);
