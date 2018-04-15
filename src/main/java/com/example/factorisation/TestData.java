@@ -101,26 +101,22 @@ public class TestData {
 		GroupOfGoods groupOfGoods1 = new GroupOfGoods("Tehnologija", 20);
 		groupOfGoodsService.save(groupOfGoods1);
 		
-<<<<<<< HEAD
-		BusinessPartner businessPartner1 = new BusinessPartner("Ime ime", "adresa", "123456789", "t", "user", "12345", city5);
-		Company company1 = new Company("Telsat", "Servo Mihalja 10", "123456789", "021468630", "telsat.doo@gmail.com", "logo", "admin", "12345", city5);
-=======
 		GroupOfGoods groupOfGoods2 = new GroupOfGoods("Hrana", 30);
 		groupOfGoodsService.save(groupOfGoods2);
 		
 		GroupOfGoods groupOfGoods3 = new GroupOfGoods("Pice", 15);
 		groupOfGoodsService.save(groupOfGoods3);
 		
-		BusinessPartner businessPartner1 = new BusinessPartner("Zoran", "Veljka Petrovica 8", "123456789", "tip1", "user1", "12345", city5);
+		BusinessPartner businessPartner1 = new BusinessPartner("Zoran", "Veljka Petrovica 8", "123456789", "tip", "user1", "12345", city5);
 		Company company1 = new Company("Telsat", "Servo Mihalja 10", "123456789", "021468630", "telsat.doo@gmail.com", "logo1", "admin1", "12345", city5);
->>>>>>> f9cd65cdf4df70f1606a724335c6cbc94cf4c631
+
 		
 		businessPartner1.addCompany(company1);
 		businessPartnerService.save(businessPartner1);
 		companyService.save(company1);
 		cityService.save(city5);
 		
-		BusinessPartner businessPartner2 = new BusinessPartner("Goran", "Turgenjeva 4", "987654321", "tip2", "user2", "12345", city4);
+		BusinessPartner businessPartner2 = new BusinessPartner("Goran", "Turgenjeva 4", "987654321", "tip", "user2", "12345", city4);
 		Company company2 = new Company("Vega", "Dragise Brasovana 2", "987654321", "021456987", "vega.doo@gmail.com", "logo2", "admin2", "12345", city4);
 		
 		businessPartner2.addCompany(company2);
@@ -128,7 +124,7 @@ public class TestData {
 		companyService.save(company2);
 		cityService.save(city4);
 		
-		BusinessPartner businessPartner3 = new BusinessPartner("Bojan", "Puskinova 55", "564879213", "tip3", "user3", "12345", city3);
+		BusinessPartner businessPartner3 = new BusinessPartner("Bojan", "Puskinova 55", "564879213", "tip", "user3", "12345", city3);
 		Company company3 = new Company("Bambi", "Kralja Aleksandra 9", "546879213", "021478521", "bambi.doo@gmail.com", "logo3", "admin3", "12345", city3);
 		
 		businessPartner3.addCompany(company3);
@@ -139,11 +135,9 @@ public class TestData {
 		GoodsOrServices goodsOrServices1 = new GoodsOrServices("Pavle", "kg", groupOfGoods1);
 		goodsOrServicesService.save(goodsOrServices1);
 		
-<<<<<<< HEAD
-		GoodsOrServices goodsOrServices2 = new GoodsOrServices("imeime", "jedinica2", groupOfGoods1);
-=======
+		
 		GoodsOrServices goodsOrServices2 = new GoodsOrServices("Ktistina", "kom", groupOfGoods2);
->>>>>>> f9cd65cdf4df70f1606a724335c6cbc94cf4c631
+
 		goodsOrServicesService.save(goodsOrServices2);
 		
 		GoodsOrServices goodsOrServices3 = new GoodsOrServices("Teodora", "kg", groupOfGoods3);

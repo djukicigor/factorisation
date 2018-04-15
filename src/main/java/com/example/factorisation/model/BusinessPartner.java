@@ -35,7 +35,6 @@ public class BusinessPartner {
 	private String name;
 	
 	@NotBlank(message="Address cannot be empty")
-	@Pattern(regexp="^[a-zA-Z\\s]+$", message="Address can contain only letters")
 	@Column(name="Address", columnDefinition="VARCHAR(40)")
 	private String address;
 	
@@ -44,13 +43,9 @@ public class BusinessPartner {
 	@Column(name="PIB", columnDefinition="CHAR(9)")
 	private String pib;
 	
-<<<<<<< HEAD
 	@NotBlank(message="Type cannot be empty")
 	@Pattern(regexp="^[a-zA-Z\\s]+$", message="Type can contain only letters")
-	@Column(name="Type", columnDefinition="CHAR(2)")
-=======
 	@Column(name="Type", columnDefinition="CHAR(5)")
->>>>>>> f9cd65cdf4df70f1606a724335c6cbc94cf4c631
 	private String type;
 	
 	@NotBlank(message="Username cannot be empty")
