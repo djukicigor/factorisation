@@ -19,6 +19,9 @@ public class CompanyDTOtoCompany implements Converter<CompanyDTO, Company>{
 	@Autowired
 	private CityService cityService;
 	
+	@Autowired
+	private BusinessPartnerService businessPartnerService;
+	
 	@Override
 	public Company convert(CompanyDTO arg0) {
 		
@@ -42,7 +45,7 @@ public class CompanyDTOtoCompany implements Converter<CompanyDTO, Company>{
 			c.setPricelists(pricelist);
 		}
 		
-		BusinessPartner businessPartner = BusinessPartnerService.findOne(arg0.getBusinessPartnersId());
+		BusinessPartner businessPartner = businessPartnerService.findOne(arg0.getBusinessPartnersId());
 		if(businessPartner!=null) {
 			c.setBusinessPartners(businessPartner);
 		}

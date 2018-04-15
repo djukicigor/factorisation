@@ -159,8 +159,6 @@ public class Company {
 		this.businessPartners = businessPartners;
 	}
 
-
-
 	public List<Pricelist> getPricelists() {
 		return pricelists;
 	}
@@ -177,6 +175,7 @@ public class Company {
 		this.invoices = invoices;
 	}
 
+<<<<<<< HEAD
 	public String getUsername() {
 		return username;
 	}
@@ -192,4 +191,6 @@ public class Company {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+=======
+>>>>>>> ec02e26921007ecf24340bc2daed632f6937beea
 }

@@ -8,21 +8,27 @@ class PriceList extends Component {
         super();
         this.state = {
             posts: [],
-            disabled: true,
-            checked: false,
-            checkboxes: {}
+            checkboxes: {},
+            disableButton: true
         }
 
         this.handleChange = this.handleChange.bind(this);
+        this.handleTextChange = this.handleTextChange.bind(this);
     };
 
-    handleChange(name) {
+    handleChange(event, name) {
         const checkboxes = this.state.checkboxes;
         checkboxes[name] = !checkboxes[name];
         this.setState({
-            disabled: false,
             checkboxes,
         })
+    }
+
+    handleTextChange(event) {
+        const el = event.target.value;
+        if (el.length > 0) { 
+            this.setState({ disableButton: false })
+        }
     }
 
     componentDidMount() {
@@ -56,6 +62,7 @@ class PriceList extends Component {
                     post={post}
                     changeCallback={this.handleChange}
                     checked={checkboxes[`check-${post.id}`]}
+                    changeTextCallback={this.handleTextChange}
                 />
             );
         })
@@ -82,7 +89,7 @@ class PriceList extends Component {
                                 <p></p>
                             </td>
                             <td className="submit-td">
-                                <Button type="submit" disabled>Make Order</Button>
+                                <Button type="submit" disabled={this.state.disableButton} >Make Order</Button>
                             </td>
                         </tr>
                     </tbody>
