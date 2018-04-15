@@ -26,10 +26,12 @@ public class City {
     private Long id;
 	
 	@NotBlank(message="Name cannot be empty")
-	@Pattern(regexp="^[A-Za-z]*$", message="Name can contain only letters")
+	@Pattern(regexp="^[a-zA-Z\\s]+$", message="Name can contain only letters")
 	@Column(name="Name", columnDefinition="VARCHAR(40)")
 	private String name;
 	
+	@NotBlank(message="Postal code cannot be empty")
+	@Pattern(regexp="^[0-9]+", message="Postal code can contain only numbers")
 	@Column(name="D_CODE", columnDefinition="CHAR(5)")
 	private String postalCode;
 	

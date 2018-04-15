@@ -15,6 +15,9 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.Pattern;
+
+import org.hibernate.validator.constraints.NotBlank;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -26,22 +29,33 @@ public class BusinessPartner {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 	
+	@NotBlank(message="Name cannot be empty")
+	@Pattern(regexp="^[a-zA-Z\\s]+$", message="Name can contain only letters")
 	@Column(name="Name", columnDefinition="VARCHAR(40)")
 	private String name;
 	
+	@NotBlank(message="Address cannot be empty")
+	@Pattern(regexp="^[a-zA-Z\\s]+$", message="Address can contain only letters")
 	@Column(name="Address", columnDefinition="VARCHAR(40)")
 	private String address;
 	
+	@NotBlank(message="PIB cannot be empty")
+	@Pattern(regexp="^[0-9]+", message="PIB can contain only numbers")
 	@Column(name="PIB", columnDefinition="CHAR(9)")
 	private String pib;
 	
+	@NotBlank(message="Type cannot be empty")
+	@Pattern(regexp="^[a-zA-Z\\s]+$", message="Type can contain only letters")
 	@Column(name="Type", columnDefinition="CHAR(2)")
 	private String type;
 	
+	@NotBlank(message="Username cannot be empty")
+	@Pattern(regexp="[^\\s]+", message="Username cannot contain spaces")
 	@JsonIgnore
 	@Column(name="Username", columnDefinition="VARCHAR(10)")
 	private String username;
 	
+	@NotBlank(message="Password cannot be empty")
 	@JsonIgnore
 	@Column(name="Password", columnDefinition="VARCHAR(10)")
 	private String password;

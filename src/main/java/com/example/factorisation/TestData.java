@@ -101,7 +101,7 @@ public class TestData {
 		GroupOfGoods groupOfGoods1 = new GroupOfGoods("Tehnologija", 20);
 		groupOfGoodsService.save(groupOfGoods1);
 		
-		BusinessPartner businessPartner1 = new BusinessPartner("Ime", "adresa", "123456789", "t", "user", "12345", city5);
+		BusinessPartner businessPartner1 = new BusinessPartner("Ime ime", "adresa", "123456789", "t", "user", "12345", city5);
 		Company company1 = new Company("Telsat", "Servo Mihalja 10", "123456789", "021468630", "telsat.doo@gmail.com", "logo", "admin", "12345", city5);
 		
 		businessPartner1.addCompany(company1);
@@ -112,7 +112,7 @@ public class TestData {
 		GoodsOrServices goodsOrServices1 = new GoodsOrServices("ime", "jedinica", groupOfGoods1);
 		goodsOrServicesService.save(goodsOrServices1);
 		
-		GoodsOrServices goodsOrServices2 = new GoodsOrServices("ime2", "jedinica2", groupOfGoods1);
+		GoodsOrServices goodsOrServices2 = new GoodsOrServices("imeime", "jedinica2", groupOfGoods1);
 		goodsOrServicesService.save(goodsOrServices2);
 		
 		Pricelist pricelist1 = new Pricelist(date(), company1);
