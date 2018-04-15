@@ -11,11 +11,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
 
 
 @Entity
@@ -34,9 +35,17 @@ public class BusinessPartner {
 	@Column(name="Type", columnDefinition="CHAR(2)")
 	private String type;
 	
+	@Column(name="Username", columnDefinition="VARCHAR(10)")
+	private String username;
 	
-	@ManyToOne(fetch=FetchType.EAGER)
-	private Company company;
+	@Column(name="Password", columnDefinition="VARCHAR(10)")
+	private String password;
+	
+	@ManyToMany(cascade = CascadeType.ALL,fetch=FetchType.LAZY)
+    @JoinTable(name = "businessPartner_company", joinColumns = @JoinColumn(name = "businesPartner_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "company_id", referencedColumnName = "id"))
+	List<Company> companies = new ArrayList<Company>();
+	//@ManyToOne(fetch=FetchType.EAGER)
+	//private Company company;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
 	private City city;
@@ -48,13 +57,14 @@ public class BusinessPartner {
 	public BusinessPartner() {
 	}
 
-	public BusinessPartner(String name, String address, String type, City city, Company company) {
+	
+	public BusinessPartner(String name, String address, String type, String username, String password, City city) {
 		this.name = name;
 		this.address = address;
 		this.type = type;
+		this.username = username;
+		this.password = password;
 		this.city = city;
-		this.company = company;
-
 	}
 
 	public Long getId() {
@@ -89,13 +99,6 @@ public class BusinessPartner {
 		this.type = type;
 	}
 
-	public Company getCompany() {
-		return company;
-	}
-
-	public void setCompany(Company company) {
-		this.company = company;
-	}
 
 	public City getCity() {
 		return city;
@@ -113,5 +116,43 @@ public class BusinessPartner {
 		this.invoices = invoices;
 	}
 
+	public List<Company> getCompanies() {
+		return companies;
+	}
+
+	public void setCompanies(List<Company> companies) {
+		this.companies = companies;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	
+	public void addCompany(Company company){
+		this.companies.add(company);
+		
+		if(!company.getBusinessPartners().contains(this)){
+			company.addBusinessPartner(this);
+		}
+	}
+	
+	public void removeCompany(Company company){
+		if(company.getBusinessPartners().contains(this)){
+			company.getBusinessPartners().remove(this);
+		}
+		companies.remove(company);
+	}
 
 }

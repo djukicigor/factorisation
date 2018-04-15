@@ -3,9 +3,12 @@ package com.example.factorisation;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.xml.crypto.Data;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -68,19 +71,19 @@ public class TestData {
 	@PostConstruct
 	private void init() throws ParseException{
 		
-		City city1 = new City("Novi Sad", "21000");
+		City city1 = new City("NoviSad", "21000");
 		cityService.save(city1);
 		
 		City city2 = new City("Beograd", "11000");
 		cityService.save(city2);
 		
-		City city3 = new City("Niš", "18000");
+		City city3 = new City("Nis", "18000");
 		cityService.save(city3);
 
 		City city4 = new City("Kragujevac", "34000");
 		cityService.save(city4);
 		
-		City city5 = new City("Požarevac", "12000");
+		City city5 = new City("Pozarevac", "12000");
 		cityService.save(city5);
 		
 		BusinessYear businessYear1 = new BusinessYear(2014, true);
@@ -95,8 +98,13 @@ public class TestData {
 		GroupOfGoods groupOfGoods1 = new GroupOfGoods("Tehnologija", 20);
 		groupOfGoodsService.save(groupOfGoods1);
 		
-		Company company1 = new Company("Telsat", "Servo Mihalja 10", "123456789", "021468630", "telsat.doo@gmail.com", "logo", city5);
+		BusinessPartner businessPartner1 = new BusinessPartner("Ime", "adresa", "t", "user", "12345", city5);
+		Company company1 = new Company("Telsat", "Servo Mihalja 10", "123456789", "021468630", "telsat.doo@gmail.com", "logo", "admin", "12345", city5);
+		
+		businessPartner1.addCompany(company1);
+		businessPartnerService.save(businessPartner1);
 		companyService.save(company1);
+		cityService.save(city5);
 		
 		GoodsOrServices goodsOrServices1 = new GoodsOrServices("ime", "jedinica", groupOfGoods1);
 		goodsOrServicesService.save(goodsOrServices1);
@@ -104,8 +112,6 @@ public class TestData {
 		Pricelist pricelist1 = new Pricelist(date(), company1);
 		pricelistService.save(pricelist1);
 		
-		BusinessPartner businessPartner1 = new BusinessPartner("Ime", "adresa", "t", city5, company1);
-		businessPartnerService.save(businessPartner1);
 		
 		PricelistItems pricelistItems1 = new PricelistItems(100, pricelist1, goodsOrServices1);
 		pricelistItemsService.save(pricelistItems1);

@@ -32,10 +32,11 @@ public class BusinessPartnerDTOtoBusinessPartner implements Converter<BusinessPa
 		b.setAddress(arg0.getAddress());
 		b.setType(arg0.getType());
 		
-		Company company = companyService.findOne(arg0.getCompanyId());
+		/*Company company = companyService.findOne(arg0.getCompanyId());
 		if(company!=null) {
-			b.setCompany(company);
+			b.setCompanies(company);
 		}
+		*/
 		
 		City city = cityService.findOne(arg0.getCityId());
 		if(city!=null) {

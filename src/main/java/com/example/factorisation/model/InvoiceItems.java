@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity
 public class InvoiceItems {
@@ -38,6 +40,7 @@ public class InvoiceItems {
 	@Column(name="AmountItems",columnDefinition="DECIMAL(6,2)")      
     private float amountItems;
 	
+	@JsonIgnore
 	@ManyToOne(fetch=FetchType.EAGER)
 	private Invoice invoice;
 	

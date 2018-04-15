@@ -1,10 +1,12 @@
-package com.example.factorisation.controller;
+	package com.example.factorisation.controller;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.Errors;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -47,8 +49,12 @@ public class CityController {
 		}
 
 		@RequestMapping(method = RequestMethod.POST, consumes = "application/json")
-		public ResponseEntity<City> add(@RequestBody City newCity) {
+		public ResponseEntity<?> add(@Validated @RequestBody City newCity, Errors errors) {
 
+			if(errors.hasErrors()) {
+				return new ResponseEntity<String>(errors.getAllErrors().toString(), HttpStatus.BAD_REQUEST);
+			}
+			
 			City savedCity = cityService.save(newCity);
 
 			return new ResponseEntity<>(savedCity, HttpStatus.CREATED);

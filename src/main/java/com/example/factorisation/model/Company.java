@@ -11,12 +11,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
 
 @Entity
 public class Company {
@@ -43,13 +43,21 @@ public class Company {
 	@Column(name="Logo", columnDefinition="VARCHAR(40)")
 	private String logo;
 	
+	@Column(name="Username", columnDefinition="VARCHAR(10)")
+	private String username;
+	
+	@Column(name="Password", columnDefinition="VARCHAR(10)")
+	private String password;
+	
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="city_id")
 	private City city;
 	
 	@JsonIgnore
-	@OneToMany(mappedBy="company", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
-	private List<BusinessPartner> businessPartners = new ArrayList<BusinessPartner>();
+	@ManyToMany(mappedBy="companies", fetch=FetchType.LAZY)
+	List<BusinessPartner> businessPartners = new ArrayList<BusinessPartner>();
+	//@OneToMany(mappedBy="company", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+	//private List<BusinessPartner> businessPartners = new ArrayList<BusinessPartner>();
 	
 	@JsonIgnore
 	@OneToMany(mappedBy="company", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
@@ -62,13 +70,15 @@ public class Company {
 	public Company() {
 	}
 
-	public Company(String name, String address, String pib, String number, String email, String logo, City city) {
+	public Company(String name, String address, String pib, String number, String email, String logo, String username, String password, City city) {
 		this.name = name;
 		this.address = address;
 		this.pib = pib;
 		this.number = number;
 		this.email = email;
 		this.logo = logo;
+		this.username = username;
+		this.password = password;
 		this.city = city;
 	}
 
@@ -148,8 +158,6 @@ public class Company {
 		this.businessPartners = businessPartners;
 	}
 
-
-
 	public List<Pricelist> getPricelists() {
 		return pricelists;
 	}
@@ -165,4 +173,37 @@ public class Company {
 	public void setInvoices(List<Invoice> invoices) {
 		this.invoices = invoices;
 	}
+
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	
+	public void addBusinessPartner(BusinessPartner businessPartner){
+		this.businessPartners.add(businessPartner);
+		
+		if(!businessPartner.getCompanies().contains(this)){
+			businessPartner.addCompany(this);
+		}
+	}
+	
+	public void removeBusinessPartner(BusinessPartner businessPartner){
+		if(businessPartner.getCompanies().contains(this)){
+			businessPartner.getCompanies().remove(this);
+		}
+		businessPartners.remove(businessPartner);
+	}
+
 }
