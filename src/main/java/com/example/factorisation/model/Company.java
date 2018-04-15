@@ -18,7 +18,6 @@ import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-
 @Entity
 public class Company {
 	
@@ -190,6 +189,21 @@ public class Company {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	
+	public void addBusinessPartner(BusinessPartner businessPartner){
+		this.businessPartners.add(businessPartner);
+		
+		if(!businessPartner.getCompanies().contains(this)){
+			businessPartner.addCompany(this);
+		}
+	}
+	
+	public void removeBusinessPartner(BusinessPartner businessPartner){
+		if(businessPartner.getCompanies().contains(this)){
+			businessPartner.getCompanies().remove(this);
+		}
+		businessPartners.remove(businessPartner);
 	}
 
 }

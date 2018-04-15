@@ -57,15 +57,14 @@ public class BusinessPartner {
 	public BusinessPartner() {
 	}
 
-	public BusinessPartner(String name, String address, String type, String username, String password, City city, List<Company> companies) {
+	
+	public BusinessPartner(String name, String address, String type, String username, String password, City city) {
 		this.name = name;
 		this.address = address;
 		this.type = type;
 		this.username = username;
 		this.password = password;
 		this.city = city;
-		this.companies = companies;
-
 	}
 
 	public Long getId() {
@@ -140,6 +139,20 @@ public class BusinessPartner {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
+	
+	public void addCompany(Company company){
+		this.companies.add(company);
+		
+		if(!company.getBusinessPartners().contains(this)){
+			company.addBusinessPartner(this);
+		}
+	}
+	
+	public void removeCompany(Company company){
+		if(company.getBusinessPartners().contains(this)){
+			company.getBusinessPartners().remove(this);
+		}
+		companies.remove(company);
+	}
 
 }

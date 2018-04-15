@@ -98,11 +98,12 @@ public class TestData {
 		GroupOfGoods groupOfGoods1 = new GroupOfGoods("Tehnologija", 20);
 		groupOfGoodsService.save(groupOfGoods1);
 		
+		BusinessPartner businessPartner1 = new BusinessPartner("Ime", "adresa", "t", "user", "12345", city5);
 		Company company1 = new Company("Telsat", "Servo Mihalja 10", "123456789", "021468630", "telsat.doo@gmail.com", "logo", "admin", "12345", city5);
-		companyService.save(company1);
 		
-		List<Company> companies = new ArrayList<Company>();
-		//companies.add(company1);
+		businessPartner1.addCompany(company1);
+		businessPartnerService.save(businessPartner1);
+		companyService.save(company1);
 		
 		GoodsOrServices goodsOrServices1 = new GoodsOrServices("ime", "jedinica", groupOfGoods1);
 		goodsOrServicesService.save(goodsOrServices1);
@@ -110,8 +111,6 @@ public class TestData {
 		Pricelist pricelist1 = new Pricelist(date(), company1);
 		pricelistService.save(pricelist1);
 		
-		BusinessPartner businessPartner1 = new BusinessPartner("Ime", "adresa", "t", "user", "12345", city5, companies);
-		businessPartnerService.save(businessPartner1);
 		
 		PricelistItems pricelistItems1 = new PricelistItems(100, pricelist1, goodsOrServices1);
 		pricelistItemsService.save(pricelistItems1);
