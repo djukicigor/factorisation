@@ -116,11 +116,11 @@ public class TestData {
 		PricelistItems pricelistItems1 = new PricelistItems(100, pricelist1, goodsOrServices1);
 		pricelistItemsService.save(pricelistItems1);
 		
-		//Invoice invoice1 = new Invoice("1", date(), date(), 100, 20, 120, "da", company1, businessYear1, businessPartner1);
-		//invoiceService.save(invoice1);
+		Invoice invoice1 = new Invoice("1", date(), date(), 100, 20, 120, "da", company1, businessYear1, businessPartner1);
+		invoiceService.save(invoice1);
 		
-		//InvoiceItems invoiceItems1 = new InvoiceItems(100, 100, 3, 80, 20, 20, 1, invoice1, goodsOrServices1);
-		//invoiceItemsService.save(invoiceItems1);
+		InvoiceItems invoiceItems1 = new InvoiceItems(100, 100, 3, 80, 20, 20, 1, invoice1, goodsOrServices1);
+		invoiceItemsService.save(invoiceItems1);
 		
 		
 	}

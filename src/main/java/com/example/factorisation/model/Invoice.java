@@ -58,7 +58,6 @@ public class Invoice {
 	@ManyToOne(fetch=FetchType.EAGER)
 	private BusinessPartner businessPartner;
 	
-	@JsonIgnore
 	@OneToMany(mappedBy="invoice", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
 	private List<InvoiceItems> invoice_Items = new ArrayList<InvoiceItems>();
 	
