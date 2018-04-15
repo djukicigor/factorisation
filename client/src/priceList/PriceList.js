@@ -42,7 +42,6 @@ class PriceList extends Component {
             return results.json();
         })
         .then(data => {
-            data = [{"id":1,"naziv":"stolica","mera":"kom"},{"id":2,"naziv":"brasno","mera":"kg"},{"id":3,"naziv":"sto","mera":"kom"}]
             const posts = data;
             this.setState({
                 posts,

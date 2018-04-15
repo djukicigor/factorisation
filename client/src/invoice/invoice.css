@@ -1,3 +1,7 @@
+.invoice-content p {
+    font-size: 16px;
+}
+
 .invoice-content .left-col {
     text-align-last: left;
 }
@@ -15,7 +19,13 @@
     display: none;
 }
 
-.invoice-content .invoice-items th {
+.invoice-content .table th {
+    text-align: left;
+    padding-left: 20px;
+}
+
+.invoice-content table.invoice-items th {
+    padding: 0;
     text-align: center;
 }
 
