@@ -13,9 +13,9 @@ function InvoiceContent(props) {
         invoiceItems = post.invoice_Items.map((item, index) =>
             <tr key={index}>
                 <td className="invisible-td">
-                    {totalPrice += item.unitPrice * item.amount}
+                    {totalPDV += (item.unitPrice / 100) * item.percentagePDV * item.amount}
                     {totalBase += item.unitPrice * item.amount}
-                    {totalPrice += (item.unitPrice / 100) * item.percentagePDV * item.amount}
+                    {totalPrice = totalBase + totalPDV}
                 </td>
                 <td>
                     {index}
@@ -101,8 +101,8 @@ function InvoiceContent(props) {
                             <Table striped bordered condensed>
                                 <thead>
                                     <tr>
-                                        <th></th>
                                         <th>Buyer:</th>
+                                        <th></th>
                                     </tr>
                                 </thead>
                                 <tbody> 
@@ -184,17 +184,19 @@ function InvoiceContent(props) {
                     <Row>
                         <Table className="invoice-items" striped bordered condensed>
                             <thead>
-                                <th>#</th>
-                                <th>Name</th>
-                                <th>Unit</th>
-                                <th>Ammount</th>
-                                <th>Unit Price</th>
-                                <th>Tax(%)</th>
-                                <th>Tax Per Piece</th>
-                                <th>Total Piece Price</th>
-                                <th>Total Base Price</th>
-                                <th>Total Tax</th>
-                                <th>Total Price</th>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Name</th>
+                                    <th>Unit</th>
+                                    <th>Ammount</th>
+                                    <th>Unit Price</th>
+                                    <th>Tax(%)</th>
+                                    <th>Tax Per Piece</th>
+                                    <th>Total Piece Price</th>
+                                    <th>Total Base Price</th>
+                                    <th>Total Tax</th>
+                                    <th>Total Price</th>
+                                </tr>
                             </thead>
                             <tbody>
                                 {invoiceItems}
