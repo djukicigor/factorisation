@@ -23,6 +23,7 @@ class Invoice extends Component {
             return results.json();
         })
         .then(data => {
+            console.log(data);
             const post = data;
             this.setState({
                 post,
