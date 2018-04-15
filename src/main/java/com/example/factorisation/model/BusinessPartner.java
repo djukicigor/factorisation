@@ -35,7 +35,7 @@ public class BusinessPartner {
 	@Column(name="PIB", columnDefinition="CHAR(9)")
 	private String pib;
 	
-	@Column(name="Type", columnDefinition="CHAR(2)")
+	@Column(name="Type", columnDefinition="CHAR(5)")
 	private String type;
 	
 	@JsonIgnore
