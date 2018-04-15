@@ -12,10 +12,8 @@ class Invoice extends Component {
     };
 
     componentWillMount() {
-        // console.log(this.props.match.params.id)
-        // const invoiceUrl = '/api/invoices/' + this.props.match.params.id;
-        // const invoiceUrl = '/api/invoices/1';
-        fetch('/api/invoices/1', {
+        const invoiceUrl = '/api/invoices/' + this.props.match.params.id;
+        fetch(invoiceUrl, {
             headers : { 
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
@@ -33,11 +31,10 @@ class Invoice extends Component {
     }
 
     render() {
-        console.log(this.props)
         return (
             <div className="invoice-div container">
                 <PageHeader>
-                    <small>Orders Waiting to be Invoiced</small>
+                    <small>Invoice #{this.state.post.id}</small>
                 </PageHeader>
                 <InvoiceContent
                     key={this.state.post.id}

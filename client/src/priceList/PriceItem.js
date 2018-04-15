@@ -11,7 +11,7 @@ function PriceItem(props) {
             <td>{post.mera}</td>
             <td className="ammount-td">
                 <FormControl 
-                    type="text" 
+                    type="number" 
                     placeholder="Ammount" 
                     disabled={!props.checked}
                     onChange={props.changeTextCallback.bind(this)}

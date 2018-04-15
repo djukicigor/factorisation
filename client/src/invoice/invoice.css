@@ -1,0 +1,28 @@
+.invoice-content .left-col {
+    text-align-last: left;
+}
+
+.invoice-content .right-col {
+    text-align: right;
+}
+
+.invoice-content tr td:first-child {
+    text-align: left;
+    padding-left: 20px;
+}
+
+.invoice-content .invisible-td {
+    display: none;
+}
+
+.invoice-content .invoice-items th {
+    text-align: center;
+}
+
+.invoice-content .total-labels p,.invoice-content .total-labels h4 {
+    text-align: left;
+}
+
+.invoice-content .total-price p,.invoice-content .total-price h4 {
+    text-align: right;
+}
