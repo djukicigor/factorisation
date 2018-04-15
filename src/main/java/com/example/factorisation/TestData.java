@@ -3,9 +3,12 @@ package com.example.factorisation;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.xml.crypto.Data;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -98,14 +101,17 @@ public class TestData {
 		Company company1 = new Company("Telsat", "Servo Mihalja 10", "123456789", "021468630", "telsat.doo@gmail.com", "logo", city5);
 		companyService.save(company1);
 		
+		List<Company> companies = new ArrayList<Company>();
+		//companies.add(company1);
+		
 		GoodsOrServices goodsOrServices1 = new GoodsOrServices("ime", "jedinica", groupOfGoods1);
 		goodsOrServicesService.save(goodsOrServices1);
 		
 		Pricelist pricelist1 = new Pricelist(date(), company1);
 		pricelistService.save(pricelist1);
 		
-		//BusinessPartner businessPartner1 = new BusinessPartner("Ime", "adresa", "t", city5, company1);
-		//businessPartnerService.save(businessPartner1);
+		BusinessPartner businessPartner1 = new BusinessPartner("Ime", "adresa", "t", city5, company1, companies);
+		businessPartnerService.save(businessPartner1);
 		
 		PricelistItems pricelistItems1 = new PricelistItems(100, pricelist1, goodsOrServices1);
 		pricelistItemsService.save(pricelistItems1);

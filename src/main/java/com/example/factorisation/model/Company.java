@@ -151,8 +151,6 @@ public class Company {
 		this.businessPartners = businessPartners;
 	}
 
-
-
 	public List<Pricelist> getPricelists() {
 		return pricelists;
 	}
@@ -168,4 +166,5 @@ public class Company {
 	public void setInvoices(List<Invoice> invoices) {
 		this.invoices = invoices;
 	}
+
 }
