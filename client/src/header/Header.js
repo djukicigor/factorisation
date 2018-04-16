@@ -5,6 +5,8 @@ import './header.css';
 // console.log(sessionStorage.getItem('user'));
 
 const Header = () => {
+    const id = parseInt(sessionStorage.getItem('id'));
+    const pricelist = (sessionStorage.getItem('type') == 'company') ? (<Link to='/companies'>Companies</Link>) : (<Link to={'/pricelist/' + id}>Price List</Link>)
     return (
     <header>
         <Navbar>
@@ -15,15 +17,12 @@ const Header = () => {
             </Navbar.Header>
             <Nav>
                 <NavItem eventKey={1}>
-                    <Link to='/companies'>Companies</Link>
+                    {pricelist}
                 </NavItem>
                 <NavItem eventKey={2}>
-                    <Link to='/pricelist'>Price List</Link>
-                </NavItem>
-                <NavItem eventKey={3}>
                     <Link to='/goods'>Goods</Link>
                 </NavItem>
-                <NavItem eventKey={4}>
+                <NavItem eventKey={3}>
                     <Link to='/orders'>Orders</Link>
                 </NavItem>
             </Nav>
@@ -34,16 +33,3 @@ const Header = () => {
 };
 
 export default Header;
-
-{/* <li>
-                    <Link to='/pricelist'>Price List</Link>
-                </li>
-                <li>
-                    <Link to='/goods'>Goods</Link>
-                </li>
-                <li>
-                    <Link to='/orders'>Orders</Link>
-                </li>
-                <li>
-                    <Link to='/cities'>Cities</Link>
-                </li> */}

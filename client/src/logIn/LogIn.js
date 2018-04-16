@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Well, PageHeader, Form ,FormGroup ,FormControl ,Col ,ControlLabel ,Button } from 'react-bootstrap';
+import { Well, PageHeader, Form ,FormGroup ,FormControl ,Col ,ControlLabel ,Button, Radio } from 'react-bootstrap';
 import { Redirect } from 'react-router-dom';
 import './logIn.css';
 
@@ -8,40 +8,63 @@ class LogIn extends Component {
         super();
         this.state = {
             posts: [],
-            redirect: false
+            redirect: false,
+            username:"",
+            password:"",
+            checked: false
         }
 
         this.submitLogin = this.submitLogin.bind(this);
+        this.changeType = this.changeType.bind(this);
     };
 
-    submitLogin() {
-        // let parseJson = {
-        //     "id": Math.round( Math.random() * 10000),
-        //     "price": element.price,
-        //     "pricelistId": 1,
-        //     "goodsOrServicesId": element.id
-        // }
-        // fetch('/api/pricelistitems', {
-        //     method: 'POST',
-        //     headers : {
-        //         'Content-Type': 'application/json',
-        //         'Accept': 'application/json'
-        //     },
-        //     body: JSON.stringify(parseJson)
-        // }).then(function(response) {
-        //     return response.json();
-        // }).then(function(data) {
-        //     self.setState({
-        //         disableButton: true,
-        //         buttonBlocked: true,
-        //         submitText: "Added to Price List",
-        //     })
-        // });
-        this.setState({
-            redirect: true
+    handleUsernameChange(e) {
+        this.setState({username: e.target.value});
+    };
+
+    handlePasswordChange(e) {
+        this.setState({password: e.target.value});
+    };
+
+    changeType() {
+        this.state.checked = !this.state.checked;
+        console.log(this.state.checked)
+    }
+    
+    submitLogin(e) {
+        let self = this;
+        e.preventDefault();
+        let username = this.state.username;
+        let password = this.state.password;
+        let checked = this.state.checked;
+
+        console.log(checked)
+
+        let parseJson = {
+            "username": username,
+            "password": password
+        }
+        let url = '/api/businesspartners/login';
+        fetch(url, {
+            method: 'POST',
+            headers : {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify(parseJson)
+        }).then(function(response) {
+            return response.json();
+        }).then(function(data) {
+            // sessionStorage.setItem('id', data.id);
+            // sessionStorage.setItem('user', data.name);
+            // sessionStorage.setItem('type', 'company');
+            self.setState({
+                disableButton: true,
+                buttonBlocked: true,
+                submitText: "Added to Price List",
+                redirect: true
+            })
         });
-        sessionStorage.setItem('user', 'name');
-        console.log(sessionStorage.getItem('user'));
     }
 
     render() {
@@ -55,13 +78,17 @@ class LogIn extends Component {
                     <PageHeader>
                         Log In Page
                     </PageHeader>
-                    <Form horizontal>
+                    <Form onSubmit={this.submitLogin.bind(this)} horizontal>
                         <FormGroup controlId="formHorizontalEmail">
                             <Col componentClass={ControlLabel} sm={2}>
-                            Email
+                            Username
                             </Col>
                             <Col sm={10}>
-                            <FormControl type="email" placeholder="Email" />
+                            <FormControl 
+                                type="text" 
+                                placeholder="Username" 
+                                value={this.state.username} 
+                                onChange={this.handleUsernameChange.bind(this)} />
                             </Col>
                         </FormGroup>
 
@@ -70,7 +97,32 @@ class LogIn extends Component {
                             Password
                             </Col>
                             <Col sm={10}>
-                            <FormControl type="password" placeholder="Password" />
+                            <FormControl 
+                                type="password" 
+                                placeholder="Password" 
+                                value={this.state.password} 
+                                onChange={this.handlePasswordChange.bind(this)}/>
+                            </Col>
+                        </FormGroup>
+
+                        <FormGroup>
+                            <Col sm={12}>
+                            <FormGroup>
+                                <Radio 
+                                    name="radioGroup" 
+                                    inline
+                                    checked={this.state.selectedOption === 'option1'} 
+                                    onChange={this.handleOptionChange} >
+                                    Business Partner
+                                </Radio>{' '}
+                                <Radio 
+                                    name="radioGroup" 
+                                    inline
+                                    checked={this.state.selectedOption === 'option1'} 
+                                    onChange={this.handleOptionChange} >
+                                    Company
+                                </Radio>{' '}
+                            </FormGroup>
                             </Col>
                         </FormGroup>
 

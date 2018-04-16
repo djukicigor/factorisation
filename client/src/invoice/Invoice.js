@@ -30,6 +30,28 @@ class Invoice extends Component {
         })
     }
 
+    invoiceForwarded(event, post, type) {
+        console.log("doso/" + post.id +"/" +type);
+        let id = parseInt(post.id);
+        let parseJson = {
+            "id": id,
+	        "invoiceStatus": parseInt(type)
+        }
+        fetch('/api/invoices/' + id, {
+            method: 'PUT',
+            headers : {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify(parseJson)
+        }).then(function(response) {
+            return response.json();
+        }).then(function(data) {
+            console.log(data);
+        });
+
+    }
+
     render() {
         return (
             <div className="invoice-div container">
@@ -39,6 +61,7 @@ class Invoice extends Component {
                 <InvoiceContent
                     key={this.state.post.id}
                     post={this.state.post}
+                    invoiceForward={this.invoiceForwarded}
                 />
             </div>
         )

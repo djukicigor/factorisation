@@ -1,7 +1,7 @@
 import React from 'react';
 import {render} from 'react-dom';
 import Moment from 'react-moment';
-import { Well, Grid, Row, Col, Table, Glyphicon } from 'react-bootstrap';
+import { Well, Grid, Row, Col, Table, Glyphicon, Button } from 'react-bootstrap';
 
 function InvoiceContent(props) {
     let post = props.post;
@@ -17,6 +17,22 @@ function InvoiceContent(props) {
       ): (
         <h4 className="invoice-pending"><Glyphicon glyph="file" /> PENDING</h4>          
     );
+    let pending = (post.invoiceStatus == 1) ? (
+        <div>
+            <Button
+                addClass="approve-btn"
+                type="button"
+                onClick={(e) => props.invoiceForward(e, post, 2)}>
+                Approve!
+            </Button>
+            <Button
+                addClass="approve-btn"
+                type="button"
+                onClick={(e) => props.invoiceForward(e, post, 0)}>
+                Reject!
+            </Button>
+        </div>
+    ) : <div></div>;
 
     if(company) {
         invoiceItems = post.invoice_Items.map((item, index) =>
@@ -62,7 +78,6 @@ function InvoiceContent(props) {
             </tr>  
         );
     }
-    console.log(post);
     return(
         <Grid className="invoice-content" >
             {post.company? 
@@ -218,7 +233,9 @@ function InvoiceContent(props) {
                         <Col md={4}>
                             {status}
                         </Col>
-                        <Col md={4}></Col>
+                        <Col md={4}>
+                            {pending}
+                        </Col>
                         <Col className="total-labels" md={2}>
                             <p><strong> Total Base: </strong></p>
                             <p><strong> Total Tax: </strong></p>

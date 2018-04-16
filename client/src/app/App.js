@@ -6,23 +6,23 @@ import './App.css';
 
 class App extends Component {
   render() {
-    // if (!sessionStorage.getItem('user') || sessionStorage.getItem('user') === 'loggedOut') {
-    //   return (
-    //     <div className="App">
-    //       <Redirect to='/login' />
-    //       <Main />
-    //     </div>
-    //   );
-    // }
+    if (!sessionStorage.getItem('user') || sessionStorage.getItem('user') === 'loggedOut') {
+      return (
+        <div className="App">
+          <Redirect to='/login' />
+          <Main />
+        </div>
+      );
+    }
 
-    // if (sessionStorage.getItem('user') === 'name') {
+    if (sessionStorage.getItem('user') != null) {
       return (
         <div className="App">
           <Header />
           <Main />
         </div>
       );
-    // }
+    }
   }
 }
 

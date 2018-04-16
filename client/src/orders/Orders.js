@@ -13,7 +13,7 @@ class Orders extends Component {
     };
 
     componentWillMount() {
-        fetch('/api/invoices/', {
+        fetch('/api/invoices/' + parseInt(sessionStorage.getItem('id')) + '/' +sessionStorage.getItem('type'), {
             headers : { 
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'

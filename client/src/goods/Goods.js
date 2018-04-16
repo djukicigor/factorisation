@@ -76,7 +76,7 @@ class Goods extends Component {
                 let parseJson = {
                     "id": Math.round( Math.random() * 10000),
                     "price": element.price,
-                    "pricelistId": 1,
+                    "pricelistId": parseInt(sessionStorage.getItem('id')),
                     "goodsOrServicesId": element.id
                 }
                 fetch('/api/pricelistitems', {

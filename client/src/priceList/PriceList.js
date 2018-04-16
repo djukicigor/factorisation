@@ -66,29 +66,26 @@ class PriceList extends Component {
         })
     }
 
-    
-
     makeOrder() {
         const self = this;
         let checking = true;
         this.state.added.forEach(function(element) {
-            if(!element.price) checking = false;
+            if(!element.amount) checking = false;
         });
         if(checking){
             let jsonList = []
             this.state.added.forEach(function(element) {
-                console.log(element)
                 let parseJson = {
                     "id": element.id,
-                    "amount": 1,
+                    "amount": element.amount,
                     "unitPrice": parseInt(element.price),
                     "percentagePDV": element.goodsOrServices.groupOfGoods.percentage,
                     "amountItems": 1,
                     "goodsOrservicesId": element.goodsOrServices.id,
                     "companyId": parseInt(self.props.match.params.id),
-                    "businessPartnerId": 1
+                    "pricelistId": parseInt(sessionStorage.getItem('id')),
                 }
-                console.log(parseJson)
+                console.log(parseJson);
                 jsonList.push(parseJson);
             });
             fetch('/api/invoiceitems', {
