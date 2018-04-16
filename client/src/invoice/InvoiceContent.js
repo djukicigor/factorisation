@@ -38,7 +38,7 @@ function InvoiceContent(props) {
         buttons = (sessionStorage.getItem('type') == 'company') ? pending : <div></div>;
     }
     else{
-        buttons = (<div></div>)
+        buttons = (<div>Invoice Finalized</div>)
     }
     if(company) {
         invoiceItems = post.invoice_Items.map((item, index) =>
