@@ -9,24 +9,40 @@ class PriceList extends Component {
         this.state = {
             post: {},
             checkboxes: {},
-            disableButton: true
+            added: [],
+            disabled: true,
+            disableButton: true,
+            buttonBlocked: false,
+            checked: false,
+            submitText: "Add to Price List",
         }
 
         this.handleChange = this.handleChange.bind(this);
         this.handleTextChange = this.handleTextChange.bind(this);
+        this.makeOrder = this.makeOrder.bind(this);
     };
 
-    handleChange(event, name) {
+    handleChange(event, name, post) {
         const checkboxes = this.state.checkboxes;
         checkboxes[name] = !checkboxes[name];
+        if(checkboxes[name]){
+            this.state.added.push(post);
+        }
+        else{
+            let index = this.state.added.indexOf(post);
+            if (index !== -1) this.state.added.splice(index, 1);
+        }
         this.setState({
             checkboxes,
+            disabled:false
         })
     }
 
-    handleTextChange(event) {
+    handleTextChange(event, post) {
         const el = event.target.value;
-        if (el.length > 0) { 
+        let index = this.state.added.indexOf(post);
+        this.state.added[index].price = event.target.value; 
+        if (el.length > 0 && !this.state.buttonBlocked) { 
             this.setState({ disableButton: false })
         }
     }
@@ -50,15 +66,49 @@ class PriceList extends Component {
         })
     }
 
+    
+
     makeOrder() {
-        fetch('https://api.github.com/gists', {
-            method: 'post',
-            body: JSON.stringify("{}")
-        }).then(function(response) {
-            return response.json();
-        }).then(function(data) {
-            // console.log(data);
+        const self = this;
+        let checking = true;
+        this.state.added.forEach(function(element) {
+            if(!element.price) checking = false;
         });
+        if(checking){
+            this.state.added.forEach(function(element) {
+                console.log(element)
+                let parseJson = {
+                    "id": element.id,
+                    "amount": 1,
+                    "unitPrice": parseInt(element.price),
+                    "percentagePDV": element.goodsOrServices.groupOfGoods.percentage,
+                    "amountItems": 1,
+                    "goodsOrservicesId": element.goodsOrServices.id,
+                    "companyId": parseInt(self.props.match.params.id),
+                    "businessPartnerId": 1
+                }
+                console.log(parseJson)
+                fetch('/api/invoiceitems', {
+                    method: 'POST',
+                    headers : {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify(parseJson)
+                }).then(function(response) {
+                    return response.json();
+                }).then(function(data) {
+                    self.setState({
+                        disableButton: true,
+                        buttonBlocked: true,
+                        submitText: "Added to Price List",
+                    })
+                });
+            });
+        }
+        else {
+            alert("Enter prices for all checked Goods!")
+        }
     }
 
     renderPriceList(items) {
@@ -70,7 +120,7 @@ class PriceList extends Component {
                 if (!checkboxes[`check-${item.id}`]) {
                     checkboxes[`check-${item.id}`] = false;
                 }
-                return(
+                return( 
                     <PriceItem
                         key={item.id}
                         post={item}
@@ -94,6 +144,7 @@ class PriceList extends Component {
                                 <tr>
                                     <th>#</th>
                                     <th>Name</th>
+                                    <th>Price</th>
                                     <th>Unit</th>
                                     <th>Ammunt</th>
                                     <th>Add to Cart</th>
@@ -102,12 +153,17 @@ class PriceList extends Component {
                             <tbody> 
                                 {this.renderPriceList(this.state.post.pricelist_Items)}
                                 <tr>
-                                    <td colSpan="4">
+                                    <td colSpan="5">
                                         <p></p>
                                     </td>
                                     <td className="submit-td">
-                                        <Button type="submit" disabled={this.state.disableButton} onClick={this.makeOrder} >Make Order</Button>
-                                </td>
+                                    <Button 
+                                        type="button" 
+                                        disabled={this.state.disableButton} 
+                                        onClick={this.makeOrder}>
+                                            {this.state.submitText}
+                                    </Button>
+                                    </td>
                                 </tr>
                             </tbody>
                         </Table>

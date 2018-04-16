@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Navbar, Nav, NavItem, Glyphicon } from 'react-bootstrap';
 import './header.css';
+// console.log(sessionStorage.getItem('user'));
 
 const Header = () => {
     return (
