@@ -135,13 +135,8 @@ public class TestData {
 		GoodsOrServices goodsOrServices1 = new GoodsOrServices("Hleb", "kg", groupOfGoods1);
 		goodsOrServicesService.save(goodsOrServices1);
 		
-<<<<<<< HEAD
-		GoodsOrServices goodsOrServices2 = new GoodsOrServices("Fanta", "kom", groupOfGoods2);
-=======
-		
-		GoodsOrServices goodsOrServices2 = new GoodsOrServices("Ktistina", "kom", groupOfGoods2);
 
->>>>>>> 6564ec1fe1dbae01d1d4890eed5185edcfce2d7b
+		GoodsOrServices goodsOrServices2 = new GoodsOrServices("Fanta", "kom", groupOfGoods2);
 		goodsOrServicesService.save(goodsOrServices2);
 		
 		GoodsOrServices goodsOrServices3 = new GoodsOrServices("Pegla", "kom", groupOfGoods3);
@@ -150,10 +145,10 @@ public class TestData {
 		Pricelist pricelist1 = new Pricelist(date(), company1);
 		pricelistService.save(pricelist1);
 		
-		Pricelist pricelist2 = new Pricelist(date(), company1);
+		Pricelist pricelist2 = new Pricelist(date(), company2);
 		pricelistService.save(pricelist2);
 		
-		Pricelist pricelist3 = new Pricelist(date(), company1);
+		Pricelist pricelist3 = new Pricelist(date(), company3);
 		pricelistService.save(pricelist3);
 		
 		PricelistItems pricelistItems1 = new PricelistItems(100, pricelist1, goodsOrServices1);
@@ -168,10 +163,10 @@ public class TestData {
 		Invoice invoice1 = new Invoice("1", date(), date(), 100, 20, 120, 0, company1, businessYear1, businessPartner1);
 		invoiceService.save(invoice1);
 		
-		Invoice invoice2 = new Invoice("2", date(), date(), 200, 10, 135, 1, company1, businessYear2, businessPartner1);
+		Invoice invoice2 = new Invoice("2", date(), date(), 200, 10, 135, 1, company2, businessYear2, businessPartner2);
 		invoiceService.save(invoice2);
 		
-		Invoice invoice3 = new Invoice("3", date(), date(), 300, 30, 150, 2, company1, businessYear3, businessPartner1);
+		Invoice invoice3 = new Invoice("3", date(), date(), 300, 30, 150, 2, company3, businessYear3, businessPartner3);
 		invoiceService.save(invoice3);
 		
 		InvoiceItems invoiceItems1 = new InvoiceItems(100, 100, 3, 80, 20, 20, 1, invoice1, goodsOrServices1);
