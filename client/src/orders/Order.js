@@ -5,28 +5,26 @@ import { Well, Grid, Row, Col } from 'react-bootstrap';
 function Order(props) {
     const post = props.post;
     return(
-        // <Router>
-            <Link to={'/invoice/' + post.id}> 
-                <Well key={post.id}>
-                    <Grid>
-                        <Row className="show-grid">
-                            <Col md={3}>
-                                #{post.invoiceNumber}
-                            </Col>
-                            <Col md={3}>
-                                Company: {post.company.name}
-                            </Col>
-                            <Col md={3}>
-                                Date: {post.invoiceDate}
-                            </Col>
-                            <Col md={3}>
-                                Total: {post.paymentAmount}            
-                            </Col>
-                        </Row>
-                    </Grid>
-                </Well>
-            </Link>
-        // </Router>
+        <Link to={'/invoice/' + post.id}> 
+            <Well key={post.id}>
+                <Grid>
+                    <Row className="show-grid">
+                        <Col md={3}>
+                            #{post.invoiceNumber}
+                        </Col>
+                        <Col md={3}>
+                            Company: {post.company.name}
+                        </Col>
+                        <Col md={3}>
+                            Date: {post.invoiceDate}
+                        </Col>
+                        <Col md={3}>
+                            Total: {post.paymentAmount}            
+                        </Col>
+                    </Row>
+                </Grid>
+            </Well>
+        </Link>
     )
 }
 
