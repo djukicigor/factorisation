@@ -62,7 +62,6 @@ public class CompanyController {
 	
 	@RequestMapping(value="/login", method = RequestMethod.POST, consumes = "application/json")
 	public ResponseEntity<?> login(@Validated @RequestBody Company newCompany, Errors errors) {
-		System.out.println(newCompany);
 		if(errors.hasErrors()) {
 			return new ResponseEntity<String>(errors.getAllErrors().toString(), HttpStatus.BAD_REQUEST);
 		}
@@ -72,12 +71,11 @@ public class CompanyController {
 		List<Company> companies = companyService.findAll();
 		
 		for (Company company : companies) {
-			if (company.getUsername() == newCompany.getUsername() && company.getPassword() == newCompany.getPassword()) {
+			if (company.getUsername().equals(newCompany.getUsername()) && company.getPassword().equals(newCompany.getPassword())) {
 				return new ResponseEntity<>(company, HttpStatus.CREATED);
 			}
 		}
 		return new ResponseEntity<String>("Wrong username or password", HttpStatus.BAD_REQUEST);
-
 	}
 	
 	@RequestMapping(method = RequestMethod.PUT, value = "/{id}", consumes = "application/json")

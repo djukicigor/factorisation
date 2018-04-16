@@ -29,33 +29,27 @@ public class BusinessPartner {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 	
-	@NotBlank(message="Name cannot be empty")
 	@Pattern(regexp="^[a-zA-Z\\s]+$", message="Name can contain only letters")
 	@Column(name="Name", columnDefinition="VARCHAR(40)")
 	private String name;
 	
-	@NotBlank(message="Address cannot be empty")
 	@Column(name="Address", columnDefinition="VARCHAR(40)")
 	private String address;
 	
-	@NotBlank(message="PIB cannot be empty")
 	@Pattern(regexp="^[0-9]+", message="PIB can contain only numbers")
 	@Column(name="PIB", columnDefinition="CHAR(9)")
 	private String pib;
 	
-	@NotBlank(message="Type cannot be empty")
 	@Pattern(regexp="^[a-zA-Z\\s]+$", message="Type can contain only letters")
 	@Column(name="Type", columnDefinition="CHAR(5)")
 	private String type;
 	
 	@NotBlank(message="Username cannot be empty")
 	@Pattern(regexp="[^\\s]+", message="Username cannot contain spaces")
-	@JsonIgnore
 	@Column(name="Username", columnDefinition="VARCHAR(10)")
 	private String username;
 	
 	@NotBlank(message="Password cannot be empty")
-	@JsonIgnore
 	@Column(name="Password", columnDefinition="VARCHAR(10)")
 	private String password;
 	
@@ -95,6 +89,11 @@ public class BusinessPartner {
 		this.password = password;
 		this.city = city;
 		this.companies = companies;
+	}
+	
+	public BusinessPartner(String username, String password) {
+		this.username = username;
+		this.password = password;
 	}
 
 	public Long getId() {
