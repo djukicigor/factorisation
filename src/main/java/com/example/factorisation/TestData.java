@@ -132,15 +132,97 @@ public class TestData {
 		companyService.save(company3);
 		cityService.save(city3);
 		
-		GoodsOrServices goodsOrServices1 = new GoodsOrServices("Hleb", "kg", groupOfGoods1);
+		BusinessPartner businessPartner4 = new BusinessPartner("Stojan", "Nemanjina 3", "568411213", "tip", "user4", "12345", city2);
+		Company company4 = new Company("RTS", "Kralja Petra 19", "522879213", "021458521", "rts.doo@gmail.com", "logo4", "admin4", "12345", city2);
+		
+		businessPartner4.addCompany(company4);
+		businessPartnerService.save(businessPartner4);
+		companyService.save(company4);
+		cityService.save(city2);
+		
+		BusinessPartner businessPartner5 = new BusinessPartner("Dragana", "Futoska 11", "564879255", "tip", "user5", "12345", city1);
+		Company company5 = new Company("Aroma", "Kralja Konstantina 29", "546879883", "021473121", "aroma.doo@gmail.com", "logo5", "admin5", "12345", city1);
+		
+		businessPartner5.addCompany(company5);
+		businessPartnerService.save(businessPartner5);
+		companyService.save(company5);
+		cityService.save(city1);
+		
+		GoodsOrServices goodsOrServices1 = new GoodsOrServices("Hleb", "kg", groupOfGoods2);
 		goodsOrServicesService.save(goodsOrServices1);
 		
 
-		GoodsOrServices goodsOrServices2 = new GoodsOrServices("Fanta", "kom", groupOfGoods2);
+		GoodsOrServices goodsOrServices2 = new GoodsOrServices("Fanta", "kom", groupOfGoods3);
 		goodsOrServicesService.save(goodsOrServices2);
 		
-		GoodsOrServices goodsOrServices3 = new GoodsOrServices("Pegla", "kom", groupOfGoods3);
+		GoodsOrServices goodsOrServices3 = new GoodsOrServices("Pegla", "kom", groupOfGoods1);
 		goodsOrServicesService.save(goodsOrServices3);
+		
+		GoodsOrServices goodsOrServices4 = new GoodsOrServices("Kafa", "kg", groupOfGoods3);
+		goodsOrServicesService.save(goodsOrServices4);
+		
+		GoodsOrServices goodsOrServices5 = new GoodsOrServices("Salama", "kg", groupOfGoods2);
+		goodsOrServicesService.save(goodsOrServices5);
+		
+		GoodsOrServices goodsOrServices6 = new GoodsOrServices("Voda", "kom", groupOfGoods3);
+		goodsOrServicesService.save(goodsOrServices6);
+		
+		GoodsOrServices goodsOrServices7 = new GoodsOrServices("Fen", "kom", groupOfGoods1);
+		goodsOrServicesService.save(goodsOrServices7);
+		
+		GoodsOrServices goodsOrServices8 = new GoodsOrServices("Usisivac", "kom", groupOfGoods1);
+		goodsOrServicesService.save(goodsOrServices8);
+		
+		GoodsOrServices goodsOrServices9 = new GoodsOrServices("Kobasica", "kg", groupOfGoods2);
+		goodsOrServicesService.save(goodsOrServices9);
+		
+		GoodsOrServices goodsOrServices10 = new GoodsOrServices("Kola", "kom", groupOfGoods3);
+		goodsOrServicesService.save(goodsOrServices10);
+		
+		GoodsOrServices goodsOrServices11 = new GoodsOrServices("Frizider", "kom", groupOfGoods1);
+		goodsOrServicesService.save(goodsOrServices11);
+		
+		GoodsOrServices goodsOrServices12 = new GoodsOrServices("Sprite", "kom", groupOfGoods3);
+		goodsOrServicesService.save(goodsOrServices12);
+		
+		GoodsOrServices goodsOrServices13 = new GoodsOrServices("Pizza", "kom", groupOfGoods2);
+		goodsOrServicesService.save(goodsOrServices13);
+		
+		GoodsOrServices goodsOrServices14 = new GoodsOrServices("Zamrzivac", "kom", groupOfGoods1);
+		goodsOrServicesService.save(goodsOrServices14);
+		
+		GoodsOrServices goodsOrServices15 = new GoodsOrServices("Caj", "kom", groupOfGoods3);
+		goodsOrServicesService.save(goodsOrServices15);
+		
+		GoodsOrServices goodsOrServices16 = new GoodsOrServices("Hamburger", "kom", groupOfGoods2);
+		goodsOrServicesService.save(goodsOrServices16);
+		
+		GoodsOrServices goodsOrServices17 = new GoodsOrServices("Laptop", "kom", groupOfGoods1);
+		goodsOrServicesService.save(goodsOrServices17);
+		
+		GoodsOrServices goodsOrServices18 = new GoodsOrServices("Klima", "kom", groupOfGoods1);
+		goodsOrServicesService.save(goodsOrServices18);
+		
+		GoodsOrServices goodsOrServices19 = new GoodsOrServices("Krastavac", "kg", groupOfGoods2);
+		goodsOrServicesService.save(goodsOrServices19);
+		
+		GoodsOrServices goodsOrServices20 = new GoodsOrServices("Rakija", "kom", groupOfGoods3);
+		goodsOrServicesService.save(goodsOrServices20);
+		
+		GoodsOrServices goodsOrServices21 = new GoodsOrServices("Sir", "kg", groupOfGoods2);
+		goodsOrServicesService.save(goodsOrServices21);
+		
+		GoodsOrServices goodsOrServices22 = new GoodsOrServices("Pivo", "kom", groupOfGoods3);
+		goodsOrServicesService.save(goodsOrServices22);
+		
+		GoodsOrServices goodsOrServices23 = new GoodsOrServices("TV", "kom", groupOfGoods1);
+		goodsOrServicesService.save(goodsOrServices23);
+		
+		GoodsOrServices goodsOrServices24 = new GoodsOrServices("Jagoda", "kg", groupOfGoods2);
+		goodsOrServicesService.save(goodsOrServices24);
+		
+		GoodsOrServices goodsOrServices25 = new GoodsOrServices("Radio", "kom", groupOfGoods1);
+		goodsOrServicesService.save(goodsOrServices25);
 		
 		Pricelist pricelist1 = new Pricelist(date(), company1);
 		pricelistService.save(pricelist1);
