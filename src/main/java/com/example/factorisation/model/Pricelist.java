@@ -35,7 +35,6 @@ public class Pricelist {
 	@ManyToOne(fetch=FetchType.EAGER)
     private Company company;
 	
-	@JsonIgnore
 	@OneToMany(mappedBy="pricelist", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
 	private List<PricelistItems> pricelist_Items = new ArrayList<PricelistItems>();
 	

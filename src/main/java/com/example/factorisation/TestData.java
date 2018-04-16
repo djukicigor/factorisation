@@ -236,7 +236,7 @@ public class TestData {
 		PricelistItems pricelistItems1 = new PricelistItems(100, pricelist1, goodsOrServices1);
 		pricelistItemsService.save(pricelistItems1);
 		
-		PricelistItems pricelistItems2 = new PricelistItems(100, pricelist2, goodsOrServices2);
+		PricelistItems pricelistItems2 = new PricelistItems(100, pricelist1, goodsOrServices2);
 		pricelistItemsService.save(pricelistItems2);
 		
 		PricelistItems pricelistItems3 = new PricelistItems(100, pricelist3, goodsOrServices3);
