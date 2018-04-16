@@ -1,5 +1,6 @@
 package com.example.factorisation.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.factorisation.converter.InvoiceDTOtoInvoice;
 import com.example.factorisation.converter.InvoiceToInvoiceDTO;
+import com.example.factorisation.model.Company;
 import com.example.factorisation.model.Invoice;
+import com.example.factorisation.service.CompanyService;
 import com.example.factorisation.service.InvoiceService;
 
 import dto.InvoiceDTO;
@@ -31,12 +34,23 @@ public class InvoiceController {
 	@Autowired
 	private InvoiceToInvoiceDTO toInvoiceDTO;
 	
-	@RequestMapping(method = RequestMethod.GET)
-	public ResponseEntity<List<Invoice>> getInvoices() {
-
+	@RequestMapping(value = "/{id}/{type}", method = RequestMethod.GET)
+	public ResponseEntity<List<Invoice>> getInvoices(@PathVariable Long id, @PathVariable String type) {
 		List<Invoice> invoices = invoiceService.findAll();
+		List<Invoice> newInvoices = new ArrayList<Invoice>();
+			for (Invoice invoice : invoices) {					
+				if (type.equals("company")) {
+					if (id == invoice.getCompany().getId()) {
+						newInvoices.add(invoice);
+					}
+				} else {				
+					if (id == invoice.getBusinessPartner().getId()) {
+						newInvoices.add(invoice);
+					}
+				}
+			}
 
-		return new ResponseEntity<>(invoices, HttpStatus.OK);
+		return new ResponseEntity<>(newInvoices, HttpStatus.OK);
 	}
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)

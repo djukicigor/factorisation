@@ -3,6 +3,8 @@ package com.example.factorisation.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.Errors;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.factorisation.model.GoodsOrServices;
+import com.example.factorisation.repository.GoodsOrServicesRepository;
 import com.example.factorisation.service.GoodsOrServicesService;
 
 @RestController
@@ -23,12 +26,23 @@ public class GoodsOrServicesController {
 	@Autowired
 	private GoodsOrServicesService goodsOrServicesService;
 	
+	@Autowired
+	private GoodsOrServicesRepository goodsOrServicesRepository;
+	
 	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<List<GoodsOrServices>> getGoodsOrServices() {
 
-		List<GoodsOrServices> goodsorservices = goodsOrServicesService.findAll();
-
-		return new ResponseEntity<>(goodsorservices, HttpStatus.OK);
+		Page<GoodsOrServices> goodsorservices = goodsOrServicesRepository.findAll(new PageRequest(0, 5));
+		
+		return new ResponseEntity<>(goodsorservices.getContent(), HttpStatus.OK);
+	}
+	
+	@RequestMapping(value="/getPages",method = RequestMethod.GET)
+	public ResponseEntity<Number> getNumber() {
+		
+		Page<GoodsOrServices> goodsorservices = goodsOrServicesRepository.findAll(new PageRequest(0, 5));
+		
+		return new ResponseEntity<>(goodsorservices.getTotalPages(), HttpStatus.OK);
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
