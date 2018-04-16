@@ -32,7 +32,7 @@ class PriceList extends Component {
     }
 
     componentDidMount() {
-        fetch('/api/businessYears', {
+        fetch('/api/pricelistitems', {
             headers : { 
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
@@ -55,7 +55,7 @@ class PriceList extends Component {
             if (!checkboxes[`check-${post.id}`]) {
                 checkboxes[`check-${post.id}`] = false;
             }
-            return( 
+            return(
                 <PriceItem
                     key={post.id}
                     post={post}

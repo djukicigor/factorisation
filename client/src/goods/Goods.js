@@ -26,7 +26,7 @@ class Goods extends Component {
     }
 
     componentWillMount() {
-        fetch('/api/businessYears', {
+        fetch('/api/goodsorservices/', {
             headers : { 
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
@@ -36,7 +36,7 @@ class Goods extends Component {
             return results.json();
         })
         .then(data => {
-            data = [{"id":1,"naziv":"stolica","mera":"kom"},{"id":2,"naziv":"brasno","mera":"kg"},{"id":3,"naziv":"sto","mera":"kom"}]
+            console.log(data);
             const posts = data;
             this.setState({
                 posts,
@@ -64,7 +64,7 @@ class Goods extends Component {
 
     render() {
         return (
-            <div className="price-list">
+            <div className="goods-list">
                 <Table striped bordered condensed hover>
                     <thead>
                         <tr>

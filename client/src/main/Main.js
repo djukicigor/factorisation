@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
 import Home from '../home/Home';
-import Cities from '../cities/Cities.js';
+import Companies from '../companies/Companies.js';
 import PriceList from '../priceList/PriceList.js';
 import Goods from '../goods/Goods.js';
 import Orders from '../orders/Orders.js';
@@ -18,8 +18,8 @@ class Main extends Component {
     return (
       <Switch>
         <Route exact path='/' component={Home}/>
-        <Route path='/cities' component={Cities}/>
-        <Route path='/pricelist' component={PriceList}/>
+        <Route path='/companies' component={Companies}/>
+        <Route path='/pricelist/:id' component={PriceList}/>
         <Route path='/goods' component={Goods}/>
         <Route path='/orders' component={Orders}/>
         <Route path='/invoice/:id' component={Invoice}/>

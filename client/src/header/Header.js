@@ -14,16 +14,16 @@ const Header = () => {
             </Navbar.Header>
             <Nav>
                 <NavItem eventKey={1}>
-                    <Link to='/pricelist'>Price List</Link>
+                    <Link to='/companies'>Companies</Link>
                 </NavItem>
                 <NavItem eventKey={2}>
-                    <Link to='/goods'>Goods</Link>
+                    <Link to='/pricelist'>Price List</Link>
                 </NavItem>
                 <NavItem eventKey={3}>
-                    <Link to='/orders'>Orders</Link>
+                    <Link to='/goods'>Goods</Link>
                 </NavItem>
                 <NavItem eventKey={4}>
-                    <Link to='/cities'>Cities</Link>
+                    <Link to='/orders'>Orders</Link>
                 </NavItem>
             </Nav>
             <Link className="current" to='/logout'><Glyphicon glyph="log-out" /> Log Out</Link>
