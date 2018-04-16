@@ -1,4 +1,4 @@
-package converter;
+package com.example.factorisation.converter;
 
 import java.util.ArrayList;
 import org.springframework.core.convert.converter.Converter;

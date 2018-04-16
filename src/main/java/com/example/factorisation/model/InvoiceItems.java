@@ -144,4 +144,12 @@ public class InvoiceItems {
 		this.invoice = invoice;
 	}
 
+	@Override
+	public String toString() {
+		return "InvoiceItems [id=" + id + ", amount=" + amount
+				+ "]";
+	}
+	
+	
+
 }

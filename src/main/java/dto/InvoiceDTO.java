@@ -1,6 +1,8 @@
 package dto;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class InvoiceDTO {
 	
@@ -26,13 +28,13 @@ public class InvoiceDTO {
 	
 	private Long businessPartnerId;
 	
-	private Long invoiceItemsId;
+	private List<Long> goodIds = new ArrayList<Long>();
 	
 	public InvoiceDTO() {
 		
 	}
 	
-	public InvoiceDTO(Long id, String invoiceNumber, Date invoiceDate, Date valueDate, float base, float totalPDV, float paymentAmount, int invoiceStatus, Long companyId, Long businessYearId, Long businessPartnerId, Long invoiceItemsId) {
+	public InvoiceDTO(Long id, String invoiceNumber, Date invoiceDate, Date valueDate, float base, float totalPDV, float paymentAmount, int invoiceStatus, Long companyId, Long businessYearId, Long businessPartnerId, List<Long> goodIds) {
 		super();
 		Id = id;
 		this.invoiceNumber = invoiceNumber;
@@ -45,7 +47,7 @@ public class InvoiceDTO {
 		this.companyId = companyId;
 		this.businessYearId = businessYearId;
 		this.businessPartnerId = businessPartnerId;
-		this.invoiceItemsId = invoiceItemsId;
+		this.goodIds = goodIds;
 	}
 
 	public Long getId() {
@@ -136,12 +138,12 @@ public class InvoiceDTO {
 		this.businessPartnerId = businessPartnerId;
 	}
 
-	public Long getInvoiceItemsId() {
-		return invoiceItemsId;
+	public List<Long> getGoodIds() {
+		return goodIds;
 	}
 
-	public void setInvoiceItemsId(Long invoiceItemsId) {
-		this.invoiceItemsId = invoiceItemsId;
+	public void setGoodIds(List<Long> goodIds) {
+		this.goodIds = goodIds;
 	}
 	
 	

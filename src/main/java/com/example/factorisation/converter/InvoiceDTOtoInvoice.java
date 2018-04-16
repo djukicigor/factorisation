@@ -1,7 +1,11 @@
-package converter;
+package com.example.factorisation.converter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.stereotype.Component;
 
 import com.example.factorisation.model.BusinessPartner;
 import com.example.factorisation.model.BusinessYear;
@@ -11,9 +15,11 @@ import com.example.factorisation.model.InvoiceItems;
 import com.example.factorisation.service.BusinessPartnerService;
 import com.example.factorisation.service.BusinessYearService;
 import com.example.factorisation.service.CompanyService;
+import com.example.factorisation.service.InvoiceItemsService;
 
 import dto.InvoiceDTO;
 
+@Component
 public class InvoiceDTOtoInvoice implements Converter<InvoiceDTO, Invoice>{
 
 	@Autowired
@@ -21,6 +27,12 @@ public class InvoiceDTOtoInvoice implements Converter<InvoiceDTO, Invoice>{
 	
 	@Autowired
 	private BusinessYearService businessYearService;
+	
+	@Autowired
+	private BusinessPartnerService businessPartnerService;
+	
+	@Autowired
+	private InvoiceItemsService invoiceItemsService;
 	
 	@Override
 	public Invoice convert(InvoiceDTO arg0) {
@@ -46,16 +58,22 @@ public class InvoiceDTOtoInvoice implements Converter<InvoiceDTO, Invoice>{
 			i.setBusinessYear(businessYear);
 		}
 		
-		/*BusinessPartner businessPartner = BusinessPartnerService.findOne(arg0.getBusinessPartnerId());
+		BusinessPartner businessPartner = businessPartnerService.findOne(arg0.getBusinessPartnerId());
 		if(businessPartner!=null) {
 			i.setBusinessPartner(businessPartner);
 		}
 		
-		InvoiceItems invoiceItems = InvoiceItemsService.findOne(arg0.getInvoiceItemsId());
-		if(invoiceItems!=null) {
-			i.setInvoiceItems(invoiceItems);
-		}
-		*/
+//		List<InvoiceItems> invoices = new ArrayList<InvoiceItems>();
+//		List<Long> goodIds = arg0.getGoodIds();
+//		for (Long id : goodIds) {
+//			InvoiceItems invoiceItems = new InvoiceItems();
+//			
+//			invoices.add(invoiceItemsService.findOne(id));
+//		}
+//		
+//		if(invoices!=null) {
+//			i.setInvoice_Items(invoices);
+//		}
 		
 		return i;
 	}

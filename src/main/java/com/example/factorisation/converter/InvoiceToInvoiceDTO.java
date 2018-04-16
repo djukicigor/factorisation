@@ -1,9 +1,10 @@
-package converter;
+package com.example.factorisation.converter;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.stereotype.Component;
 
 import com.example.factorisation.model.BusinessPartner;
 import com.example.factorisation.model.BusinessYear;
@@ -12,6 +13,7 @@ import com.example.factorisation.model.Invoice;
 import com.example.factorisation.model.InvoiceItems;
 import dto.InvoiceDTO;
 
+@Component
 public class InvoiceToInvoiceDTO implements Converter<Invoice, InvoiceDTO>{
 
 	@Override
@@ -39,9 +41,13 @@ public class InvoiceToInvoiceDTO implements Converter<Invoice, InvoiceDTO>{
 			i.setBusinessPartnerId(((BusinessPartner) arg0.getBusinessPartner()).getId());
 		}
 		
-		if(arg0.getInvoice_Items() != null) {
-			i.setInvoiceItemsId(((InvoiceItems) arg0.getInvoice_Items()).getId());
-		}
+//		List<Long> invoiceIds = new ArrayList<Long>();
+//		if(arg0.getInvoice_Items() != null) {
+//			for (InvoiceItems item : arg0.getInvoice_Items()) {
+//				invoiceIds.add(item.getId());
+//			}
+//			i.setInvoiceItemsId(invoiceIds);
+//		}
 		
 		return i;
 		

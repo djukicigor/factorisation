@@ -1,4 +1,4 @@
-package converter;
+package com.example.factorisation.converter;
 
 import java.util.ArrayList;
 import java.util.List;

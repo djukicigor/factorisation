@@ -11,8 +11,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.factorisation.converter.InvoiceDTOtoInvoice;
+import com.example.factorisation.converter.InvoiceToInvoiceDTO;
 import com.example.factorisation.model.Invoice;
 import com.example.factorisation.service.InvoiceService;
+
+import dto.InvoiceDTO;
 
 @RestController
 @RequestMapping(value = "/api/invoices")
@@ -20,6 +24,12 @@ public class InvoiceController {
 
 	@Autowired
 	private InvoiceService invoiceService;
+	
+	@Autowired
+	private InvoiceDTOtoInvoice toInvoice;
+	
+	@Autowired
+	private InvoiceToInvoiceDTO toInvoiceDTO;
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<List<Invoice>> getInvoices() {
@@ -47,11 +57,10 @@ public class InvoiceController {
 	}
 	
 	@RequestMapping(method = RequestMethod.POST, consumes = "application/json")
-	public ResponseEntity<Invoice> add(@RequestBody Invoice newInvoice) {
+	public ResponseEntity<Invoice> add(@RequestBody InvoiceDTO invoiceDTO) {
 
-		Invoice savedInvoice = invoiceService.save(newInvoice);
-
-		return new ResponseEntity<>(savedInvoice, HttpStatus.CREATED);
+		Invoice savedInvoice = invoiceService.save(toInvoice.convert(invoiceDTO));
+		return new ResponseEntity<>(savedInvoice, HttpStatus.OK);
 	}
 	
 	@RequestMapping(method = RequestMethod.PUT, value = "/{id}", consumes = "application/json")

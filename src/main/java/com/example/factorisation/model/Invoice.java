@@ -98,6 +98,14 @@ public class Invoice {
 		return invoiceDate;
 	}
 
+	@Override
+	public String toString() {
+		return "Invoice [id=" + id + ", invoiceNumber=" + invoiceNumber + ", invoiceDate=" + invoiceDate
+				+ ", valueDate=" + valueDate + ", base=" + base + ", totalPDV=" + totalPDV + ", paymentAmount="
+				+ paymentAmount + ", invoiceStatus=" + invoiceStatus + ", company=" + company + ", businessYear="
+				+ businessYear + ", businessPartner=" + businessPartner + ", invoice_Items=" + invoice_Items + "]";
+	}
+
 	public void setInvoiceDate(Date invoiceDate) {
 		this.invoiceDate = invoiceDate;
 	}
