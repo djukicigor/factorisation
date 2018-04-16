@@ -34,7 +34,7 @@ public class PricelistItemsDTOtoPricelistItems implements Converter<PricelistIte
 			p.setPricelist(pricelist);
 		}
 		
-		GoodsOrServices goodsOrService = goodsOrServicesService.findOne(arg0.getPricelistId());
+		GoodsOrServices goodsOrService = goodsOrServicesService.findOne(arg0.getGoodsOrServicesId());
 		if(goodsOrService!=null) {
 			p.setGoodsOrServices(goodsOrService);
 		}
