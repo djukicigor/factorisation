@@ -60,6 +60,26 @@ public class CompanyController {
 		return new ResponseEntity<>(savedCompany, HttpStatus.CREATED);
 	}
 	
+	@RequestMapping(value="/login", method = RequestMethod.POST, consumes = "application/json")
+	public ResponseEntity<?> login(@Validated @RequestBody Company newCompany, Errors errors) {
+		System.out.println(newCompany);
+		if(errors.hasErrors()) {
+			return new ResponseEntity<String>(errors.getAllErrors().toString(), HttpStatus.BAD_REQUEST);
+		}
+		
+//		Company savedCompany = companyService.save(newCompany);
+		
+		List<Company> companies = companyService.findAll();
+		
+		for (Company company : companies) {
+			if (company.getUsername() == newCompany.getUsername() && company.getPassword() == newCompany.getPassword()) {
+				return new ResponseEntity<>(company, HttpStatus.CREATED);
+			}
+		}
+		return new ResponseEntity<String>("Wrong username or password", HttpStatus.BAD_REQUEST);
+
+	}
+	
 	@RequestMapping(method = RequestMethod.PUT, value = "/{id}", consumes = "application/json")
 	public ResponseEntity<Company> edit(@RequestBody Company company,
 			@PathVariable Long id) {

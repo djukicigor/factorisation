@@ -22,23 +22,46 @@ public class InvoiceItemsDTO {
 	
 	private Long goodsOrservicesId;
 	
+	private Long companyId;
+	
+	private Long businessPartnerId;
+	
 	public InvoiceItemsDTO() {
 		
 	}
 	
-	public InvoiceItemsDTO(Long id, float amount, float unitPrice, float rebate, float basePDV, float percentagePDV, float amountPDV, float amountItems, Long invoiceId, Long goodsOrServicesId) {
+	public InvoiceItemsDTO(Long id, float amount, float unitPrice, float percentagePDV, float amountItems, Long goodsOrServicesId, Long companyId, Long businessPartnerId) {
 		super();
-		Id = id;
+		this.Id = id;
 		this.amount = amount;
 		this.unitPrice = unitPrice;
-		this.rebate = rebate;
-		this.basePDV = basePDV;
 		this.percentagePDV = percentagePDV;
-		this.amountPDV = amountPDV;
 		this.amountItems = amountItems;
-		this.invoiceId = invoiceId;
 		this.goodsOrservicesId = goodsOrServicesId;
-		
+		this.companyId = companyId;
+		this.businessPartnerId = businessPartnerId;
+	}
+
+	@Override
+	public String toString() {
+		return "InvoiceItemsDTO [Id=" + Id + ", amount=" + amount + ", unitPrice=" + unitPrice + ", percentagePDV=" + percentagePDV + ", amountItems=" + amountItems + ", invoiceId=" + invoiceId + ", goodsOrservicesId="
+				+ goodsOrservicesId + ", companyId=" + companyId + ", businessPartnerId=" + businessPartnerId + "]";
+	}
+
+	public Long getCompanyId() {
+		return companyId;
+	}
+
+	public void setCompanyId(Long companyId) {
+		this.companyId = companyId;
+	}
+
+	public Long getBusinessPartnerId() {
+		return businessPartnerId;
+	}
+
+	public void setBusinessPartnerId(Long businessPartnerId) {
+		this.businessPartnerId = businessPartnerId;
 	}
 
 	public Long getId() {

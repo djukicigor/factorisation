@@ -43,9 +43,6 @@ public class InvoiceDTOtoInvoice implements Converter<InvoiceDTO, Invoice>{
 		i.setInvoiceNumber(arg0.getInvoiceNumber());
 		i.setInvoiceDate(arg0.getInvoiceDate());
 		i.setValueDate(arg0.getValueDate());
-		i.setBase(arg0.getBase());
-		i.setTotalPDV(arg0.getTotalPDV());
-		i.setPaymentAmount(arg0.getPaymentAmount());
 		i.setInvoiceStatus(arg0.getInvoiceStatus());
 		
 		Company company = companyService.findOne(arg0.getCompanyId());
@@ -63,17 +60,16 @@ public class InvoiceDTOtoInvoice implements Converter<InvoiceDTO, Invoice>{
 			i.setBusinessPartner(businessPartner);
 		}
 		
-//		List<InvoiceItems> invoices = new ArrayList<InvoiceItems>();
-//		List<Long> goodIds = arg0.getGoodIds();
-//		for (Long id : goodIds) {
-//			InvoiceItems invoiceItems = new InvoiceItems();
-//			
-//			invoices.add(invoiceItemsService.findOne(id));
-//		}
+		List<InvoiceItems> invoiceItems = new ArrayList<InvoiceItems>();
+		List<Long> invoiceItemsIds = arg0.getInvoiceItemIds();
+		for (Long id : invoiceItemsIds) {
+			InvoiceItems in = invoiceItemsService.findOne(id);
+			invoiceItems.add(in);
+		}
 //		
-//		if(invoices!=null) {
-//			i.setInvoice_Items(invoices);
-//		}
+		if(invoiceItems!=null) {
+			i.setInvoice_Items(invoiceItems);
+		}
 		
 		return i;
 	}

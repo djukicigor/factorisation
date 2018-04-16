@@ -51,11 +51,9 @@ public class Company {
 	@Column(name="Logo", columnDefinition="VARCHAR(40)")
 	private String logo;
 	
-	@JsonIgnore
 	@Column(name="Username", columnDefinition="VARCHAR(10)")
 	private String username;
 	
-	@JsonIgnore
 	@Column(name="Password", columnDefinition="VARCHAR(10)")
 	private String password;
 	
@@ -90,6 +88,18 @@ public class Company {
 		this.username = username;
 		this.password = password;
 		this.city = city;
+	}
+	
+	public Company(String username, String password) {
+		this.username = username;
+		this.password = password;
+	}
+	
+	
+
+	@Override
+	public String toString() {
+		return "Company [username=" + username + ", password=" + password + "]";
 	}
 
 	public Long getId() {

@@ -2,6 +2,7 @@ package com.example.factorisation.converter;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.stereotype.Component;
 
 import com.example.factorisation.model.GoodsOrServices;
 import com.example.factorisation.model.Invoice;
@@ -12,6 +13,7 @@ import com.example.factorisation.service.InvoiceService;
 
 import dto.InvoiceItemsDTO;
 
+@Component
 public class InvoiceItemsDTOtoInvoiceItems implements Converter<InvoiceItemsDTO, InvoiceItems>{
 
 	@Autowired
@@ -34,10 +36,6 @@ public class InvoiceItemsDTOtoInvoiceItems implements Converter<InvoiceItemsDTO,
 		i.setAmountPDV(arg0.getAmountPDV());
 		i.setAmountItems(arg0.getAmountItems());
 		
-		Invoice invoice = invoiceService.findOne(arg0.getInvoiceId());
-		if(invoice!=null) {
-			i.setInvoice(invoice);
-		}
 		
 		GoodsOrServices goodsOrServices = goodsOrServicesService.findOne(arg0.getGoodsOrservicesId());
 		if(goodsOrServices!=null) {

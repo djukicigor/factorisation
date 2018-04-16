@@ -28,26 +28,20 @@ public class InvoiceDTO {
 	
 	private Long businessPartnerId;
 	
-	private List<Long> goodIds = new ArrayList<Long>();
+	private List<Long> invoiceItemIds = new ArrayList<Long>();
 	
 	public InvoiceDTO() {
 		
 	}
 	
-	public InvoiceDTO(Long id, String invoiceNumber, Date invoiceDate, Date valueDate, float base, float totalPDV, float paymentAmount, int invoiceStatus, Long companyId, Long businessYearId, Long businessPartnerId, List<Long> goodIds) {
+	public InvoiceDTO(Long id, String invoiceNumber, Date invoiceDate, Date valueDate, int invoiceStatus, Long businessYearId) {
 		super();
 		Id = id;
 		this.invoiceNumber = invoiceNumber;
 		this.invoiceDate = invoiceDate;
 		this.valueDate = valueDate;
-		this.base = base;
-		this.totalPDV = totalPDV;
-		this.paymentAmount = paymentAmount;
 		this.invoiceStatus = invoiceStatus;
-		this.companyId = companyId;
 		this.businessYearId = businessYearId;
-		this.businessPartnerId = businessPartnerId;
-		this.goodIds = goodIds;
 	}
 
 	public Long getId() {
@@ -138,12 +132,12 @@ public class InvoiceDTO {
 		this.businessPartnerId = businessPartnerId;
 	}
 
-	public List<Long> getGoodIds() {
-		return goodIds;
+	public List<Long> getInvoiceItemIds() {
+		return invoiceItemIds;
 	}
 
-	public void setGoodIds(List<Long> goodIds) {
-		this.goodIds = goodIds;
+	public void setInvoiceItemIds(List<Long> invoiceItemIds) {
+		this.invoiceItemIds = invoiceItemIds;
 	}
 	
 	
