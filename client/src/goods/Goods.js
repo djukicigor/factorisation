@@ -10,7 +10,10 @@ class Goods extends Component {
             posts: [],
             added: [],
             disabled: true,
+            disableButton: true,
+            buttonBlocked: false,
             checked: false,
+            submitText: "Add to Price List",
             checkboxes: {}
         }
 
@@ -29,7 +32,6 @@ class Goods extends Component {
             let index = this.state.added.indexOf(post);
             if (index !== -1) this.state.added.splice(index, 1);
         }
-        console.log(this.state.added);
         this.setState({
             disabled: false,
             checkboxes,
@@ -38,11 +40,9 @@ class Goods extends Component {
 
     handleTextChange(event, post) {
         const el = event.target.value;
-        // console.log(event.target.value)
         let index = this.state.added.indexOf(post);
         this.state.added[index].price = event.target.value; 
-        // console.log(this.state.added[index]);
-        if (el.length > 0) { 
+        if (el.length > 0 && !this.state.buttonBlocked) { 
             this.setState({ disableButton: false })
         }
     }
@@ -58,7 +58,6 @@ class Goods extends Component {
             return results.json();
         })
         .then(data => {
-            console.log(data);
             const posts = data;
             this.setState({
                 posts,
@@ -67,27 +66,40 @@ class Goods extends Component {
     }
 
     addToPriceList() {
+        const self = this;
+        let checking = true;
         this.state.added.forEach(function(element) {
-            console.log(element)
-            let parseJson = {
-                "id": Math.round( Math.random() * 10000),
-                "price": element.price,
-                "pricelistId": 1,
-                "goodsOrServices": element.id
-            }
-            fetch('/api/pricelistitems', {
-                method: 'POST',
-                headers : {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body: JSON.stringify(parseJson)
-            }).then(function(response) {
-                return response.json();
-            }).then(function(data) {
-                console.log(data);
-            });
+            if(!element.price) checking = false;
         });
+        if(checking){
+            this.state.added.forEach(function(element) {
+                let parseJson = {
+                    "id": Math.round( Math.random() * 10000),
+                    "price": element.price,
+                    "pricelistId": 1,
+                    "goodsOrServicesId": element.id
+                }
+                fetch('/api/pricelistitems', {
+                    method: 'POST',
+                    headers : {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify(parseJson)
+                }).then(function(response) {
+                    return response.json();
+                }).then(function(data) {
+                    self.setState({
+                        disableButton: true,
+                        buttonBlocked: true,
+                        submitText: "Added to Price List",
+                    })
+                });
+            });
+        }
+        else {
+            alert("Enter prices for all checked Goods!")
+        }
     }
 
     renderGoods(posts) {
@@ -112,33 +124,35 @@ class Goods extends Component {
     render() {
         return (
             <div className="goods-list">
-                <Table striped bordered condensed hover>
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Name</th>
-                            <th>Unit</th>
-                            <th>Price</th>
-                            <th>Add to Price List</th>
-                        </tr>
-                    </thead>
-                    <tbody>  
-                        {this.renderGoods(this.state.posts)}
-                        <tr>
-                            <td colSpan="4">
-                                <p></p>
-                            </td>
-                            <td className="submit-td">
-                                <Button 
-                                    type="submit" 
-                                    disabled={this.state.disableButton} 
-                                    onClick={this.addToPriceList}>
-                                        Add to Price List
-                                </Button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </Table>
+                <form>
+                    <Table striped bordered condensed hover>
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Name</th>
+                                <th>Unit</th>
+                                <th>Price</th>
+                                <th>Add to Price List</th>
+                            </tr>
+                        </thead>
+                        <tbody>  
+                            {this.renderGoods(this.state.posts)}
+                            <tr>
+                                <td colSpan="4">
+                                    <p></p>
+                                </td>
+                                <td className="submit-td">
+                                    <Button 
+                                        type="button" 
+                                        disabled={this.state.disableButton} 
+                                        onClick={this.addToPriceList}>
+                                            {this.state.submitText}
+                                    </Button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </Table>
+                </form>
             </div>
         )
     }

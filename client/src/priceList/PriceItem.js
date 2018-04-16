@@ -8,13 +8,14 @@ function PriceItem(props) {
         <tr key={post.id}>
             <td>{post.id}</td>
             <td>{post.goodsOrServices.name}</td>
+            <td>{post.price}</td>
             <td>{post.goodsOrServices.unit}</td>
             <td className="ammount-td">
                 <FormControl 
                     type="number"
                     placeholder="Ammount" 
                     disabled={!props.checked}
-                    onChange={props.changeTextCallback.bind(this)}
+                    onChange={(e) => props.changeTextCallback(e, post)}
                 />
             </td>
             <td>
@@ -22,7 +23,7 @@ function PriceItem(props) {
                     name={name}
                     type="checkbox"
                     checked={props.checked}
-                    onChange={(e) => props.changeCallback(e, name)}
+                    onChange={(e) => props.changeCallback(e, name, post)}
                 />
             </td>
         </tr>
