@@ -7,7 +7,7 @@ class PriceList extends Component {
     constructor() {
         super();
         this.state = {
-            posts: [],
+            post: {},
             checkboxes: {},
             disableButton: true
         }
@@ -32,7 +32,8 @@ class PriceList extends Component {
     }
 
     componentDidMount() {
-        fetch('/api/pricelistitems', {
+        const priceListUrl = '/api/pricelists/' + this.props.match.params.id;
+        fetch(priceListUrl, {
             headers : { 
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
@@ -42,57 +43,75 @@ class PriceList extends Component {
             return results.json();
         })
         .then(data => {
-            const posts = data;
+            const post = data;
             this.setState({
-                posts,
+                post,
             }); 
         })
     }
 
-    renderPriceList(posts) {
-        const checkboxes = this.state.checkboxes;
-        const po = posts.map((post) => {
-            if (!checkboxes[`check-${post.id}`]) {
-                checkboxes[`check-${post.id}`] = false;
-            }
-            return(
-                <PriceItem
-                    key={post.id}
-                    post={post}
-                    changeCallback={this.handleChange}
-                    checked={checkboxes[`check-${post.id}`]}
-                    changeTextCallback={this.handleTextChange}
-                />
-            );
-        })
+    makeOrder() {
+        fetch('https://api.github.com/gists', {
+            method: 'post',
+            body: JSON.stringify("{}")
+        }).then(function(response) {
+            return response.json();
+        }).then(function(data) {
+            // console.log(data);
+        });
+    }
+
+    renderPriceList(items) {
+        let checkboxes = this.state.checkboxes;
+        let po;
+
+        if(items){
+            po = items.map((item) => {
+                if (!checkboxes[`check-${item.id}`]) {
+                    checkboxes[`check-${item.id}`] = false;
+                }
+                return(
+                    <PriceItem
+                        key={item.id}
+                        post={item}
+                        changeCallback={this.handleChange}
+                        checked={checkboxes[`check-${item.id}`]}
+                        changeTextCallback={this.handleTextChange}
+                    />
+                );
+            })
+        }
         return po;
     }
 
     render() {
+        let post = this.state.post;
         return (
             <div className="price-list">
-                <Table striped bordered condensed hover>
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Name</th>
-                            <th>Unit</th>
-                            <th>Ammunt</th>
-                            <th>Add to Cart</th>
-                        </tr>
-                    </thead>
-                    <tbody> 
-                        {this.renderPriceList(this.state.posts)}
-                        <tr>
-                            <td colSpan="4">
-                                <p></p>
-                            </td>
-                            <td className="submit-td">
-                                <Button type="submit" disabled={this.state.disableButton} >Make Order</Button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </Table>
+                {post ? 
+                    <Table striped bordered condensed hover>
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Name</th>
+                                    <th>Unit</th>
+                                    <th>Ammunt</th>
+                                    <th>Add to Cart</th>
+                                </tr>
+                            </thead>
+                            <tbody> 
+                                {this.renderPriceList(this.state.post.pricelist_Items)}
+                                <tr>
+                                    <td colSpan="4">
+                                        <p></p>
+                                    </td>
+                                    <td className="submit-td">
+                                        <Button type="submit" disabled={this.state.disableButton} onClick={this.makeOrder} >Make Order</Button>
+                                </td>
+                                </tr>
+                            </tbody>
+                        </Table>
+                : "Loading"}
             </div>
         )
     }

@@ -7,8 +7,8 @@ function PriceItem(props) {
     return(
         <tr key={post.id}>
             <td>{post.id}</td>
-            <td>{post.naziv}</td>
-            <td>{post.mera}</td>
+            <td>{post.goodsOrServices.name}</td>
+            <td>{post.goodsOrServices.unit}</td>
             <td className="ammount-td">
                 <FormControl 
                     type="number"

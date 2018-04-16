@@ -14,6 +14,7 @@ class Goods extends Component {
         }
 
         this.handleChange = this.handleChange.bind(this);
+        this.handleTextChange = this.handleTextChange.bind(this);
     };
 
     handleChange(event, name) {
@@ -23,6 +24,13 @@ class Goods extends Component {
             disabled: false,
             checkboxes,
         })
+    }
+
+    handleTextChange(event) {
+        const el = event.target.value;
+        if (el.length > 0) { 
+            this.setState({ disableButton: false })
+        }
     }
 
     componentWillMount() {
@@ -44,6 +52,27 @@ class Goods extends Component {
         })
     }
 
+    addToPriceLIst() {
+        let json = {
+            "id": 4,
+            "price": 100,
+            "pricelistId": 1,
+            "goodsOrServices": 3
+        };
+        fetch('/api/pricelistitems', {
+            method: 'POST',
+            headers : { 
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify(json)
+        }).then(function(response) {
+            return response.json();
+        }).then(function(data) {
+            console.log(data);
+        });
+    }
+
     renderGoods(posts) {
         const checkboxes = this.state.checkboxes;
         const po = posts.map((post) => {
@@ -56,6 +85,7 @@ class Goods extends Component {
                     post={post}
                     changeCallback={this.handleChange}
                     checked={checkboxes[`check-${post.id}`]}
+                    changeTextCallback={this.handleTextChange}
                 />
             );
         })
@@ -71,17 +101,18 @@ class Goods extends Component {
                             <th>#</th>
                             <th>Name</th>
                             <th>Unit</th>
+                            <th>Price</th>
                             <th>Add to Price List</th>
                         </tr>
                     </thead>
                     <tbody>  
                         {this.renderGoods(this.state.posts)}
                         <tr>
-                            <td colSpan="3">
+                            <td colSpan="4">
                                 <p></p>
                             </td>
                             <td className="submit-td">
-                                <Button type="submit" disabled>Add to cart</Button>
+                                <Button type="submit" disabled={this.state.disableButton} onClick={this.addToPriceLIst} >Add to Price List</Button>
                             </td>
                         </tr>
                     </tbody>
