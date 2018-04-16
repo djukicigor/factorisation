@@ -33,6 +33,7 @@ class Orders extends Component {
 
     renderWaitingOrders(posts) {
         const po = posts.map((post) => {
+            console.log(post)
             let order = null;
             if(post.invoiceStatus == 1) {
                 order = <Order

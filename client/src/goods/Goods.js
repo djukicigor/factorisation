@@ -152,7 +152,6 @@ class Goods extends Component {
             return results.json();
         })
         .then(data => {
-            console.log(data)
             const posts = data;
             this.setState({
                 posts,
@@ -166,7 +165,7 @@ class Goods extends Component {
         let items = [];
         for (let number = 1; number <= this.state.numberOfPages; number++) {
             items.push(
-                <Pagination.Item onClick={this.changePage.bind(this)} active={number === active}>{number}</Pagination.Item>
+                <Pagination.Item onClick={this.changePage.bind(this)} key={number} active={number === active}>{number}</Pagination.Item>
             );
         }
 

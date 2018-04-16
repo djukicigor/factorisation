@@ -11,11 +11,10 @@ class LogIn extends Component {
             redirect: false,
             username:"",
             password:"",
-            checked: false
+            selectedOption: '' 
         }
 
         this.submitLogin = this.submitLogin.bind(this);
-        this.changeType = this.changeType.bind(this);
     };
 
     handleUsernameChange(e) {
@@ -25,10 +24,9 @@ class LogIn extends Component {
     handlePasswordChange(e) {
         this.setState({password: e.target.value});
     };
-
-    changeType() {
-        this.state.checked = !this.state.checked;
-        console.log(this.state.checked)
+    
+    handleOnChange(e) {
+        this.setState({ selectedOption: e.target.value});
     }
     
     submitLogin(e) {
@@ -36,35 +34,51 @@ class LogIn extends Component {
         e.preventDefault();
         let username = this.state.username;
         let password = this.state.password;
-        let checked = this.state.checked;
+        let type = this.state.selectedOption;
+        let data ={id:0,}
 
-        console.log(checked)
 
         let parseJson = {
             "username": username,
             "password": password
         }
-        let url = '/api/businesspartners/login';
-        fetch(url, {
-            method: 'POST',
-            headers : {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-            },
-            body: JSON.stringify(parseJson)
-        }).then(function(response) {
-            return response.json();
-        }).then(function(data) {
-            // sessionStorage.setItem('id', data.id);
-            // sessionStorage.setItem('user', data.name);
-            // sessionStorage.setItem('type', 'company');
-            self.setState({
-                disableButton: true,
-                buttonBlocked: true,
-                submitText: "Added to Price List",
-                redirect: true
-            })
-        });
+        if(username != "" || password != ""){
+            let url = (type == 'company') ? '/api/companies/login' : '/api/businesspartners/login';
+            fetch(url, {
+                method: 'POST',
+                headers : {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(parseJson)
+            }).then(function(response) {
+                if (!response.ok) {
+                    throw Error(response.statusText);
+                }
+                console.log(response)
+                return response;
+            }).then(function(response) {
+                    console.log("ok");
+                    return response.json();
+                }).catch(function(error) {
+                    console.log(error);
+            }).then(function(data) {
+                if(data){
+                    sessionStorage.setItem('id', data.id);
+                    sessionStorage.setItem('user', data.name);
+                    sessionStorage.setItem('type', 'company');
+                    self.setState({
+                        redirect: true
+                    })
+                }
+                else{
+                    alert("wrong login");
+                }
+            });
+        }
+        else{
+            alert("Username Or Password Empty")
+        }
     }
 
     render() {
@@ -111,15 +125,17 @@ class LogIn extends Component {
                                 <Radio 
                                     name="radioGroup" 
                                     inline
-                                    checked={this.state.selectedOption === 'option1'} 
-                                    onChange={this.handleOptionChange} >
+                                    value="business"
+                                    onChange={(e) => this.handleOnChange(e)}
+                                    selected={this.state.selectedOption} >
                                     Business Partner
                                 </Radio>{' '}
                                 <Radio 
                                     name="radioGroup" 
+                                    value="company"
                                     inline
-                                    checked={this.state.selectedOption === 'option1'} 
-                                    onChange={this.handleOptionChange} >
+                                    onChange={(e) => this.handleOnChange(e)}
+                                    selected={this.state.selectedOption} >
                                     Company
                                 </Radio>{' '}
                             </FormGroup>
@@ -141,3 +157,25 @@ class LogIn extends Component {
 }
 
 export default LogIn;
+
+//  handleClick() {
+//     console.log('submitted option', this.state.selectedOption);
+//   }
+
+//   handleOnChange(e) {
+//     console.log('selected option', e.target.value);
+//     this.setState({ selectedOption: e.target.value});
+//   }
+
+//   render() {
+//     return (
+//       <div className="poll">
+//         {this.props.model.question}
+//         <PollOption
+//           options={this.props.model.choices}
+//           onChange={(e) => this.handleOnChange(e)}
+//           selected={this.state.selectedOption} />
+//         <button onClick={() => this.handleClick()}>Vote!</button>
+//       </div>
+//     );
+//   }

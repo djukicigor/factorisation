@@ -20,13 +20,13 @@ function InvoiceContent(props) {
     let pending = (post.invoiceStatus == 1) ? (
         <div>
             <Button
-                addClass="approve-btn"
+                className="approve-btn"
                 type="button"
                 onClick={(e) => props.invoiceForward(e, post, 2)}>
                 Approve!
             </Button>
             <Button
-                addClass="approve-btn"
+                className="reject-btn"
                 type="button"
                 onClick={(e) => props.invoiceForward(e, post, 0)}>
                 Reject!
