@@ -33,7 +33,13 @@ function InvoiceContent(props) {
             </Button>
         </div>
     ) : <div></div>;
-
+    let buttons;
+    if(!props.buttonsState) {
+        buttons = (sessionStorage.getItem('type') == 'company') ? pending : <div></div>;
+    }
+    else{
+        buttons = (<div></div>)
+    }
     if(company) {
         invoiceItems = post.invoice_Items.map((item, index) =>
             <tr key={index}>
@@ -234,7 +240,7 @@ function InvoiceContent(props) {
                             {status}
                         </Col>
                         <Col md={4}>
-                            {pending}
+                            {buttons}
                         </Col>
                         <Col className="total-labels" md={2}>
                             <p><strong> Total Base: </strong></p>

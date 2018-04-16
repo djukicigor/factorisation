@@ -8,7 +8,10 @@ class Invoice extends Component {
         super();
         this.state = {
             post: {},
+            buttonsState: false
         }
+
+        this.invoiceForwarded = this.invoiceForwarded.bind(this);
     };
 
     componentWillMount() {
@@ -32,6 +35,7 @@ class Invoice extends Component {
 
     invoiceForwarded(event, post, type) {
         console.log("doso/" + post.id +"/" +type);
+        this.setState({buttonsState: true});
         let id = parseInt(post.id);
         let parseJson = {
             "id": id,
@@ -61,6 +65,7 @@ class Invoice extends Component {
                 <InvoiceContent
                     key={this.state.post.id}
                     post={this.state.post}
+                    buttonsState={this.state.buttonsState}
                     invoiceForward={this.invoiceForwarded}
                 />
             </div>
