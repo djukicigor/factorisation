@@ -250,6 +250,12 @@ public class TestData {
 		Pricelist pricelist5 = new Pricelist(date(), company5);
 		pricelistService.save(pricelist5);
 		
+		Pricelist pricelist6 = new Pricelist(date(), company6);
+		pricelistService.save(pricelist6);
+		
+		Pricelist pricelist7 = new Pricelist(date(), company7);
+		pricelistService.save(pricelist7);
+		
 		PricelistItems pricelistItems1 = new PricelistItems(100, pricelist1, goodsOrServices1);
 		pricelistItemsService.save(pricelistItems1);
 		
@@ -294,6 +300,12 @@ public class TestData {
 		
 		PricelistItems pricelistItems15 = new PricelistItems(600, pricelist5, goodsOrServices15);
 		pricelistItemsService.save(pricelistItems15);
+		
+		PricelistItems pricelistItems16 = new PricelistItems(700, pricelist6, goodsOrServices16);
+		pricelistItemsService.save(pricelistItems16);
+		
+		PricelistItems pricelistItems17 = new PricelistItems(800, pricelist7, goodsOrServices17);
+		pricelistItemsService.save(pricelistItems17);
 		
 		Invoice invoice1 = new Invoice("1", date(), date(), 100, 20, 120, 0, company1, businessYear1, businessPartner1);
 		invoiceService.save(invoice1);
