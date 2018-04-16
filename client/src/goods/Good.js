@@ -9,6 +9,14 @@ function Good(props) {
             <td>{post.id}</td>
             <td>{post.name}</td>
             <td>{post.unit}</td>
+            <td className="price-td">
+                <FormControl 
+                    type="number"
+                    placeholder="Price" 
+                    disabled={!props.checked}
+                    onChange={props.changeTextCallback.bind(this)}
+                />
+            </td>
             <td>
             <FormControl
                 name={name}
