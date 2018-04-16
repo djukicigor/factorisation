@@ -7,8 +7,8 @@ function Good(props) {
     return(
         <tr>
             <td>{post.id}</td>
-            <td>{post.naziv}</td>
-            <td>{post.mera}</td>
+            <td>{post.name}</td>
+            <td>{post.unit}</td>
             <td>
             <FormControl
                 name={name}
