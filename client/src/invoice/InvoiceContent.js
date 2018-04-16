@@ -1,5 +1,6 @@
 import React from 'react';
 import {render} from 'react-dom';
+import Moment from 'react-moment';
 import { Well, Grid, Row, Col, Table, Glyphicon } from 'react-bootstrap';
 
 function InvoiceContent(props) {
@@ -76,7 +77,7 @@ function InvoiceContent(props) {
                         <Col md={6}></Col>
                         <Col md={3}>
                             <span>
-                                {company.number}
+                                Phone: {company.number}
                             </span>
                         </Col>
                     </Row>
@@ -98,7 +99,7 @@ function InvoiceContent(props) {
                             <p>Buyer id:</p>
                         </Col>
                         <Col className="right-col" md={2}>
-                            <p>{post.invoiceDate}</p>
+                            <p><Moment unix format="DD MMM YYYY">{post.invoiceDate}</Moment></p>
                             <p>{company.city.name}</p>
                             <p>{post.businessPartner.id}</p>
                         </Col>

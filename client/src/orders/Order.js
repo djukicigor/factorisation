@@ -1,4 +1,5 @@
 import React from 'react';
+import Moment from 'react-moment';
 import { BrowserRouter as Router, Link } from 'react-router-dom';
 import { Well, Grid, Row, Col } from 'react-bootstrap';
 
@@ -16,7 +17,7 @@ function Order(props) {
                             Company: {post.company.name}
                         </Col>
                         <Col md={3}>
-                            Date: {post.invoiceDate}
+                            <Moment unix>{post.invoiceDate}</Moment>
                         </Col>
                         <Col md={3}>
                             Total: {post.paymentAmount}            

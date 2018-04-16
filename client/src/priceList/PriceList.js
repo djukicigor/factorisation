@@ -41,7 +41,7 @@ class PriceList extends Component {
     handleTextChange(event, post) {
         const el = event.target.value;
         let index = this.state.added.indexOf(post);
-        this.state.added[index].price = event.target.value; 
+        this.state.added[index].amount = event.target.value; 
         if (el.length > 0 && !this.state.buttonBlocked) { 
             this.setState({ disableButton: false })
         }
@@ -75,6 +75,7 @@ class PriceList extends Component {
             if(!element.price) checking = false;
         });
         if(checking){
+            let jsonList = []
             this.state.added.forEach(function(element) {
                 console.log(element)
                 let parseJson = {
@@ -88,22 +89,23 @@ class PriceList extends Component {
                     "businessPartnerId": 1
                 }
                 console.log(parseJson)
-                fetch('/api/invoiceitems', {
-                    method: 'POST',
-                    headers : {
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json'
-                    },
-                    body: JSON.stringify(parseJson)
-                }).then(function(response) {
-                    return response.json();
-                }).then(function(data) {
-                    self.setState({
-                        disableButton: true,
-                        buttonBlocked: true,
-                        submitText: "Added to Price List",
-                    })
-                });
+                jsonList.push(parseJson);
+            });
+            fetch('/api/invoiceitems', {
+                method: 'POST',
+                headers : {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(jsonList)
+            }).then(function(response) {
+                return response.json();
+            }).then(function(data) {
+                self.setState({
+                    disableButton: true,
+                    buttonBlocked: true,
+                    submitText: "Added to Price List",
+                })
             });
         }
         else {
