@@ -148,6 +148,17 @@ public class TestData {
 		companyService.save(company5);
 		cityService.save(city1);
 		
+		Company company6 = new Company("Zeder", "Kralja Petra 39", "546879883", "021473121", "zeder.doo@gmail.com", "logo6", "admin6", "12345", city1);
+		Company company7 = new Company("Famos", "Cara Lazar 29", "546879573", "021474521", "famos.doo@gmail.com", "logo7", "admin7", "12345", city1);
+		List<Company> companies = new ArrayList<Company>();
+		companies.add(company6);
+		companies.add(company7);
+		BusinessPartner businessPartner6 = new BusinessPartner("Teodora", "Vuka Brankovica 51", "564873485", "tip", "user6", "12345", city1, companies);
+		businessPartnerService.save(businessPartner6);
+		companyService.save(company6);
+		companyService.save(company7);
+		
+		
 		GoodsOrServices goodsOrServices1 = new GoodsOrServices("Hleb", "kg", groupOfGoods2);
 		goodsOrServicesService.save(goodsOrServices1);
 		
@@ -233,14 +244,56 @@ public class TestData {
 		Pricelist pricelist3 = new Pricelist(date(), company3);
 		pricelistService.save(pricelist3);
 		
+		Pricelist pricelist4 = new Pricelist(date(), company4);
+		pricelistService.save(pricelist4);
+		
+		Pricelist pricelist5 = new Pricelist(date(), company5);
+		pricelistService.save(pricelist5);
+		
 		PricelistItems pricelistItems1 = new PricelistItems(100, pricelist1, goodsOrServices1);
 		pricelistItemsService.save(pricelistItems1);
 		
-		PricelistItems pricelistItems2 = new PricelistItems(100, pricelist1, goodsOrServices2);
+		PricelistItems pricelistItems2 = new PricelistItems(200, pricelist1, goodsOrServices2);
 		pricelistItemsService.save(pricelistItems2);
 		
-		PricelistItems pricelistItems3 = new PricelistItems(100, pricelist3, goodsOrServices3);
+		PricelistItems pricelistItems3 = new PricelistItems(300, pricelist1, goodsOrServices3);
 		pricelistItemsService.save(pricelistItems3);
+		
+		PricelistItems pricelistItems4 = new PricelistItems(400, pricelist2, goodsOrServices4);
+		pricelistItemsService.save(pricelistItems4);
+		
+		PricelistItems pricelistItems5 = new PricelistItems(500, pricelist2, goodsOrServices5);
+		pricelistItemsService.save(pricelistItems5);
+		
+		PricelistItems pricelistItems6 = new PricelistItems(600, pricelist2, goodsOrServices6);
+		pricelistItemsService.save(pricelistItems6);
+		
+		PricelistItems pricelistItems7 = new PricelistItems(700, pricelist3, goodsOrServices7);
+		pricelistItemsService.save(pricelistItems7);
+		
+		PricelistItems pricelistItems8 = new PricelistItems(800, pricelist3, goodsOrServices8);
+		pricelistItemsService.save(pricelistItems8);
+		
+		PricelistItems pricelistItems9 = new PricelistItems(900, pricelist3, goodsOrServices9);
+		pricelistItemsService.save(pricelistItems9);
+		
+		PricelistItems pricelistItems10 = new PricelistItems(100, pricelist4, goodsOrServices10);
+		pricelistItemsService.save(pricelistItems10);
+		
+		PricelistItems pricelistItems11 = new PricelistItems(200, pricelist4, goodsOrServices11);
+		pricelistItemsService.save(pricelistItems11);
+		
+		PricelistItems pricelistItems12 = new PricelistItems(300, pricelist4, goodsOrServices12);
+		pricelistItemsService.save(pricelistItems12);
+		
+		PricelistItems pricelistItems13 = new PricelistItems(400, pricelist5, goodsOrServices13);
+		pricelistItemsService.save(pricelistItems13);
+		
+		PricelistItems pricelistItems14 = new PricelistItems(500, pricelist5, goodsOrServices14);
+		pricelistItemsService.save(pricelistItems14);
+		
+		PricelistItems pricelistItems15 = new PricelistItems(600, pricelist5, goodsOrServices15);
+		pricelistItemsService.save(pricelistItems15);
 		
 		Invoice invoice1 = new Invoice("1", date(), date(), 100, 20, 120, 0, company1, businessYear1, businessPartner1);
 		invoiceService.save(invoice1);

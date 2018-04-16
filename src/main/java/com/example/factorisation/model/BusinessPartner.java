@@ -85,6 +85,17 @@ public class BusinessPartner {
 		this.password = password;
 		this.city = city;
 	}
+	
+	public BusinessPartner(String name, String address, String pib, String type, String username, String password, City city, List<Company> companies) {
+		this.name = name;
+		this.address = address;
+		this.pib = pib;
+		this.type = type;
+		this.username = username;
+		this.password = password;
+		this.city = city;
+		this.companies = companies;
+	}
 
 	public Long getId() {
 		return id;
