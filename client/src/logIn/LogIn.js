@@ -66,7 +66,12 @@ class LogIn extends Component {
                 if(data){
                     sessionStorage.setItem('id', data.id);
                     sessionStorage.setItem('user', data.name);
-                    sessionStorage.setItem('type', 'company');
+                    if(type == 'company') {
+                        sessionStorage.setItem('type', 'company');
+                    }
+                    else {
+                        sessionStorage.setItem('type', 'businessPartner');
+                    }
                     self.setState({
                         redirect: true
                     })

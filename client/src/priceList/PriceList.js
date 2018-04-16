@@ -75,7 +75,6 @@ class PriceList extends Component {
         if(checking){
             let jsonList = []
             this.state.added.forEach(function(element) {
-                console.log(element)
                 let parseJson = {
                     "id": element.id,
                     "amount": parseInt(element.amount),
@@ -83,8 +82,8 @@ class PriceList extends Component {
                     "percentagePDV": element.goodsOrServices.groupOfGoods.percentage,
                     "amountItems": 1,
                     "goodsOrservicesId": element.goodsOrServices.id,
-                    "companyId": 3,//parseInt(self.props.match.params.id),
-                    "pricelistId": 3,//parseInt(self.props.match.params.id),
+                    "companyId": parseInt(self.props.match.params.id),
+                    "pricelistId": parseInt(self.props.match.params.id),
                     "businessPartnerId": parseInt(sessionStorage.getItem('id')),
                 }
                 jsonList.push(parseJson);

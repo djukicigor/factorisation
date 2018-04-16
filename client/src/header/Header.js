@@ -6,7 +6,8 @@ import './header.css';
 
 const Header = () => {
     const id = parseInt(sessionStorage.getItem('id'));
-    const pricelist = (sessionStorage.getItem('type') == 'company') ? (<Link to='/companies'>Companies</Link>) : (<Link to={'/pricelist/' + id}>Price List</Link>)
+    const pricelist = (sessionStorage.getItem('type') == 'company') ? (<Link to={'/pricelist/' + id}>Price List</Link>) : (<Link to='/companies'>Companies</Link>);
+    const goods = (sessionStorage.getItem('type') == 'company') ? (<NavItem eventKey={3}> <Link to='/goods'>Goods</Link> </NavItem> ): "";
     return (
     <header>
         <Navbar>
@@ -20,11 +21,9 @@ const Header = () => {
                     {pricelist}
                 </NavItem>
                 <NavItem eventKey={2}>
-                    <Link to='/goods'>Goods</Link>
-                </NavItem>
-                <NavItem eventKey={3}>
                     <Link to='/orders'>Orders</Link>
                 </NavItem>
+                {goods}
             </Nav>
             <Link className="current" to='/logout'><Glyphicon glyph="log-out" /> Log Out</Link>
         </Navbar>
