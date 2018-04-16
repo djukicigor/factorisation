@@ -8,6 +8,7 @@ class Goods extends Component {
         super();
         this.state = {
             posts: [],
+            added: [],
             disabled: true,
             checked: false,
             checkboxes: {}
@@ -15,19 +16,32 @@ class Goods extends Component {
 
         this.handleChange = this.handleChange.bind(this);
         this.handleTextChange = this.handleTextChange.bind(this);
+        this.addToPriceList = this.addToPriceList.bind(this);
     };
 
-    handleChange(event, name) {
+    handleChange(event, name, post) {
         const checkboxes = this.state.checkboxes;
         checkboxes[name] = !checkboxes[name];
+        if(checkboxes[name]){
+            this.state.added.push(post);
+        }
+        else{
+            let index = this.state.added.indexOf(post);
+            if (index !== -1) this.state.added.splice(index, 1);
+        }
+        console.log(this.state.added);
         this.setState({
             disabled: false,
             checkboxes,
         })
     }
 
-    handleTextChange(event) {
+    handleTextChange(event, post) {
         const el = event.target.value;
+        // console.log(event.target.value)
+        let index = this.state.added.indexOf(post);
+        this.state.added[index].price = event.target.value; 
+        // console.log(this.state.added[index]);
         if (el.length > 0) { 
             this.setState({ disableButton: false })
         }
@@ -52,24 +66,27 @@ class Goods extends Component {
         })
     }
 
-    addToPriceLIst() {
-        let json = {
-            "id": 4,
-            "price": 100,
-            "pricelistId": 1,
-            "goodsOrServices": 3
-        };
-        fetch('/api/pricelistitems', {
-            method: 'POST',
-            headers : { 
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-            },
-            body: JSON.stringify(json)
-        }).then(function(response) {
-            return response.json();
-        }).then(function(data) {
-            console.log(data);
+    addToPriceList() {
+        this.state.added.forEach(function(element) {
+            console.log(element)
+            let parseJson = {
+                "id": Math.round( Math.random() * 10000),
+                "price": element.price,
+                "pricelistId": 1,
+                "goodsOrServices": element.id
+            }
+            fetch('/api/pricelistitems', {
+                method: 'POST',
+                headers : {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(parseJson)
+            }).then(function(response) {
+                return response.json();
+            }).then(function(data) {
+                console.log(data);
+            });
         });
     }
 
@@ -112,7 +129,12 @@ class Goods extends Component {
                                 <p></p>
                             </td>
                             <td className="submit-td">
-                                <Button type="submit" disabled={this.state.disableButton} onClick={this.addToPriceLIst} >Add to Price List</Button>
+                                <Button 
+                                    type="submit" 
+                                    disabled={this.state.disableButton} 
+                                    onClick={this.addToPriceList}>
+                                        Add to Price List
+                                </Button>
                             </td>
                         </tr>
                     </tbody>

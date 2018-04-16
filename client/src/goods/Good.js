@@ -14,7 +14,7 @@ function Good(props) {
                     type="number"
                     placeholder="Price" 
                     disabled={!props.checked}
-                    onChange={props.changeTextCallback.bind(this)}
+                    onChange={(e) => props.changeTextCallback(e, post)}
                 />
             </td>
             <td>
@@ -22,7 +22,7 @@ function Good(props) {
                 name={name}
                 type="checkbox"
                 checked={props.checked}
-                onChange={(e) => props.changeCallback(e, name)}
+                onChange={(e) => props.changeCallback(e, name, post)}
             />
             </td>
         </tr>
