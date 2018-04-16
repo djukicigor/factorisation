@@ -11,6 +11,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.Pattern;
+
+import org.hibernate.validator.constraints.NotBlank;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -21,6 +24,8 @@ public class GroupOfGoods {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 	
+	@NotBlank(message="Name cannot be empty")
+	@Pattern(regexp="^[a-zA-Z\\s]+$", message="Name can contain only letters")
 	@Column(name="Name", columnDefinition="VARCHAR(20)")
 	private String name;
 	

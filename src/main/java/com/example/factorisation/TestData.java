@@ -107,15 +107,16 @@ public class TestData {
 		GroupOfGoods groupOfGoods3 = new GroupOfGoods("Pice", 15);
 		groupOfGoodsService.save(groupOfGoods3);
 		
-		BusinessPartner businessPartner1 = new BusinessPartner("Zoran", "Veljka Petrovica 8", "123456789", "tip1", "user1", "12345", city5);
+		BusinessPartner businessPartner1 = new BusinessPartner("Zoran", "Veljka Petrovica 8", "123456789", "tip", "user1", "12345", city5);
 		Company company1 = new Company("Telsat", "Servo Mihalja 10", "123456789", "021468630", "telsat.doo@gmail.com", "logo1", "admin1", "12345", city5);
+
 		
 		businessPartner1.addCompany(company1);
 		businessPartnerService.save(businessPartner1);
 		companyService.save(company1);
 		cityService.save(city5);
 		
-		BusinessPartner businessPartner2 = new BusinessPartner("Goran", "Turgenjeva 4", "987654321", "tip2", "user2", "12345", city4);
+		BusinessPartner businessPartner2 = new BusinessPartner("Goran", "Turgenjeva 4", "987654321", "tip", "user2", "12345", city4);
 		Company company2 = new Company("Vega", "Dragise Brasovana 2", "987654321", "021456987", "vega.doo@gmail.com", "logo2", "admin2", "12345", city4);
 		
 		businessPartner2.addCompany(company2);
@@ -123,7 +124,7 @@ public class TestData {
 		companyService.save(company2);
 		cityService.save(city4);
 		
-		BusinessPartner businessPartner3 = new BusinessPartner("Bojan", "Puskinova 55", "564879213", "tip3", "user3", "12345", city3);
+		BusinessPartner businessPartner3 = new BusinessPartner("Bojan", "Puskinova 55", "564879213", "tip", "user3", "12345", city3);
 		Company company3 = new Company("Bambi", "Kralja Aleksandra 9", "546879213", "021478521", "bambi.doo@gmail.com", "logo3", "admin3", "12345", city3);
 		
 		businessPartner3.addCompany(company3);
@@ -134,7 +135,13 @@ public class TestData {
 		GoodsOrServices goodsOrServices1 = new GoodsOrServices("Hleb", "kg", groupOfGoods1);
 		goodsOrServicesService.save(goodsOrServices1);
 		
+<<<<<<< HEAD
 		GoodsOrServices goodsOrServices2 = new GoodsOrServices("Fanta", "kom", groupOfGoods2);
+=======
+		
+		GoodsOrServices goodsOrServices2 = new GoodsOrServices("Ktistina", "kom", groupOfGoods2);
+
+>>>>>>> 6564ec1fe1dbae01d1d4890eed5185edcfce2d7b
 		goodsOrServicesService.save(goodsOrServices2);
 		
 		GoodsOrServices goodsOrServices3 = new GoodsOrServices("Pegla", "kom", groupOfGoods3);
