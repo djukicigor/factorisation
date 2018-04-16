@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Table, Button } from 'react-bootstrap';
+import { Table, Button, Pagination,  } from 'react-bootstrap';
 import './goods.css';
 import Good from './Good.js';
 
@@ -14,7 +14,9 @@ class Goods extends Component {
             buttonBlocked: false,
             checked: false,
             submitText: "Add to Price List",
-            checkboxes: {}
+            checkboxes: {},
+            active: 1,
+            numberOfPages: 0
         }
 
         this.handleChange = this.handleChange.bind(this);
@@ -41,15 +43,15 @@ class Goods extends Component {
     handleTextChange(event, post) {
         const el = event.target.value;
         let index = this.state.added.indexOf(post);
-        this.state.added[index].price = event.target.value; 
-        if (el.length > 0 && !this.state.buttonBlocked) { 
+        this.state.added[index].price = event.target.value;
+        if (el.length > 0 && !this.state.buttonBlocked) {
             this.setState({ disableButton: false })
         }
     }
 
     componentWillMount() {
-        fetch('/api/goodsorservices/', {
-            headers : { 
+        fetch('/api/goodsorservices/getPages/0', {
+            headers : {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
             }
@@ -58,9 +60,25 @@ class Goods extends Component {
             return results.json();
         })
         .then(data => {
+            console.log(data)
             const posts = data;
             this.setState({
                 posts,
+            });
+        })
+        fetch('/api/goodsorservices/getPages', {
+            headers : {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            }
+        })
+        .then(results => {
+            return results.json();
+        })
+        .then(data => {
+            const numberOfPages = data;
+            this.setState({
+                numberOfPages,
             });
         })
     }
@@ -108,7 +126,7 @@ class Goods extends Component {
             if (!checkboxes[`check-${post.id}`]) {
                 checkboxes[`check-${post.id}`] = false;
             }
-            return( 
+            return(
                 <Good
                     key={post.id}
                     post={post}
@@ -119,6 +137,44 @@ class Goods extends Component {
             );
         })
         return po;
+    }
+
+    changePage(e) {
+        const val = parseInt(e.target.text) - 1;
+        const self = this;
+        fetch('/api/goodsorservices/getPages/' + val, {
+            headers : {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            }
+        })
+        .then(results => {
+            return results.json();
+        })
+        .then(data => {
+            console.log(data)
+            const posts = data;
+            this.setState({
+                posts,
+                active: val + 1,
+            });
+        })
+    }
+
+    pagination() {
+        let active = this.state.active;
+        let items = [];
+        for (let number = 1; number <= this.state.numberOfPages; number++) {
+            items.push(
+                <Pagination.Item onClick={this.changePage.bind(this)} active={number === active}>{number}</Pagination.Item>
+            );
+        }
+
+        return (
+            <div>
+                <Pagination bsSize="large">{items}</Pagination>
+            </div>
+        );
     }
 
     render() {
@@ -135,16 +191,16 @@ class Goods extends Component {
                                 <th>Add to Price List</th>
                             </tr>
                         </thead>
-                        <tbody>  
+                        <tbody>
                             {this.renderGoods(this.state.posts)}
                             <tr>
                                 <td colSpan="4">
                                     <p></p>
                                 </td>
                                 <td className="submit-td">
-                                    <Button 
-                                        type="button" 
-                                        disabled={this.state.disableButton} 
+                                    <Button
+                                        type="button"
+                                        disabled={this.state.disableButton}
                                         onClick={this.addToPriceList}>
                                             {this.state.submitText}
                                     </Button>
@@ -152,6 +208,7 @@ class Goods extends Component {
                             </tr>
                         </tbody>
                     </Table>
+                    {this.pagination()}
                 </form>
             </div>
         )
