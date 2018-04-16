@@ -148,6 +148,15 @@ public class TestData {
 		companyService.save(company5);
 		cityService.save(city1);
 		
+		Company company6 = new Company("Zeder", "Kralja Petra 39", "546879883", "021473121", "zeder.doo@gmail.com", "logo6", "admin6", "12345", city1);
+		Company company7 = new Company("Famos", "Cara Lazar 29", "546879573", "021474521", "famos.doo@gmail.com", "logo7", "admin7", "12345", city1);
+		List<Company> companies = new ArrayList<Company>();
+		companies.add(company6);
+		companies.add(company7);
+		BusinessPartner businessPartner6 = new BusinessPartner("Teodora", "Vuka Brankovica 51", "564873485", "tip", "user6", "12345", city1, companies);
+		businessPartnerService.save(businessPartner6);
+		companyService.save(company6);
+		companyService.save(company7);
 		
 		
 		GoodsOrServices goodsOrServices1 = new GoodsOrServices("Hleb", "kg", groupOfGoods2);
