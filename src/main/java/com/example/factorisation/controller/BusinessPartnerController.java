@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.factorisation.model.BusinessPartner;
+import com.example.factorisation.model.Company;
 import com.example.factorisation.service.BusinessPartnerService;
 
 @RestController
@@ -58,6 +59,22 @@ public class BusinessPartnerController {
 		BusinessPartner savedBusinessPartner = businessPartnerService.save(newBusinessPartner);
 
 		return new ResponseEntity<>(savedBusinessPartner, HttpStatus.CREATED);
+	}
+	
+	@RequestMapping(value="/login", method = RequestMethod.POST, consumes = "application/json")
+	public ResponseEntity<?> login(@Validated @RequestBody BusinessPartner newPartner, Errors errors) {
+		if(errors.hasErrors()) {
+			return new ResponseEntity<String>(errors.getAllErrors().toString(), HttpStatus.BAD_REQUEST);
+		}
+		
+		List<BusinessPartner> businessPartners = businessPartnerService.findAll();
+		
+		for (BusinessPartner businessPartner : businessPartners) {
+			if (businessPartner.getUsername().equals(newPartner.getUsername()) && businessPartner.getPassword().equals(newPartner.getPassword())) {
+				return new ResponseEntity<>(businessPartner, HttpStatus.CREATED);
+			}
+		}
+		return new ResponseEntity<String>("Wrong username or password", HttpStatus.BAD_REQUEST);
 	}
 	
 	@RequestMapping(method = RequestMethod.PUT, value = "/{id}", consumes = "application/json")

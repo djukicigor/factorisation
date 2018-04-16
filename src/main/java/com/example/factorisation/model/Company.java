@@ -27,16 +27,13 @@ public class Company {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 	
-	@NotBlank(message="Name cannot be empty")
 	@Pattern(regexp="^[a-zA-Z\\s]+$", message="Name can contain only letters")
 	@Column(name="Name", columnDefinition="VARCHAR(40)")
 	private String name;
 	
-	@NotBlank(message="Address cannot be empty")
 	@Column(name="Address", columnDefinition="VARCHAR(40)")
 	private String address;
 	
-	@NotBlank(message="PIB cannot be empty")
 	@Pattern(regexp="^[0-9]+", message="PIB can contain only numbers")
 	@Column(name="PIB", columnDefinition="CHAR(9)")
 	private String pib;
