@@ -77,6 +77,10 @@ public class Invoice {
 		this.businessPartner = businessPartner;
 
 	}
+	
+	public Invoice(int invoiceStatus) {
+		this.invoiceStatus = invoiceStatus;
+	}
 
 	public Long getId() {
 		return id;

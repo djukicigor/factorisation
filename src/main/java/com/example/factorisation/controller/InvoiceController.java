@@ -66,12 +66,14 @@ public class InvoiceController {
 	@RequestMapping(method = RequestMethod.PUT, value = "/{id}", consumes = "application/json")
 	public ResponseEntity<Invoice> edit(@RequestBody Invoice invoice,
 			@PathVariable Long id) {
-
+		
 		if (id != invoice.getId()) {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
+		Invoice changedInvoice = invoiceService.findOne(id);
+		changedInvoice.setInvoiceStatus(invoice.getInvoiceStatus());
 
-		Invoice persisted = invoiceService.save(invoice);
+		Invoice persisted = invoiceService.save(changedInvoice);
 
 		return new ResponseEntity<>(persisted, HttpStatus.OK);
 	}
