@@ -1,3 +1,8 @@
+.invoice-content.container {
+    padding: 0;
+    width: 100%;
+}
+
 .invoice-content p {
     font-size: 16px;
 }
@@ -35,4 +40,27 @@
 
 .invoice-content .total-price p,.invoice-content .total-price h4 {
     text-align: right;
+}
+
+.invoice-content .invoice-rejected {
+    color: #ed213c;
+    font-size: 35px;
+    border: 4px solid;
+    padding: 20px 10px;
+    border-radius: 10px;
+}
+
+.invoice-content .invoice-approved {
+    color: #2bd35e;
+    font-size: 35px;
+    border: 4px solid;
+    padding: 20px 10px;
+    border-radius: 10px;
+}
+
+.invoice-content .invoice-pending {
+    font-size: 35px;
+    border: 4px solid;
+    padding: 20px 10px;
+    border-radius: 10px;
 }

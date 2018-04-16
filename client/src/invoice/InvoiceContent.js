@@ -1,6 +1,6 @@
 import React from 'react';
 import {render} from 'react-dom';
-import { Well, Grid, Row, Col, Table } from 'react-bootstrap';
+import { Well, Grid, Row, Col, Table, Glyphicon } from 'react-bootstrap';
 
 function InvoiceContent(props) {
     let post = props.post;
@@ -9,6 +9,14 @@ function InvoiceContent(props) {
     let totalPDV = 0;
     let totalBase = 0;
     let totalPrice = 0;
+    let status = (post.invoiceStatus == 0) ? (
+        <h4 className="invoice-rejected"><Glyphicon glyph="remove" /> REJECTED</h4>
+      ) : (post.invoiceStatus == 2) ? (
+        <h4 className="invoice-approved"><Glyphicon glyph="ok" /> APPROVED</h4>
+      ): (
+        <h4 className="invoice-pending"><Glyphicon glyph="file" /> PENDING</h4>          
+    );
+
     if(company) {
         invoiceItems = post.invoice_Items.map((item, index) =>
             <tr key={index}>
@@ -182,29 +190,34 @@ function InvoiceContent(props) {
                     </Row>
                     <br/>
                     <Row>
-                        <Table className="invoice-items" striped bordered condensed>
-                            <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>Name</th>
-                                    <th>Unit</th>
-                                    <th>Ammount</th>
-                                    <th>Unit Price</th>
-                                    <th>Tax(%)</th>
-                                    <th>Tax Per Piece</th>
-                                    <th>Total Piece Price</th>
-                                    <th>Total Base Price</th>
-                                    <th>Total Tax</th>
-                                    <th>Total Price</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {invoiceItems}
-                            </tbody>
-                        </Table>
+                        <Col md={12}>
+                            <Table className="invoice-items" striped bordered condensed>
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Name</th>
+                                        <th>Unit</th>
+                                        <th>Ammount</th>
+                                        <th>Unit Price</th>
+                                        <th>Tax(%)</th>
+                                        <th>Tax Per Piece</th>
+                                        <th>Total Piece Price</th>
+                                        <th>Total Base Price</th>
+                                        <th>Total Tax</th>
+                                        <th>Total Price</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {invoiceItems}
+                                </tbody>
+                            </Table>
+                        </Col>
                     </Row>
                     <Row>
-                        <Col md={8}></Col>
+                        <Col md={4}>
+                            {status}
+                        </Col>
+                        <Col md={4}></Col>
                         <Col className="total-labels" md={2}>
                             <p><strong> Total Base: </strong></p>
                             <p><strong> Total Tax: </strong></p>
