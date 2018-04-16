@@ -11,8 +11,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.factorisation.converter.PricelistItemsDTOtoPricelistItems;
 import com.example.factorisation.model.PricelistItems;
 import com.example.factorisation.service.PricelistItemsService;
+
+import dto.PricelistItemsDTO;
 
 @RestController
 @RequestMapping(value = "/api/pricelistitems")
@@ -20,6 +23,9 @@ public class PricelistItemsController {
 
 	@Autowired
 	private PricelistItemsService pricelistItemsService;
+	
+	@Autowired
+	private PricelistItemsDTOtoPricelistItems toPricelistItems;
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<List<PricelistItems>> getPricelistItems() {
@@ -47,9 +53,9 @@ public class PricelistItemsController {
 	}
 	
 	@RequestMapping(method = RequestMethod.POST, consumes = "application/json")
-	public ResponseEntity<PricelistItems> add(@RequestBody PricelistItems newPricelistItems) {
+	public ResponseEntity<PricelistItems> add(@RequestBody PricelistItemsDTO pricelistItemsDTO) {
 
-		PricelistItems savedPricelistItems = pricelistItemsService.save(newPricelistItems);
+		PricelistItems savedPricelistItems = pricelistItemsService.save(toPricelistItems.convert(pricelistItemsDTO));
 
 		return new ResponseEntity<>(savedPricelistItems, HttpStatus.CREATED);
 	}
