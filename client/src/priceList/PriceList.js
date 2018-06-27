@@ -14,7 +14,7 @@ class PriceList extends Component {
             disableButton: true,
             buttonBlocked: false,
             checked: false,
-            submitText: "Add to Price List",
+            submitText: "Make an Order",
         }
 
         this.handleChange = this.handleChange.bind(this);
@@ -48,7 +48,9 @@ class PriceList extends Component {
     }
 
     componentDidMount() {
-        const priceListUrl = '/api/pricelists/' + this.props.match.params.id;
+        console.log(this.props.id);
+        const priceListId = (this.props.match) ? this.props.match.params.id : this.props.priceListId;
+        const priceListUrl = '/api/pricelists/' + priceListId;
         fetch(priceListUrl, {
             headers : { 
                 'Content-Type': 'application/json',
@@ -101,7 +103,7 @@ class PriceList extends Component {
                 self.setState({
                     disableButton: true,
                     buttonBlocked: true,
-                    submitText: "Added to Price List",
+                    submitText: "Order Made",
                 })
             });
         }

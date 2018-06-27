@@ -20,7 +20,7 @@ class Main extends Component {
         <Route exact path='/' component={Home}/>
         <Route path='/companies' component={Companies}/>
         <Route path='/pricelist/:id' component={PriceList}/>
-        <Route path='/goods' component={Goods}/>
+        <Route path='/goods/:id' component={Goods}/>
         <Route path='/orders' component={Orders}/>
         <Route path='/invoice/:id' component={Invoice}/>
         <Route path='/login' component={LogIn}/>

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Table, Button, Pagination,  } from 'react-bootstrap';
 import './goods.css';
 import Good from './Good.js';
+import PriceList from '../priceList/PriceList';
 
 class Goods extends Component {
     constructor() {
@@ -92,7 +93,6 @@ class Goods extends Component {
         if(checking){
             this.state.added.forEach(function(element) {
                 let parseJson = {
-                    "id": Math.round( Math.random() * 10000),
                     "price": element.price,
                     "pricelistId": parseInt(sessionStorage.getItem('id')),
                     "goodsOrServicesId": element.id
@@ -179,6 +179,7 @@ class Goods extends Component {
     render() {
         return (
             <div className="goods-list">
+            <PriceList priceListId='1' />
                 <form>
                     <Table striped bordered condensed hover>
                         <thead>
