@@ -10,6 +10,7 @@ class Goods extends Component {
         this.state = {
             posts: [],
             added: [],
+            newItems: [],
             disabled: true,
             disableButton: true,
             buttonBlocked: false,
@@ -23,7 +24,18 @@ class Goods extends Component {
         this.handleChange = this.handleChange.bind(this);
         this.handleTextChange = this.handleTextChange.bind(this);
         this.addToPriceList = this.addToPriceList.bind(this);
+        this.addItem = this.addItem.bind(this);
     };
+
+    addItem(event, name, post) {
+        console.log(post);
+        let sendingPost = post;
+        sendingPost.goodsOrServices = {name: sendingPost.name,unit: sendingPost.unit}
+        this.state.newItems.push(sendingPost)
+        this.setState({
+            disabled: false,
+        })
+    }
 
     handleChange(event, name, post) {
         const checkboxes = this.state.checkboxes;
@@ -61,7 +73,6 @@ class Goods extends Component {
             return results.json();
         })
         .then(data => {
-            console.log(data)
             const posts = data;
             this.setState({
                 posts,
@@ -130,9 +141,8 @@ class Goods extends Component {
                 <Good
                     key={post.id}
                     post={post}
-                    changeCallback={this.handleChange}
+                    addItem={this.addItem}
                     checked={checkboxes[`check-${post.id}`]}
-                    changeTextCallback={this.handleTextChange}
                 />
             );
         })
@@ -179,7 +189,9 @@ class Goods extends Component {
     render() {
         return (
             <div className="goods-list">
-            <PriceList priceListId='1' />
+                <h3>Your Price List</h3>
+                <PriceList priceListId={this.props.match.params.id} priceListItems={this.state.newItems} />
+                <h3>List of Goods</h3>
                 <form>
                     <Table striped bordered condensed hover>
                         <thead>
@@ -187,21 +199,20 @@ class Goods extends Component {
                                 <th>#</th>
                                 <th>Name</th>
                                 <th>Unit</th>
-                                <th>Price</th>
                                 <th>Add to Price List</th>
                             </tr>
                         </thead>
                         <tbody>
                             {this.renderGoods(this.state.posts)}
                             <tr>
-                                <td colSpan="4">
+                                <td colSpan="3">
                                     <p></p>
                                 </td>
                                 <td className="submit-td">
                                     <Button
                                         type="button"
                                         disabled={this.state.disableButton}
-                                        onClick={this.addToPriceList}>
+                                        onClick={this.addItem}>
                                             {this.state.submitText}
                                     </Button>
                                 </td>

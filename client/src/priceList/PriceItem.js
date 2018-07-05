@@ -1,5 +1,5 @@
 import React from 'react';
-import { FormControl } from 'react-bootstrap';
+import { FormControl, Button } from 'react-bootstrap';
 
 function PriceItem(props) {
     const post = props.post;
@@ -8,7 +8,15 @@ function PriceItem(props) {
         <tr key={post.id}>
             <td>{post.id}</td>
             <td>{post.goodsOrServices.name}</td>
-            <td>{post.price}</td>
+            <td id='price-td'>{post.price}</td>
+            <td id='price-input-td'>
+                <FormControl 
+                    type="number"
+                    placeholder="Product price"
+                    value={post.price}
+                    onChange={(e) => props.handlePriceChange(e, post)}
+                />
+            </td>
             <td>{post.goodsOrServices.unit}</td>
             <td className="ammount-td">
                 <FormControl 
@@ -25,6 +33,13 @@ function PriceItem(props) {
                     checked={props.checked}
                     onChange={(e) => props.changeCallback(e, name, post)}
                 />
+            </td>
+            <td>
+                <Button
+                    type="button"
+                    onClick={(e) => props.removeCallback(e, name, post)}>
+                        <span className="glyphicon glyphicon-remove-sign"></span>
+                </Button>
             </td>
         </tr>
     )

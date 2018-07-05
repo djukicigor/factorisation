@@ -11,7 +11,7 @@ function InvoiceContent(props) {
     let totalBase = 0;
     let totalPrice = 0;
     let status = (post.invoiceStatus == 0) ? (
-        <h4 className="invoice-rejected"><Glyphicon glyph="remove" /> REJECTED</h4>
+        <h4 className="invoice-rejected"><Glyphicon glyph="remove" /> CANCELED</h4>
       ) : (post.invoiceStatus == 2) ? (
         <h4 className="invoice-approved"><Glyphicon glyph="ok" /> APPROVED</h4>
       ): (
@@ -29,7 +29,7 @@ function InvoiceContent(props) {
                 className="reject-btn"
                 type="button"
                 onClick={(e) => props.invoiceForward(e, post, 0)}>
-                Reject!
+                Cancel!
             </Button>
         </div>
     ) : <div></div>;
@@ -196,14 +196,6 @@ function InvoiceContent(props) {
                                         </td>
                                         <td>
                                             {company.pib}
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            Account Number
-                                        </td>
-                                        <td>
-                                            825-2555955-95
                                         </td>
                                     </tr>
                                 </tbody>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { FormControl } from 'react-bootstrap';
+import { FormControl, Button } from 'react-bootstrap';
 
 function Good(props) {
     const post = props.post;
@@ -9,21 +9,12 @@ function Good(props) {
             <td>{post.id}</td>
             <td>{post.name}</td>
             <td>{post.unit}</td>
-            <td className="price-td">
-                <FormControl 
-                    type="number"
-                    placeholder="Price" 
-                    disabled={!props.checked}
-                    onChange={(e) => props.changeTextCallback(e, post)}
-                />
-            </td>
             <td>
-            <FormControl
-                name={name}
-                type="checkbox"
-                checked={props.checked}
-                onChange={(e) => props.changeCallback(e, name, post)}
-            />
+            <Button
+                type="button"
+                onClick={(e) => props.addItem(e, name, post)}>
+                    <span className="glyphicon glyphicon-plus-sign"></span>
+            </Button>
             </td>
         </tr>
     )

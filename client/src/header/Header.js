@@ -5,8 +5,8 @@ import './header.css';
 
 const Header = () => {
     const id = parseInt(sessionStorage.getItem('id'));
-    const pricelist = (sessionStorage.getItem('type') == 'company') ? (<Link to={'/pricelist/' + id}>Price List</Link>) : (<Link to='/companies'>Companies</Link>);
-    const goods = (sessionStorage.getItem('type') == 'company') ? (<NavItem eventKey={3}> <Link to={'/goods/' + id}>Goods</Link> </NavItem> ): "";
+    const pricelist = (sessionStorage.getItem('type') === 'company') ? (<Link style={{display: 'none'}} to={'/pricelist/' + id}>Price List</Link>) : (<Link to='/companies'>Companies</Link>);
+    const goods = (sessionStorage.getItem('type') === 'company') ? (<NavItem eventKey={3}> <Link to={'/goods/' + id}>Goods</Link> </NavItem> ): "";
     return (
     <header>
         <Navbar>

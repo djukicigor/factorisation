@@ -1,3 +1,23 @@
+.price-list table tr th:nth-child(4), .price-list table tr th:last-child{
+    display: none;
+}
+
+.price-list table tr td:nth-child(4), .price-list table tr td:last-child{
+    display: none;
+}
+
+.price-list table tr th:first-child {
+    width: 70px;
+}
+
+.price-list table tr td:nth-child(3),.price-list table tr td:nth-child(4),.price-list table tr td:nth-child(5),.price-list table tr td:nth-child(6) {
+    min-width: 250px;
+}
+
+.price-list table tr:not(:last-child) td:nth-child(2) {
+    min-width: 800px;
+}
+
 .price-list .ammount-td {
     width: 300px;
 }
