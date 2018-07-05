@@ -29,7 +29,7 @@ public class GroupOfGoods {
 	@Column(name="Name", columnDefinition="VARCHAR(20)")
 	private String name;
 	
-	@Column(name="Percentage", columnDefinition="DECIMAL(3,2)")
+	@Column(name="Percentage", columnDefinition="DECIMAL(5,2)")
 	private float percentage;
 	
 	@JsonIgnore
