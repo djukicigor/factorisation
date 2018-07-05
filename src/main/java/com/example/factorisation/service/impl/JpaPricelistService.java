@@ -1,11 +1,16 @@
 package com.example.factorisation.service.impl;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.example.factorisation.model.Company;
 import com.example.factorisation.model.Pricelist;
 import com.example.factorisation.repository.PricelistRepository;
 import com.example.factorisation.service.PricelistService;
@@ -18,7 +23,15 @@ public class JpaPricelistService implements PricelistService{
 	private PricelistRepository pricelistRepository;
 	
 	public Pricelist findOne(Long id) {
-		return pricelistRepository.findOne(id);
+		List<Pricelist> allPricelists = pricelistRepository.findAll();
+		List<Pricelist> newpricelist = new ArrayList<Pricelist>();
+		for (Pricelist price : allPricelists) {
+			if (price.getCompany().getId() == id) {
+				newpricelist.add(price);
+			}
+		}
+		Collections.sort(newpricelist, (o1, o2) -> o1.getDate_of_validity().compareTo(o2.getDate_of_validity()));
+		return newpricelist.get(newpricelist.size()-1);
 	}
 	
 	@Override

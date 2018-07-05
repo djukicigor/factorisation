@@ -55,7 +55,7 @@ class PriceList extends Component {
         console.log(JSON.stringify(this.state.post));
         if(checker) {
             delete saveObject.id;
-            saveObject.date_of_validity = null;
+            saveObject.date_of_validity = new Date();
             saveObject.pricelist_Items.forEach(function(element) {
                 delete element.id;
             });
@@ -91,8 +91,8 @@ class PriceList extends Component {
     handleTextChange(event, post) {
         const el = event.target.value;
         let index = this.state.added.indexOf(post);
-        this.state.added[index].amount = event.target.value; 
-        if (el.length > 0 && !this.state.buttonBlocked) { 
+        this.state.added[index].amount = event.target.value;
+        if (el.length > 0 && !this.state.buttonBlocked) {
             this.setState({ disableButton: false })
         }
     }
@@ -107,7 +107,7 @@ class PriceList extends Component {
         const priceListId = (this.props.match) ? this.props.match.params.id : this.props.priceListId;
         const priceListUrl = '/api/pricelists/' + priceListId;
         fetch(priceListUrl, {
-            headers : { 
+            headers : {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
             }
@@ -119,7 +119,7 @@ class PriceList extends Component {
             const post = data;
             this.setState({
                 post,
-            }); 
+            });
         })
     }
 
@@ -176,7 +176,7 @@ class PriceList extends Component {
                 if (!checkboxes[`check-${item.id}`]) {
                     checkboxes[`check-${item.id}`] = false;
                 }
-                return( 
+                return(
                     <PriceItem
                         key={item.id}
                         post={item}
@@ -213,7 +213,7 @@ class PriceList extends Component {
         cachedPost = this.state.post;
         return (
             <div className="price-list">
-                {post ? 
+                {post ?
                     <Table striped bordered condensed hover>
                             <thead>
                                 <tr>
@@ -227,7 +227,7 @@ class PriceList extends Component {
                                     <th>Remove from Price List</th>
                                 </tr>
                             </thead>
-                            <tbody> 
+                            <tbody>
                                 {this.renderPriceList(this.state.post.pricelist_Items)}
                                 <tr>
                                     <td>
@@ -237,16 +237,16 @@ class PriceList extends Component {
                                         <p></p>
                                     </td>
                                     <td className="submit-td">
-                                        <Button 
-                                            type="button" 
-                                            disabled={this.state.disableButton} 
+                                        <Button
+                                            type="button"
+                                            disabled={this.state.disableButton}
                                             onClick={this.makeOrder}>
                                                 {this.state.submitText}
                                         </Button>
                                     </td>
                                     <td className="submit-td">
-                                        <Button 
-                                            type="button" 
+                                        <Button
+                                            type="button"
                                             onClick={this.saveList}>
                                                 Save Price List
                                         </Button>

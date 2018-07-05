@@ -78,6 +78,13 @@ public class Pricelist {
 		this.pricelist_Items = pricelist_Items;
 	}
 
+	@Override
+	public String toString() {
+		return "Pricelist [id=" + id + ", date_of_validity=" + date_of_validity + ", company=" + company
+				+ ", pricelist_Items=" + pricelist_Items + "]";
+	}
+	
+
 
 
 }

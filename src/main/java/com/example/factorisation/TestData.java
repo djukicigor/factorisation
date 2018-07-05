@@ -235,7 +235,7 @@ public class TestData {
 		GoodsOrServices goodsOrServices25 = new GoodsOrServices("Radio", "kom", groupOfGoods1);
 		goodsOrServicesService.save(goodsOrServices25);
 		
-		Pricelist pricelist1 = new Pricelist(date, company1);
+		Pricelist pricelist1 = new Pricelist(new Date(2015-01-01), company1);
 		pricelistService.save(pricelist1);
 		
 		Pricelist pricelist2 = new Pricelist(date, company2);
@@ -319,10 +319,10 @@ public class TestData {
 		InvoiceItems invoiceItems1 = new InvoiceItems(100, 100, 3, 80, 20, 20, 1, invoice1, goodsOrServices1);
 		invoiceItemsService.save(invoiceItems1);
 		
-		InvoiceItems invoiceItems2 = new InvoiceItems(200, 200, 6, 160, 40, 40, 2, invoice1, goodsOrServices2);
+		InvoiceItems invoiceItems2 = new InvoiceItems(200, 200, 6, 160, 40, 40, 2, invoice2, goodsOrServices2);
 		invoiceItemsService.save(invoiceItems2);
 		
-		InvoiceItems invoiceItems3 = new InvoiceItems(150, 300, 4, 230, 50, 30, 1, invoice1, goodsOrServices3);
+		InvoiceItems invoiceItems3 = new InvoiceItems(150, 300, 4, 230, 50, 30, 1, invoice3, goodsOrServices3);
 		invoiceItemsService.save(invoiceItems3);
 	}
 
