@@ -19,7 +19,7 @@ public class InvoiceItems {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 	
-	@Column(name="Amount",columnDefinition="DECIMAL(4,2)")      
+	@Column(name="Amount",columnDefinition="DECIMAL(5,2)")      
     private float amount;
 	
 	@Column(name="UnitPrice",columnDefinition="DECIMAL(6,2)")      
@@ -31,7 +31,7 @@ public class InvoiceItems {
 	@Column(name="BasePDV",columnDefinition="DECIMAL(6,2)")      
     private float basePDV;
 	
-	@Column(name="PercentagePDV",columnDefinition="DECIMAL(3,2)")      
+	@Column(name="PercentagePDV",columnDefinition="DECIMAL(4,2)")      
     private float percentagePDV;
 	
 	@Column(name="AmountPDV",columnDefinition="DECIMAL(6,2)")      

@@ -235,25 +235,25 @@ public class TestData {
 		GoodsOrServices goodsOrServices25 = new GoodsOrServices("Radio", "kom", groupOfGoods1);
 		goodsOrServicesService.save(goodsOrServices25);
 		
-		Pricelist pricelist1 = new Pricelist(date(), company1);
+		Pricelist pricelist1 = new Pricelist(date, company1);
 		pricelistService.save(pricelist1);
 		
-		Pricelist pricelist2 = new Pricelist(date(), company2);
+		Pricelist pricelist2 = new Pricelist(date, company2);
 		pricelistService.save(pricelist2);
 		
-		Pricelist pricelist3 = new Pricelist(date(), company3);
+		Pricelist pricelist3 = new Pricelist(date, company3);
 		pricelistService.save(pricelist3);
 		
-		Pricelist pricelist4 = new Pricelist(date(), company4);
+		Pricelist pricelist4 = new Pricelist(date, company4);
 		pricelistService.save(pricelist4);
 		
-		Pricelist pricelist5 = new Pricelist(date(), company5);
+		Pricelist pricelist5 = new Pricelist(date, company5);
 		pricelistService.save(pricelist5);
 		
-		Pricelist pricelist6 = new Pricelist(date(), company6);
+		Pricelist pricelist6 = new Pricelist(date, company6);
 		pricelistService.save(pricelist6);
 		
-		Pricelist pricelist7 = new Pricelist(date(), company7);
+		Pricelist pricelist7 = new Pricelist(date, company7);
 		pricelistService.save(pricelist7);
 		
 		PricelistItems pricelistItems1 = new PricelistItems(100, pricelist1, goodsOrServices1);
@@ -307,13 +307,13 @@ public class TestData {
 		PricelistItems pricelistItems17 = new PricelistItems(800, pricelist7, goodsOrServices17);
 		pricelistItemsService.save(pricelistItems17);
 		
-		Invoice invoice1 = new Invoice("1", date(), date(), 100, 20, 120, 0, company1, businessYear1, businessPartner1);
+		Invoice invoice1 = new Invoice("1", date, date, 100, 20, 120, 0, company1, businessYear1, businessPartner1);
 		invoiceService.save(invoice1);
 		
-		Invoice invoice2 = new Invoice("2", date(), date(), 200, 10, 135, 1, company2, businessYear2, businessPartner2);
+		Invoice invoice2 = new Invoice("2", date, date, 200, 10, 135, 1, company2, businessYear2, businessPartner2);
 		invoiceService.save(invoice2);
 		
-		Invoice invoice3 = new Invoice("3", date(), date(), 300, 30, 150, 2, company3, businessYear3, businessPartner3);
+		Invoice invoice3 = new Invoice("3", date, date, 300, 30, 150, 2, company3, businessYear3, businessPartner3);
 		invoiceService.save(invoice3);
 		
 		InvoiceItems invoiceItems1 = new InvoiceItems(100, 100, 3, 80, 20, 20, 1, invoice1, goodsOrServices1);
@@ -326,8 +326,6 @@ public class TestData {
 		invoiceItemsService.save(invoiceItems3);
 	}
 
-	private Date date() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
+	
 }
