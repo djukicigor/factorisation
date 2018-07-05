@@ -45,22 +45,29 @@ class PriceList extends Component {
     saveList() {
         console.log('save');
         console.log(this.state.post);
-        // const self = this;
+        let saveObject = this.state.post;
         let checker = true;
-        this.state.post.pricelist_Items.forEach(function(element) {
+        saveObject.pricelist_Items.forEach(function(element) {
             if(!element.price) {
                 checker = false;
             }
         });
         console.log(JSON.stringify(this.state.post));
         if(checker) {
+            delete saveObject.id;
+            saveObject.date_of_validity = null;
+            saveObject.pricelist_Items.forEach(function(element) {
+                delete element.id;
+            });
+            console.log(JSON.stringify(this.state.post));
+            console.log(JSON.stringify(this.state.post));
             fetch('/api/pricelists', {
                 method: 'POST',
                 headers : {
                     'Content-Type': 'application/json',
                     'Accept': 'application/json'
                 },
-                body: JSON.stringify(this.state.post)
+                body: JSON.stringify(saveObject)
             }).then(function(response) {
                 return response.json();
             }).then(function(data) {
@@ -70,42 +77,6 @@ class PriceList extends Component {
         else {
             alert('Please enter correct price');
         }
-        // if(checking){
-        //     let jsonList = []
-        //     this.state.added.forEach(function(element) {
-        //         let parseJson = {
-        //             "id": element.id,
-        //             "amount": parseInt(element.amount),
-        //             "unitPrice": parseInt(element.price),
-        //             "percentagePDV": element.goodsOrServices.groupOfGoods.percentage,
-        //             "amountItems": 1,
-        //             "goodsOrservicesId": element.goodsOrServices.id,
-        //             "companyId": parseInt(self.props.match.params.id),
-        //             "pricelistId": parseInt(self.props.match.params.id),
-        //             "businessPartnerId": parseInt(sessionStorage.getItem('id')),
-        //         }
-        //         jsonList.push(parseJson);
-        //     });
-        //     fetch('/api/invoiceitems', {
-        //         method: 'POST',
-        //         headers : {
-        //             'Content-Type': 'application/json',
-        //             'Accept': 'application/json'
-        //         },
-        //         body: JSON.stringify(jsonList)
-        //     }).then(function(response) {
-        //         return response.json();
-        //     }).then(function(data) {
-        //         self.setState({
-        //             disableButton: true,
-        //             buttonBlocked: true,
-        //             submitText: "Order Made",
-        //         })
-        //     });
-        // }
-        // else {
-        //     alert("Enter prices for all checked Goods!")
-        // }
     }
 
     handleRemove(event, name, post) {
