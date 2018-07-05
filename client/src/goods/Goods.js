@@ -30,7 +30,7 @@ class Goods extends Component {
     addItem(event, name, post) {
         console.log(post);
         let sendingPost = post;
-        sendingPost.goodsOrServices = {name: sendingPost.name,unit: sendingPost.unit}
+        sendingPost.goodsOrServices = {id: sendingPost.id, name: sendingPost.name,unit: sendingPost.unit}
         this.state.newItems.push(sendingPost)
         this.setState({
             disabled: false,
