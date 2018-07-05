@@ -1,3 +1,0 @@
-2018-06-21 23:31:50 jdbc[12]: exception
-org.h2.jdbc.JdbcSQLException: Value too long for column "PERCENTAGE DECIMAL(3, 2)": "20.00 (4)"; SQL statement:
-insert into group_of_goods (id, name, percentage) values (null, ?, ?) [22001-196]

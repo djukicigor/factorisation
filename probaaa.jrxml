@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.5.1.final using JasperReports Library version 6.5.1  -->
+<!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="probaaa" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a7de95bf-3e13-4476-8652-ccbe43610b0e">
 	<subDataset name="Buyer" uuid="cc2946c3-1318-4928-8a91-e04c507d222f">
 		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
@@ -288,6 +288,10 @@
 			<rectangle>
 				<reportElement x="430" y="159" width="120" height="40" uuid="bf38f594-8f1d-4fec-af88-617df17bd77d"/>
 			</rectangle>
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement x="430" y="29" width="100" height="20" uuid="1d7b659a-8300-4b3c-9bcd-0f1057cc3663"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
 		</band>
 	</detail>
 	<pageFooter>
