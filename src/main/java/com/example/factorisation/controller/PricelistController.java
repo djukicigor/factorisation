@@ -1,5 +1,6 @@
 package com.example.factorisation.controller;
 
+import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.factorisation.model.Pricelist;
+import com.example.factorisation.model.PricelistItems;
+import com.example.factorisation.service.PricelistItemsService;
 import com.example.factorisation.service.PricelistService;
 
 @RestController
@@ -20,6 +23,9 @@ public class PricelistController {
 
 	@Autowired
 	private PricelistService pricelistService;
+	
+	@Autowired
+	private PricelistItemsService pricelistItemsService;
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<List<Pricelist>> getPricelists() {
@@ -48,8 +54,12 @@ public class PricelistController {
 	
 	@RequestMapping(method = RequestMethod.POST, consumes = "application/json")
 	public ResponseEntity<Pricelist> add(@RequestBody Pricelist newPricelist) {
-
+		
 		Pricelist savedPricelist = pricelistService.save(newPricelist);
+		for(PricelistItems savedPricelistItems : newPricelist.getPricelist_Items()) {
+			savedPricelistItems.setPricelist(newPricelist);
+			pricelistItemsService.save(savedPricelistItems);
+		}
 
 		return new ResponseEntity<>(savedPricelist, HttpStatus.CREATED);
 	}

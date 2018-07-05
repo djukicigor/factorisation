@@ -44,7 +44,6 @@ public class Pricelist {
 	public Pricelist(Date date_of_validity, Company company) {
 		this.date_of_validity = date_of_validity;
 		this.company = company;
-
 	}
 
 	public Long getId() {
