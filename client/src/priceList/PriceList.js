@@ -196,7 +196,9 @@ class PriceList extends Component {
         nextProps.priceListItems.forEach(function(element) {
             let exists = false;
             cachedPost.pricelist_Items.forEach(function(item){
-                if (item.id === element.id) {
+                console.log(item)
+                console.log(item.id + '/' + item.goodsOrServices.name + '/' + element.id +'/' + element.name)
+                if (item.id === element.id || item.goodsOrServices.name === element.name) {
                     exists = true;
                 }
             });
